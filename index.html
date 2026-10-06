@@ -138,7 +138,13 @@ function go(v,x){S.view=v;S.sel=x;document.getElementById('nav').classList.remov
 function wa(t){return WA+encodeURIComponent(t)}
 function card(i){return `<div class="card item" onclick="go('detail',${i.id})"><div class="img" style="background:linear-gradient(135deg,${i.bg})">${i.e}<button class="heart" aria-label="Favorite" onclick="event.stopPropagation();S.fav[${i.id}]=!S.fav[${i.id}];render()">${S.fav[i.id]?'♥':'♡'}</button></div><div class="body"><h3>${i.n}</h3><div class="loc">${i.by?'by '+i.by+' · ':''}📍 ${i.loc}</div><div class="est"><span class="pill ${i.t=='gift'?'p-prod':'p-est'}">${i.t=='gift'?'Partner price':'Estimated budget'}</span><b>${rng(i.a,i.b)}${i.t=='date'?' / couple':''}</b></div>${i.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div></div>`}
 function premium(){return `<h2>Plan it with us</h2><p style="color:var(--mut);margin-top:-8px">Our planning fee is separate from café, activity, or gift prices.</p><div class="grid g3 tiers">
-<div class="card tier"><h3>Explore</h3><span class="pill p-fee" style="align-self:flex-start">Free</span><div class="price">Rp0</div><ul><li>Browse date ideas</li><li>Browse gifts</li><li>Estimated budgets</li><li>Local recommendations</li></ul><button class="btn o block" onclick="go('explore')">Start exploring</button></div>
+<div class="flow">
+  <div>Discover<small>Explore date ideas</small></div>
+  <div>Choose<small>Pick a date or gift</small></div>
+  <div>Plan<small>Set your budget</small></div>
+  <div>Consult<small>Chat with us on WhatsApp</small></div>
+  <div>Enjoy<small>Enjoy your special day</small></div>
+</div>
 <div class="card tier hot"><h3>Plan with us</h3><span class="pill p-fee" style="align-self:flex-start">Planning fee</span><div class="price">RpXX.XXX</div><ul><li>Personalized date recommendation</li><li>Based on your budget and preferences</li><li>Gift recommendation</li><li>Reservation assistance</li></ul><a class="btn block" href="${wa('Hi Plan My Date, I want the Plan with us service.')}" target="_blank" rel="noopener">Choose this plan</a></div>
 <div class="card tier"><h3>Full planning</h3><span class="pill p-fee" style="align-self:flex-start">Planning fee</span><div class="price">From RpXX.XXX</div><ul><li>Personalized itinerary</li><li>Place reservation</li><li>Gift coordination</li><li>Surprise arrangement</li><li>Support from planning to execution</li></ul><a class="btn o block" href="${wa('Hi Plan My Date, I want Full planning.')}" target="_blank" rel="noopener">Talk to us</a></div></div>
 <p class="note">Placeholder pricing. Partner prices are paid directly to partners.</p>`}

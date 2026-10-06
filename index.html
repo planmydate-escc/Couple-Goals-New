@@ -156,7 +156,7 @@ home(){return `<section class="hero"><div><div class="script" style="font-size:2
 <a class="card pick" onclick="S.tab='date';go('explore')"><div class="ic">🍽️</div><h3>Date</h3><p>Find places & activities for your date.</p></a>
 <a class="card pick" onclick="S.tab='gift';go('explore')"><div class="ic">🎁</div><h3>Gift</h3><p>Find something special for your partner.</p></a>
 <a class="card pick" onclick="go('plan')"><div class="ic">💬</div><h3>Consultation</h3><p>Let us help you plan it.</p></a></div>
-<h2>Featured Partners</h2><div class="partners">${P.map(p=>`<div class="pt" onclick="go('partners')" style="cursor:pointer"><div class="av">${p[3]?`<img src="${p[3]}" alt="${p[0]}">`:p[1]}</div><b>${p[0]}</b><small>${p[2]}</small></div>`).join('')},
+<h2>Featured Partners</h2><div class="partners">${P.map(p=>`<div class="pt" onclick="go('partners')" style="cursor:pointer"><div class="av">${p[3]?`<img src="${p[3]}" alt="${p[0]}">`:p[1]}</div><b>${p[0]}</b><small>${p[2]}</small></div>`).join('')}
 explore(){let l=D.filter(i=>(S.tab=='all'||i.t==S.tab)&&(!S.cat||i.cat==S.cat)&&(!S.bud||(S.bud=='1'?i.a<100:S.bud=='2'?i.a>=100&&i.a<300:S.bud=='3'?i.a>=300&&i.a<500:i.a>=500||i.b>=500)));
 return `<h1 style="font-size:46px">Explore</h1><p style="color:var(--mut)">Discover places, activities, and gifts for your special moment.</p>
 <div class="tabs">${['all','date','gift'].map(t=>`<button class="tab ${S.tab==t?'on':''}" onclick="S.tab='${t}';render()">${t[0].toUpperCase()+t.slice(1)}</button>`).join('')}</div>

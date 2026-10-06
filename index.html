@@ -47,7 +47,28 @@ h2{font-size:32px;margin:44px 0 16px}
 .pick p{margin:0;color:var(--mut)}
 .partners{display:flex;gap:22px;overflow-x:auto;padding-bottom:6px}
 .pt{flex:0 0 auto;text-align:center;width:96px;font-size:13px}
-.av{width:72px;height:72px;border-radius:50%;margin:0 auto 6px;display:grid;place-items:center;font-size:30px;background:var(--soft);border:2px solid var(--pink2)}
+.av{
+  width:72px;
+  height:72px;
+  aspect-ratio:1 / 1;
+  border-radius:50%;
+  margin:0 auto 6px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  flex-shrink:0;
+  background:var(--soft);
+  border:2px solid var(--pink2);
+}
+
+.av img{
+  width:100%;
+  height:100%;
+  aspect-ratio:1 / 1;
+  object-fit:cover;
+  display:block;
+}
 .pt small{display:block;color:var(--mut)}
 .flow{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:20px}
 .flow div{padding:14px 10px;border-radius:16px;background:var(--card);border:1px solid var(--line);text-align:center;font-weight:600;font-size:14px}
@@ -129,7 +150,7 @@ const D=[
 {id:4,t:'date',n:'Picnic Date',loc:'Pontianak',a:200,b:400,cat:'Outdoor',tags:['Outdoor','Park'],e:'🧺',bg:'#cfe8c0,#f5d6b0',dur:'3 hours',best:'Birthday, Casual',who:'Experience Partner',link:'View Picnic Setups',desc:'A simple outdoor setup with food and good company. Weather-friendly alternatives are available on request.'},
 {id:5,t:'gift',n:'Custom Couple Acrylic',by:'Jemari',loc:'Pontianak',a:75,b:150,cat:'Personalized',tags:['Gift','Personalized'],e:'🔑',bg:'#fbd0da,#f0a6c0',who:'Gift Partner',link:'View Catalog',desc:'A unique and meaningful gift for your someone special. Custom acrylic keychains, photo frames and more. Perfect for anniversaries and birthdays.'},
 {id:6,t:'gift',n:'Fresh Flower Bouquet',by:'Bloom & Co',loc:'Pontianak',a:100,b:300,cat:'Flowers',tags:['Gift','Flowers'],e:'💐',bg:'#fcd5dc,#e9a1b4',who:'Florist Partner',link:'View Bouquet Catalog',desc:'Hand-tied bouquets in soft romantic palettes, ready for same-day pickup or delivery.'}];
-const P=[['Jemari','🎁','Gift Partner'],['Kopi Senja','☕','Café Partner'],['PlayZone','🎮','Activity Partner'],['Bloom & Co','💐','Florist Partner'],['Rooftop 27','🌇','Restaurant Partner'],['Picnic Pontianak','🧺','Experience Partner']];
+['Oh Jemari','🎁','Gift Partner','assets/oh-jemari-logo.jpeg'],['Kopi Senja','☕','Café Partner'],['PlayZone','🎮','Activity Partner'],['Bloom & Co','💐','Florist Partner'],['Rooftop 27','🌇','Restaurant Partner'],['Picnic Pontianak','🧺','Experience Partner']];
 const NAV=[['home','Home'],['explore','Explore'],['plan','Plan Your Date'],['partners','Partners'],['about','About']];
 let S={tab:'all',bud:'',cat:'',fav:{},view:'home',form:{}};
 const rp=k=>'Rp'+(k*1000).toLocaleString('id-ID');
@@ -155,7 +176,7 @@ home(){return `<section class="hero"><div><div class="script" style="font-size:2
 <a class="card pick" onclick="S.tab='date';go('explore')"><div class="ic">🍽️</div><h3>Date</h3><p>Find places & activities for your date.</p></a>
 <a class="card pick" onclick="S.tab='gift';go('explore')"><div class="ic">🎁</div><h3>Gift</h3><p>Find something special for your partner.</p></a>
 <a class="card pick" onclick="go('plan')"><div class="ic">💬</div><h3>Consultation</h3><p>Let us help you plan it.</p></a></div>
-<h2>Featured Partners</h2><div class="partners">${P.map(p=>`<div class="pt" onclick="go('partners')" style="cursor:pointer"><div class="av">${p[1]}</div><b>${p[0]}</b><small>${p[2]}</small></div>`).join('')}</div>`},
+<h2>Featured Partners</h2><div class="partners">${P.map(p=>`<div class="pt" onclick="go('partners')" style="cursor:pointer"><div class="av">${p[3]?`<img src="${p[3]}" alt="${p[0]}">`:p[1]}</div><b>${p[0]}</b><small>${p[2]}</small></div>`).join('')},
 explore(){let l=D.filter(i=>(S.tab=='all'||i.t==S.tab)&&(!S.cat||i.cat==S.cat)&&(!S.bud||(S.bud=='1'?i.a<100:S.bud=='2'?i.a>=100&&i.a<300:S.bud=='3'?i.a>=300&&i.a<500:i.a>=500||i.b>=500)));
 return `<h1 style="font-size:46px">Explore</h1><p style="color:var(--mut)">Discover places, activities, and gifts for your special moment.</p>
 <div class="tabs">${['all','date','gift'].map(t=>`<button class="tab ${S.tab==t?'on':''}" onclick="S.tab='${t}';render()">${t[0].toUpperCase()+t.slice(1)}</button>`).join('')}</div>

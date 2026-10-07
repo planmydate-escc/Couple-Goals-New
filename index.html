@@ -158,7 +158,7 @@ const D=[
 {id:5,t:'gift',n:'Custom Couple Acrylic',by:'Oh Jemari',img:'oh-jemari-product.jpeg',url:OJ_CATALOG,ig:OJ_IG,loc:'Pontianak',a:75,b:150,cat:'Personalized',tags:['Gift','Personalized'],e:'🔑',bg:'#fbd0da,#f0a6c0',who:'Gift Partner',link:'View Catalog',desc:'A unique and meaningful gift for your someone special. Custom acrylic keychains, photo frames and more. Perfect for anniversaries and birthdays.'},
 {id:6,t:'gift',n:'Fresh Flower Bouquet',by:'Bloom & Co',ig:BLOOM_IG,loc:'Pontianak',a:100,b:300,cat:'Flowers',tags:['Gift','Flowers'],e:'💐',bg:'#fcd5dc,#e9a1b4',who:'Florist Partner',link:'View Bouquet Catalog',desc:'Hand-tied bouquets in soft romantic palettes, ready for same-day pickup or delivery.'}];
 const P=[
-['Oh Jemari','🎁','Gift Partner','oh-jemari-logo.jpeg'],
+['Oh Jemari','🎁','Gift Partner','oh-jemari-logo.jpeg','https://www.instagram.com/oh.jemari?stkn=MTR4MnlnaWd3Nms1NA=='],
 ['Kopi Senja','☕','Café Partner'],
 ['PlayZone','🎮','Activity Partner'],
 ['Bloom & Co','💐','Florist Partner'],
@@ -224,7 +224,15 @@ return `<h1 style="font-size:46px;text-align:center">Here's a Date Plan Just for
 <div class="stack" style="margin-bottom:20px"><button class="btn block" onclick="go('premium')">Plan This Date</button><a class="btn o block" target="_blank" rel="noopener" href="${wa('Hi Plan My Date, I am '+n+'. Please help with my plan, est. total '+rng(a,b))}">Consult via WhatsApp</a></div></div>`},
 premium(){return premium()},
 partners(){return `<h1 style="font-size:46px">Our Partners</h1><p style="color:var(--mut)">Local businesses that collaborate with Plan My Date. Their menus and catalogs stay with them.</p>
-<div class="grid g3" style="margin-top:20px">${P.map(p=>`<div class="card pcard"><div class="av">${av(p)}</div><h3>${p[0]}</h3><span class="badge">${p[2]}</span><div class="loc" style="margin-top:8px">📍 Pontianak</div><a class="btn o" style="padding:8px 18px" ${p[0]=='Oh Jemari'?ext(OJ_CATALOG):p[0]=='Bloom & Co'?ext(BLOOM_IG):'href="#" onclick="event.preventDefault()"'}>${p[0]=='Bloom & Co'?'View Instagram':p[2].match(/Gift/)?'View Catalog':'View Menu'} ↗</a></div>`).join('')}</div>
+<a class="btn o" style="padding:8px 18px"
+   ${p[0]=='Oh Jemari'
+     ? ext(OJ_CATALOG)
+     : p[0]=='Bloom & Co'
+       ? ext(BLOOM_IG)
+       : 'href="#" onclick="event.preventDefault()"'
+   }>
+   View Partner ↗
+</a>
 <div class="card" style="margin-top:24px;padding:22px"><b>Want to become a partner?</b><p style="margin:4px 0 12px;color:var(--mut)">Cafés, restaurants, florists and gift makers in Pontianak are welcome.</p><a class="btn" target="_blank" rel="noopener" href="${wa('Hi, I want to become a Plan My Date partner.')}">Contact us</a></div>`},
 about(){return `<h1 style="font-size:46px">About</h1><p style="max-width:560px;color:var(--mut)">Plan My Date is a local date-planning service for couples in Pontianak. We recommend places, activities, and gifts, show estimated budgets, and help arrange everything through WhatsApp.</p>`+premium()}
 };

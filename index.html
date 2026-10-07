@@ -212,7 +212,7 @@ plan(){return `<h1 style="font-size:46px;text-align:center">Let's Plan Your Perf
 <label class="full">Special request<textarea name="req" rows="3" placeholder="Allergies, surprises, anything we should know"></textarea></label>
 <button class="btn full" type="submit">Get My Recommendation</button></form></div>`},
 rec(){const f=S.form,n=f.name||'you',big=/300K|500K/.test(f.bud||''),c=f.type||'Combination';
-const it=[['🍽️','Dinner Date','Cozy Café or Rooftop Dinner',big?[250,400]:[150,300],'Estimated budget'],['🎁','Custom Gift','Custom Couple Acrylic by Oh Jemari',[75,150],'Estimated Price'],['🎬','Movie','Cinema in Pontianak',[100,150],'Estimated budget']].filter((x,i)=>c=='Combination'||(c=='Gift'&&i==1)||(c!='Gift'&&i!=1&&(c!='Outdoor'||i==0)));
+const it=[['🍽️','Dinner Date','Cozy Café or Rooftop Dinner',big?[250,400]:[150,300],'Estimated budget'],['🎁','Custom Gift','Custom Couple Acrylic by Oh Jemari',[36,80],'Estimated Price'],['🎬','Movie','Cinema in Pontianak',[100,150],'Estimated budget']].filter((x,i)=>c=='Combination'||(c=='Gift'&&i==1)||(c!='Gift'&&i!=1&&(c!='Outdoor'||i==0)));
 const a=it.reduce((s,x)=>s+x[3][0],0),b=it.reduce((s,x)=>s+x[3][1],0);
 return `<h1 style="font-size:46px;text-align:center">Here's a Date Plan Just for ${n}!</h1><p style="text-align:center;color:var(--mut)">${f.occ||'Casual Date'} · ${f.ppl||2} people · ${f.loc||'Pontianak'} · ${f.bud||'Rp100K–300K'}</p>
 <div class="card plan" style="max-width:720px;margin:20px auto">${it.map(x=>`<div class="row"><div class="l"><div class="em">${x[0]}</div><div><b>${x[1]}</b><br><small>${x[2]}</small></div></div><div style="text-align:right"><span class="pill ${x[4]=='Estimated Price'?'p-prod':'p-est'}">${x[4]}</span><br><b>${rng(...x[3])}</b></div></div>`).join('')}

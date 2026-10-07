@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Plan My Date</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Pinyon+Script&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
 <style>
 :root{--bg:#fffafa;--card:#fff;--soft:#ffeaf1;--pink:#e5628a;--pink2:#ffc4d6;--ink:#6a2440;--mut:#94687a;--line:#fbe0e8;--cream:#fff7ee;--gold:#b27d33;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 @media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#2a1620;--card:#38202b;--soft:#4a2a38;--pink:#e58aa2;--pink2:#7a3a50;--ink:#fbe6ec;--mut:#cfa3b2;--line:#58333f;--cream:#40281f;--gold:#e0b070}}
@@ -48,27 +49,30 @@ h2{font-size:32px;margin:44px 0 16px}
 .pick p{margin:0;color:var(--mut)}
 .partners{display:flex;gap:22px;overflow-x:auto;padding-bottom:6px}
 .pt{flex:0 0 auto;text-align:center;width:96px;font-size:13px}
+
 .av{
-  width:72px;
-  height:72px;
-  aspect-ratio:1/1;
-  border-radius:50%;
-  margin:0 auto 6px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  overflow:hidden;
-  flex-shrink:0;
-  font-size:30px;
-  background:var(--soft);
-  border:2px solid var(--pink2);
+width:72px;
+height:72px;
+aspect-ratio:1/1;
+border-radius:50%;
+margin:0 auto 6px;
+display:flex;
+align-items:center;
+justify-content:center;
+overflow:hidden;
+flex-shrink:0;
+font-size:30px;
+background:var(--soft);
+border:2px solid var(--pink2);
 }
+
 .av img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  display:block;
+width:100%;
+height:100%;
+object-fit:cover;
+display:block;
 }
+
 .img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
 .img{overflow:hidden}
 a.partnerbox{color:inherit}
@@ -121,6 +125,7 @@ form select,form input,form textarea{width:100%}
 .price{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:700}
 .pcard{padding:20px;text-align:center}
 .pcard .av{width:84px;height:84px;aspect-ratio:1/1}
+
 @media(max-width:760px){
 nav{display:none;position:absolute;top:100%;left:0;right:0;background:var(--bg);flex-direction:column;gap:0;padding:8px 20px 16px;border-bottom:1px solid var(--line)}
 nav.open{display:flex}
@@ -137,108 +142,842 @@ form{grid-template-columns:1fr}
 .tiers{grid-template-columns:1fr!important}
 .polaroid{display:none}
 }
-@media(max-width:420px){.g3,.g2{grid-template-columns:1fr}}
+
+@media(max-width:420px){
+.g3,.g2{grid-template-columns:1fr}
+}
 </style>
 </head>
+
 <body>
-<header><div class="bar"><div class="logo" onclick="go('home')">Plan My Date <span class="script" style="font-size:20px">♡</span></div>
-<nav id="nav"></nav><button class="burger" aria-label="Menu" onclick="document.getElementById('nav').classList.toggle('open')">☰</button></div></header>
+
+<header>
+<div class="bar">
+<div class="logo" onclick="go('home')">
+Plan My Date <span class="script" style="font-size:20px">♡</span>
+</div>
+
+<nav id="nav"></nav>
+
+<button class="burger" aria-label="Menu" onclick="document.getElementById('nav').classList.toggle('open')">☰</button>
+</div>
+</header>
+
 <main id="app"></main>
+
 <script>
+
 const OJ_CATALOG='https://akukiii.my.canva.site/jemari-catalogue?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAb21jcAUxTqdleHRuA2FlbQIxMQBwZG9mAnNydGMGYXBwX2lkDzU2NzA2NzM0MzM1MjQyNwABp6hXoyrCbeOvpV58w-rgVWeNH_us4xJ6NkiNGVNDpjeysaq4DuY9KQ5PhERG_aem_oShE164NuJyMMITNPjU6Nw';
+
 const OJ_IG='https://www.instagram.com/oh.jemari?stkn=MTR4MnlnaWd3Nms1NA==';
-const BLOOM_IG='#'; // TODO: paste Bloom & Co Instagram link
-const ext=u=>u=='#'?'href="#" onclick="event.preventDefault()"':`href="${u}" target="_blank" rel="noopener"`;
+
+const BLOOM_IG='#';
+
+const ext=u=>u=='#'
+?'href="#" onclick="event.preventDefault()"
+':`href="${u}" target="_blank" rel="noopener"`;
+
 const WA='https://wa.me/6281200000000?text=';
+
 const D=[
+
 {id:1,t:'date',n:'Cozy Café Date',loc:'Pontianak',a:150,b:300,cat:'Dining',tags:['Café','Popular'],e:'☕',bg:'#f6d3b8,#e9a98a',dur:'2–3 hours',best:'Casual, Anniversary, First Date',who:'Café Partner',link:'View Café Menu',desc:'A cozy place for couples who want to enjoy good food and quality time together. We can help with the reservation; you choose your own menu.'},
+
 {id:2,t:'date',n:'Rooftop Dinner',loc:'Pontianak',a:300,b:500,cat:'Dining',tags:['Restaurant','Rooftop'],e:'🌇',bg:'#f9c7a6,#d97b94',dur:'2–3 hours',best:'Anniversary, Surprise',who:'Restaurant Partner',link:'View Restaurant Menu',desc:'Dinner with a city view at sunset. Ideal for a special evening that feels a little more planned.'},
+
 {id:3,t:'date',n:'PS Gaming Date',loc:'Pontianak',a:100,b:200,cat:'Activity',tags:['Gaming','Indoor'],e:'🎮',bg:'#d8c7f0,#f0b6d0',dur:'2 hours',best:'Casual Date',who:'Activity Partner',link:'View Activity Packages',desc:'A relaxed, playful date. Play together, snack, and enjoy time without the pressure of a formal dinner.'},
+
 {id:4,t:'date',n:'Picnic Date',loc:'Pontianak',a:200,b:400,cat:'Outdoor',tags:['Outdoor','Park'],e:'🧺',bg:'#cfe8c0,#f5d6b0',dur:'3 hours',best:'Birthday, Casual',who:'Experience Partner',link:'View Picnic Setups',desc:'A simple outdoor setup with food and good company. Weather-friendly alternatives are available on request.'},
+
 {id:5,t:'gift',n:'Custom Couple Acrylic',by:'Oh Jemari',img:'oh-jemari-product.jpeg',url:OJ_CATALOG,ig:OJ_IG,loc:'Pontianak',a:75,b:150,cat:'Personalized',tags:['Gift','Personalized'],e:'🔑',bg:'#fbd0da,#f0a6c0',who:'Gift Partner',link:'View Catalog',desc:'A unique and meaningful gift for your someone special. Custom acrylic keychains, photo frames and more. Perfect for anniversaries and birthdays.'},
-{id:6,t:'gift',n:'Fresh Flower Bouquet',by:'Bloom & Co',ig:BLOOM_IG,loc:'Pontianak',a:100,b:300,cat:'Flowers',tags:['Gift','Flowers'],e:'💐',bg:'#fcd5dc,#e9a1b4',who:'Florist Partner',link:'View Bouquet Catalog',desc:'Hand-tied bouquets in soft romantic palettes, ready for same-day pickup or delivery.'}];
-const P=[
-['Oh Jemari','🎁','Gift Partner','oh-jemari-logo.jpeg','https://www.instagram.com/oh.jemari?stkn=MTR4MnlnaWd3Nms1NA=='],
-['Kopi Senja','☕','Café Partner'],
-['PlayZone','🎮','Activity Partner'],
-['Bloom & Co','💐','Florist Partner'],
-['Rooftop 27','🌇','Restaurant Partner'],
-['Picnic Pontianak','🧺','Experience Partner']
+
+{id:6,t:'gift',n:'Fresh Flower Bouquet',by:'Bloom & Co',ig:BLOOM_IG,loc:'Pontianak',a:100,b:300,cat:'Flowers',tags:['Gift','Flowers'],e:'💐',bg:'#fcd5dc,#e9a1b4',who:'Florist Partner',link:'View Bouquet Catalog',desc:'Hand-tied bouquets in soft romantic palettes, ready for same-day pickup or delivery.'}
+
 ];
+
+const P=[
+
+['Oh Jemari','🎁','Gift Partner','oh-jemari-logo.jpeg','https://www.instagram.com/oh.jemari?stkn=MTR4MnlnaWd3Nms1NA=='],
+
+['Kopi Senja','☕','Café Partner'],
+
+['PlayZone','🎮','Activity Partner'],
+
+['Bloom & Co','💐','Florist Partner'],
+
+['Rooftop 27','🌇','Restaurant Partner'],
+
+['Picnic Pontianak','🧺','Experience Partner']
+
+];
+
 const IMG={};
-const av=p=>p[3]?`<img src="${IMG[p[3]]||p[3]}" alt="" onerror="this.parentNode.textContent='${p[1]}'">`:p[1];
-const NAV=[['home','Home'],['explore','Explore'],['plan','Plan Your Date'],['partners','Partners'],['about','About']];
-let S={tab:'all',bud:'',cat:'',fav:{},view:'home',form:{}};
-const rp=k=>'Rp'+(k*1000).toLocaleString('id-ID');
-const rng=(a,b)=>rp(a)+' – '+rp(b);
-function go(v,x){S.view=v;S.sel=x;document.getElementById('nav').classList.remove('open');render();scrollTo(0,0)}
-function wa(t){return WA+encodeURIComponent(t)}
-function card(i){return `<div class="card item" onclick="go('detail',${i.id})"><div class="img" style="background:linear-gradient(135deg,${i.bg})">${i.img?`<img src="${IMG[i.img]||i.img}" alt="${i.n}" onerror="this.outerHTML='${i.e}'">`:i.e}<button class="heart" aria-label="Favorite" onclick="event.stopPropagation();S.fav[${i.id}]=!S.fav[${i.id}];render()">${S.fav[i.id]?'♥':'♡'}</button></div><div class="body"><h3>${i.n}</h3><div class="loc">${i.by?'by '+i.by+' · ':''}📍 ${i.loc}</div><div class="est"><span class="pill ${i.t=='gift'?'p-prod':'p-est'}">${i.t=='gift'?'Estimated Price':'Estimated budget'}</span><b>${rng(i.a,i.b)}${i.t=='date'?' / couple':''}</b></div>${i.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div></div>`}
-function premium(){return `<h2>Plan it with us</h2><p style="color:var(--mut);margin-top:-8px">Our planning fee is separate from café, activity, or gift prices.</p><div class="grid g3 tiers">
-<div class="card tier"><h3>Explore</h3><span class="pill p-fee" style="align-self:flex-start">Free</span><div class="price">Rp0</div><ul><li>Browse date ideas</li><li>Browse gifts</li><li>Estimated budgets</li><li>Local recommendations</li></ul><button class="btn o block" onclick="go('explore')">Start exploring</button></div>
-<div class="card tier hot"><h3>Plan with us</h3><span class="pill p-fee" style="align-self:flex-start">Planning fee</span><div class="price">RpXX.XXX</div><ul><li>Personalized date recommendation</li><li>Based on your budget and preferences</li><li>Gift recommendation</li><li>Reservation assistance</li></ul><a class="btn block" href="${wa('Hi Plan My Date, I want the Plan with us service.')}" target="_blank" rel="noopener">Choose this plan</a></div>
-<div class="card tier"><h3>Full planning</h3><span class="pill p-fee" style="align-self:flex-start">Planning fee</span><div class="price">From RpXX.XXX</div><ul><li>Personalized itinerary</li><li>Place reservation</li><li>Gift coordination</li><li>Surprise arrangement</li><li>Support from planning to execution</li></ul><a class="btn o block" href="${wa('Hi Plan My Date, I want Full planning.')}" target="_blank" rel="noopener">Talk to us</a></div></div>
-<p class="note">Placeholder pricing. Partner costs are paid directly to partners.</p>`}
-const V={
-home(){return `<section class="hero"><div><div class="script" style="font-size:24px">Your perfect date, made easy</div><h1>Plan Better Dates, Create More Memories.</h1><p>Find the right place, activity, or gift for your special moment — and let us help you plan it your way.</p><button class="btn" onclick="go('plan')">Plan Your Date</button></div><div class="polaroid" style="width:100%;max-width:320px;min-width:0;justify-self:center"><div class="ph" style="height:230px;overflow:hidden"><img src="foto-senja.jpg" onerror="this.style.display='none'" alt="Pasangan menikmati senja romantis" style="display:block;width:100%;height:100%;object-fit:cover;object-position:72% 50%"></div><span class="script">Good Dates, Happier Us</span></div></section>
-<div class="flow"><div>Discover<small>Explore date ideas</small></div><div>Choose<small>Pick a date or gift</small></div><div>Plan<small>Set your budget</small></div><div>Consult<small>Chat with us on WhatsApp</small></div><div>Enjoy<small>Enjoy your special day</small></div></div></div>
-<h2>What can we help you with?</h2><div class="grid g3 picks">
-<a class="card pick" onclick="S.tab='date';go('explore')"><div class="ic">🍽️</div><h3>Date</h3><p>Find places & activities for your date.</p></a>
-<a class="card pick" onclick="S.tab='gift';go('explore')"><div class="ic">🎁</div><h3>Gift</h3><p>Find something special for your partner.</p></a>
-<a class="card pick" onclick="go('plan')"><div class="ic">💬</div><h3>Consultation</h3><p>Let us help you plan it.</p></a></div>
-<h2>Featured Partners</h2><div class="partners">${P.map(p=>`<div class="pt" onclick="go('partners')" style="cursor:pointer"><div class="av">${av(p)}</div><b>${p[0]}</b><small>${p[2]}</small></div>`).join('')}</div>`},
-explore(){let l=D.filter(i=>(S.tab=='all'||i.t==S.tab)&&(!S.cat||i.cat==S.cat)&&(!S.bud||(S.bud=='1'?i.a<100:S.bud=='2'?i.a>=100&&i.a<300:S.bud=='3'?i.a>=300&&i.a<500:i.a>=500||i.b>=500)));
-return `<h1 style="font-size:46px">Explore</h1><p style="color:var(--mut)">Discover places, activities, and gifts for your special moment.</p>
-<div class="tabs">${['all','date','gift'].map(t=>`<button class="tab ${S.tab==t?'on':''}" onclick="S.tab='${t}';render()">${t[0].toUpperCase()+t.slice(1)}</button>`).join('')}</div>
-<div class="filters"><select aria-label="Location"><option>Pontianak</option></select><select aria-label="Budget" onchange="S.bud=this.value;render()"><option value="">Any budget</option>${['Under Rp100K','Rp100K–300K','Rp300K–500K','Rp500K+'].map((b,i)=>`<option value="${i+1}" ${S.bud==i+1?'selected':''}>${b}</option>`).join('')}</select><select aria-label="Category" onchange="S.cat=this.value;render()"><option value="">All categories</option>${['Dining','Activity','Outdoor','Personalized','Flowers'].map(c=>`<option ${S.cat==c?'selected':''}>${c}</option>`).join('')}</select><select aria-label="Occasion"><option>Any occasion</option><option>Anniversary</option><option>Birthday</option><option>First Date</option></select></div>
-<p class="note">Estimated cost. Final price may vary depending on selected menu or service.</p>
-<div class="grid g3" style="margin-top:14px">${l.map(card).join('')||'<p>No matches. Try a wider budget or category.</p>'}</div>`},
-detail(){const i=D.find(x=>x.id==S.sel)||D[0],g=i.t=='gift';
-return `<a class="loc" style="cursor:pointer" onclick="go('explore')">← Back to Explore</a><div class="detail"><div class="img" style="background:linear-gradient(135deg,${i.bg})">${i.img?`<img src="${IMG[i.img]||i.img}" alt="${i.n}" onerror="this.outerHTML='${i.e}'">`:i.e}</div><div>
-<span class="tag">${g?'Gift':'Date'}</span><span class="tag">${i.cat}</span><h1 style="font-size:44px;margin-top:8px">${i.n}</h1>
-<div class="loc" style="margin-top:6px">${g?`by ${i.by} <span class="badge">✓ Official Partner</span> · `:''}📍 ${i.loc}</div>
-<div class="est" style="margin-top:16px"><span class="pill ${g?'p-prod':'p-est'}">${g?'Estimated Price':'Estimated budget'}</span><b style="font-size:26px">${rng(i.a,i.b)}${g?'':' / couple'}</b><i>${g?'Final price may vary depending on design, size, and custom request.':'Estimated cost for food & drinks. Final price depends on your selected menu.'}</i></div>
-${g?'':`<div class="facts"><div><small>Duration</small>${i.dur}</div><div><small>Best for</small>${i.best}</div><div><small>Location</small>${i.loc}</div></div>`}
-<p>${i.desc}</p>
-${g?`<div class="stack"><button class="btn block" onclick="go('plan')">Add to my date plan</button>${i.url?`<a class="btn o block" ${ext(i.url)}>${i.link} ↗</a>`:''}${i.ig?`<a class="btn o block" ${ext(i.ig)}>View Instagram ↗</a>`:''}<a class="btn o block" target="_blank" rel="noopener" href="${wa('Hi Plan My Date, I am interested in '+i.n)}">Consult with Plan My Date ↗</a></div><p class="note">${i.url?'Orders are made with the partner. Not sure what to pick? Ask us on WhatsApp.':'See their Instagram for designs, then order via WhatsApp.'}</p>`:`<div class="stack"><button class="btn block" onclick="go('plan')">Plan This Date</button><a class="btn o block" target="_blank" rel="noopener" href="${wa('Hi Plan My Date, I am interested in '+i.n)}">Consult via WhatsApp</a></div>
-<${i.url?'a href="'+i.url+'" target="_blank" rel="noopener"':'div'} class="partnerbox"><div><b>${i.link} ↗</b><small>Opens ${g?i.by+"'s":"the partner's"} official ${g?'catalog':'menu'}. ${g?'Orders are made with the partner.':'You choose your own menu. Not sure what to pick? Ask us on WhatsApp.'}</small></div><span style="font-size:22px">↗</span></${i.url?'a':'div'}>`}
-<p class="note">Plan My Date is not a shop. We recommend, plan, and assist.</p></div></div>`},
-plan(){return `<h1 style="font-size:46px;text-align:center">Let's Plan Your Perfect Date</h1><p style="text-align:center;color:var(--mut)">Tell us what you like. We'll build a date plan around your budget.</p>
-<div class="card" style="max-width:720px;margin:20px auto"><form onsubmit="event.preventDefault();S.form=Object.fromEntries(new FormData(this));go('rec')">
-<label>Name<input name="name" required placeholder="Your name"></label>
-<label>Number of people<input name="ppl" type="number" min="2" value="2"></label>
-<label>Occasion<select name="occ">${['Casual Date','Anniversary','Birthday','First Date','Surprise','Other'].map(o=>`<option>${o}</option>`).join('')}</select></label>
-<label>Location<select name="loc"><option>Pontianak</option></select></label>
-<label>Budget<select name="bud"><option>Under Rp100K</option><option selected>Rp100K–300K</option><option>Rp300K–500K</option><option>Rp500K+</option></select></label>
-<label>Preferred date type<select name="type">${['Dining','Activity','Outdoor','Gift','Combination'].map(o=>`<option ${o=='Combination'?'selected':''}>${o}</option>`).join('')}</select></label>
-<label class="full">Gift preference<input name="gift" placeholder="e.g. flowers, custom acrylic, no gift"></label>
-<label class="full">Special request<textarea name="req" rows="3" placeholder="Allergies, surprises, anything we should know"></textarea></label>
-<button class="btn full" type="submit">Get My Recommendation</button></form></div>`},
-rec(){const f=S.form,n=f.name||'you',big=/300K|500K/.test(f.bud||''),c=f.type||'Combination';
-const it=[['🍽️','Dinner Date','Cozy Café or Rooftop Dinner',big?[250,400]:[150,300],'Estimated budget'],['🎁','Custom Gift','Custom Couple Acrylic by Oh Jemari',[75,150],'Estimated Price'],['🎬','Movie','Cinema in Pontianak',[100,150],'Estimated budget']].filter((x,i)=>c=='Combination'||(c=='Gift'&&i==1)||(c!='Gift'&&i!=1&&(c!='Outdoor'||i==0)));
-const a=it.reduce((s,x)=>s+x[3][0],0),b=it.reduce((s,x)=>s+x[3][1],0);
-return `<h1 style="font-size:46px;text-align:center">Here's a Date Plan Just for ${n}!</h1><p style="text-align:center;color:var(--mut)">${f.occ||'Casual Date'} · ${f.ppl||2} people · ${f.loc||'Pontianak'} · ${f.bud||'Rp100K–300K'}</p>
-<div class="card plan" style="max-width:720px;margin:20px auto">${it.map(x=>`<div class="row"><div class="l"><div class="em">${x[0]}</div><div><b>${x[1]}</b><br><small>${x[2]}</small></div></div><div style="text-align:right"><span class="pill ${x[4]=='Estimated Price'?'p-prod':'p-est'}">${x[4]}</span><br><b>${rng(...x[3])}</b></div></div>`).join('')}
-<div class="total"><span>Estimated total</span><span>${rng(a,b)}</span></div>
-<p class="note" style="margin:0 0 14px">Paid to partners. Plan My Date's planning fee is separate and shown below.</p>
-<div class="stack" style="margin-bottom:20px"><button class="btn block" onclick="go('premium')">Plan This Date</button><a class="btn o block" target="_blank" rel="noopener" href="${wa('Hi Plan My Date, I am '+n+'. Please help with my plan, est. total '+rng(a,b))}">Consult via WhatsApp</a></div></div>`},
-premium(){return premium()},
-partners(){return `<h1 style="font-size:46px">Our Partners</h1><p style="color:var(--mut)">Local businesses that collaborate with Plan My Date. Their menus and catalogs stay with them.</p>
-<div class="grid g3" style="margin-top:20px">${P.map(p=>`<div class="card pcard">
-<div class="av">${av(p)}</div>
-<h3>${p[0]}</h3>
-<span class="badge">${p[2]}</span>
-<div class="loc" style="margin-top:8px">📍 Pontianak</div>
-<a class="btn o" style="padding:8px 18px"
-${p[4]?ext(p[4]):'href="#" onclick="event.preventDefault()"'}>View Partner ↗</a>
-</div>`).join('')}</div>
-<div class="card" style="margin-top:24px;padding:22px"><b>Want to become a partner?</b><p style="margin:4px 0 12px;color:var(--mut)">Cafés, restaurants, florists and gift makers in Pontianak are welcome.</p><a class="btn" target="_blank" rel="noopener" href="${wa('Hi, I want to become a Plan My Date partner.')}">Contact us</a></div>`},
-about(){return `<h1 style="font-size:46px">About</h1><p style="max-width:560px;color:var(--mut)">Plan My Date is a local date-planning service for couples in Pontianak. We recommend places, activities, and gifts, show estimated budgets, and help arrange everything through WhatsApp.</p>`+premium()}
+
+const av=p=>p[3]
+?`<img src="${IMG[p[3]]||p[3]}" alt="" onerror="this.parentNode.textContent='${p[1]}'">`
+:p[1];
+
+const NAV=[
+['home','Home'],
+['explore','Explore'],
+['plan','Plan Your Date'],
+['partners','Partners'],
+['about','About']
+];
+
+let S={
+tab:'all',
+bud:'',
+cat:'',
+fav:{},
+view:'home',
+form:{}
 };
-function render(){const k=S.view,nk=k=='detail'?'explore':(k=='rec'||k=='premium')?'plan':k;
-document.getElementById('nav').innerHTML=NAV.map(n=>`<a class="${nk==n[0]?'on':''}" onclick="go('${n[0]}')">${n[1]}</a>`).join('');
-document.getElementById('app').innerHTML=V[k]()+(k=='home'?'':'')+(k=='rec'||k=='plan'?(k=='rec'?premium():''):'')}
+
+const rp=k=>'Rp'+(k*1000).toLocaleString('id-ID');
+
+const rng=(a,b)=>rp(a)+' – '+rp(b);
+
+function go(v,x){
+S.view=v;
+S.sel=x;
+document.getElementById('nav').classList.remove('open');
 render();
+scrollTo(0,0)
+}
+
+function wa(t){
+return WA+encodeURIComponent(t)
+}
+
+function card(i){
+return `<div class="card item" onclick="go('detail',${i.id})">
+<div class="img" style="background:linear-gradient(135deg,${i.bg})">
+${i.img
+?`<img src="${IMG[i.img]||i.img}" alt="${i.n}" onerror="this.outerHTML='${i.e}'">`
+:i.e}
+
+<button class="heart" aria-label="Favorite" onclick="event.stopPropagation();S.fav[${i.id}]=!S.fav[${i.id}];render()">
+${S.fav[i.id]?'♥':'♡'}
+</button>
+</div>
+
+<div class="body">
+<h3>${i.n}</h3>
+<div class="loc">${i.by?'by '+i.by+' · ':''}📍 ${i.loc}</div>
+
+<div class="est">
+<span class="pill ${i.t=='gift'?'p-prod':'p-est'}">
+${i.t=='gift'?'Estimated Price':'Estimated budget'}
+</span>
+
+<b>${rng(i.a,i.b)}${i.t=='date'?' / couple':''}</b>
+</div>
+
+${i.tags.map(t=>`<span class="tag">${t}</span>`).join('')}
+
+</div>
+</div>`
+}
+
+function premium(){
+return `<h2>Plan it with us</h2>
+
+<p style="color:var(--mut);margin-top:-8px">
+Our planning fee is separate from café, activity, or gift prices.
+</p>
+
+<div class="grid g3 tiers">
+
+<div class="card tier">
+<h3>Explore</h3>
+<span class="pill p-fee" style="align-self:flex-start">Free</span>
+<div class="price">Rp0</div>
+
+<ul>
+<li>Browse date ideas</li>
+<li>Browse gifts</li>
+<li>Estimated budgets</li>
+<li>Local recommendations</li>
+</ul>
+
+<button class="btn o block" onclick="go('explore')">
+Start exploring
+</button>
+</div>
+
+<div class="card tier hot">
+<h3>Plan with us</h3>
+<span class="pill p-fee" style="align-self:flex-start">Planning fee</span>
+<div class="price">Rp49.999</div>
+
+<ul>
+<li>Personalized date recommendation</li>
+<li>Based on your budget and preferences</li>
+<li>Gift recommendation</li>
+<li>Reservation assistance</li>
+</ul>
+
+<a class="btn block"
+href="${wa('Hi Plan My Date, I want the Plan with us service.')}"
+target="_blank"
+rel="noopener">
+Choose this plan
+</a>
+</div>
+
+<div class="card tier">
+<h3>Full planning</h3>
+<span class="pill p-fee" style="align-self:flex-start">Planning fee</span>
+<div class="price">From Rp99.999</div>
+
+<ul>
+<li>Personalized itinerary</li>
+<li>Place reservation</li>
+<li>Gift coordination</li>
+<li>Surprise arrangement</li>
+<li>Support from planning to execution</li>
+</ul>
+
+<a class="btn o block"
+href="${wa('Hi Plan My Date, I want Full planning.')}"
+target="_blank"
+rel="noopener">
+Talk to us
+</a>
+</div>
+
+</div>
+
+<p class="note">
+Placeholder pricing. Partner costs are paid directly to partners.
+</p>`
+}
+
+const V={
+
+home(){
+return `<section class="hero">
+
+<div>
+<div class="script" style="font-size:24px">
+Your perfect date, made easy
+</div>
+
+<h1>Plan Better Dates, Create More Memories.</h1>
+
+<p>
+Find the right place, activity, or gift for your special moment — and let us help you plan it your way.
+</p>
+
+<button class="btn" onclick="go('plan')">
+Plan Your Date
+</button>
+</div>
+
+<div class="polaroid"
+style="width:100%;max-width:320px;min-width:0;justify-self:center">
+
+<div class="ph"
+style="height:230px;overflow:hidden">
+
+<img src="foto-senja.jpg"
+onerror="this.style.display='none'"
+alt="Pasangan menikmati senja romantis"
+style="display:block;width:100%;height:100%;object-fit:cover;object-position:72% 50%">
+
+</div>
+
+<span class="script">
+Good Dates, Happier Us
+</span>
+
+</div>
+
+</section>
+
+<div class="flow">
+<div>Discover<small>Explore date ideas</small></div>
+<div>Choose<small>Pick a date or gift</small></div>
+<div>Plan<small>Set your budget</small></div>
+<div>Consult<small>Chat with us on WhatsApp</small></div>
+<div>Enjoy<small>Enjoy your special day</small></div>
+</div>
+
+<h2>What can we help you with?</h2>
+
+<div class="grid g3 picks">
+
+<a class="card pick"
+onclick="S.tab='date';go('explore')">
+<div class="ic">🍽️</div>
+<h3>Date</h3>
+<p>Find places & activities for your date.</p>
+</a>
+
+<a class="card pick"
+onclick="S.tab='gift';go('explore')">
+<div class="ic">🎁</div>
+<h3>Gift</h3>
+<p>Find something special for your partner.</p>
+</a>
+
+<a class="card pick"
+onclick="go('plan')">
+<div class="ic">💬</div>
+<h3>Consultation</h3>
+<p>Let us help you plan it.</p>
+</a>
+
+</div>
+
+<h2>Featured Partners</h2>
+
+<div class="partners">
+${P.map(p=>`
+<div class="pt"
+onclick="go('partners')"
+style="cursor:pointer">
+
+<div class="av">${av(p)}</div>
+<b>${p[0]}</b>
+<small>${p[2]}</small>
+
+</div>
+`).join('')}
+</div>`
+},
+
+explore(){
+
+let l=D.filter(i=>
+(S.tab=='all'||i.t==S.tab)&&
+(!S.cat||i.cat==S.cat)&&
+(!S.bud||
+(S.bud=='1'?i.a<100:
+S.bud=='2'?i.a>=100&&i.a<300:
+S.bud=='3'?i.a>=300&&i.a<500:
+i.a>=500||i.b>=500))
+);
+
+return `<h1 style="font-size:46px">Explore</h1>
+
+<p style="color:var(--mut)">
+Discover places, activities, and gifts for your special moment.
+</p>
+
+<div class="tabs">
+${['all','date','gift'].map(t=>
+`<button class="tab ${S.tab==t?'on':''}"
+onclick="S.tab='${t}';render()">
+${t[0].toUpperCase()+t.slice(1)}
+</button>`
+).join('')}
+</div>
+
+<div class="filters">
+
+<select aria-label="Location">
+<option>Pontianak</option>
+</select>
+
+<select aria-label="Budget"
+onchange="S.bud=this.value;render()">
+
+<option value="">Any budget</option>
+
+${['Under Rp100K','Rp100K–300K','Rp300K–500K','Rp500K+'].map((b,i)=>
+`<option value="${i+1}" ${S.bud==i+1?'selected':''}>
+${b}
+</option>`
+).join('')}
+
+</select>
+
+<select aria-label="Category"
+onchange="S.cat=this.value;render()">
+
+<option value="">All categories</option>
+
+${['Dining','Activity','Outdoor','Personalized','Flowers'].map(c=>
+`<option ${S.cat==c?'selected':''}>${c}</option>`
+).join('')}
+
+</select>
+
+<select aria-label="Occasion">
+<option>Any occasion</option>
+<option>Anniversary</option>
+<option>Birthday</option>
+<option>First Date</option>
+</select>
+
+</div>
+
+<p class="note">
+Estimated cost. Final price may vary depending on selected menu or service.
+</p>
+
+<div class="grid g3" style="margin-top:14px">
+${l.map(card).join('')||'<p>No matches. Try a wider budget or category.</p>'}
+</div>`
+},
+
+detail(){
+
+const i=D.find(x=>x.id==S.sel)||D[0];
+const g=i.t=='gift';
+
+return `<a class="loc"
+style="cursor:pointer"
+onclick="go('explore')">
+← Back to Explore
+</a>
+
+<div class="detail">
+
+<div class="img"
+style="background:linear-gradient(135deg,${i.bg})">
+
+${i.img
+?`<img src="${IMG[i.img]||i.img}"
+alt="${i.n}"
+onerror="this.outerHTML='${i.e}'">`
+:i.e}
+
+</div>
+
+<div>
+
+<span class="tag">${g?'Gift':'Date'}</span>
+<span class="tag">${i.cat}</span>
+
+<h1 style="font-size:44px;margin-top:8px">
+${i.n}
+</h1>
+
+<div class="loc" style="margin-top:6px">
+${g?`by ${i.by} <span class="badge">✓ Official Partner</span> · `:''}
+📍 ${i.loc}
+</div>
+
+<div class="est" style="margin-top:16px">
+
+<span class="pill ${g?'p-prod':'p-est'}">
+${g?'Estimated Price':'Estimated budget'}
+</span>
+
+<b style="font-size:26px">
+${rng(i.a,i.b)}${g?'':' / couple'}
+</b>
+
+<i>
+${g
+?'Final price may vary depending on design, size, and custom request.'
+:'Estimated cost for food & drinks. Final price depends on your selected menu.'}
+</i>
+
+</div>
+
+${g?'':`
+<div class="facts">
+
+<div>
+<small>Duration</small>
+${i.dur}
+</div>
+
+<div>
+<small>Best for</small>
+${i.best}
+</div>
+
+<div>
+<small>Location</small>
+${i.loc}
+</div>
+
+</div>
+`}
+
+<p>${i.desc}</p>
+
+${g
+?`
+<div class="stack">
+
+<button class="btn block"
+onclick="go('plan')">
+Add to my date plan
+</button>
+
+${i.url
+?`<a class="btn o block"
+${ext(i.url)}>
+${i.link} ↗
+</a>`
+:''}
+
+${i.ig
+?`<a class="btn o block"
+${ext(i.ig)}>
+View Instagram ↗
+</a>`
+:''}
+
+<a class="btn o block"
+target="_blank"
+rel="noopener"
+href="${wa('Hi Plan My Date, I am interested in '+i.n)}">
+Consult with Plan My Date ↗
+</a>
+
+</div>
+
+<p class="note">
+${i.url
+?'Orders are made with the partner. Not sure what to pick? Ask us on WhatsApp.'
+:'See their Instagram for designs, then order via WhatsApp.'}
+</p>
+`
+:
+`
+<div class="stack">
+
+<button class="btn block"
+onclick="go('plan')">
+Plan This Date
+</button>
+
+<a class="btn o block"
+target="_blank"
+rel="noopener"
+href="${wa('Hi Plan My Date, I am interested in '+i.n)}">
+Consult via WhatsApp
+</a>
+
+</div>
+
+<${i.url
+?'a href="'+i.url+'" target="_blank" rel="noopener"'
+:'div'}
+class="partnerbox">
+
+<div>
+<b>${i.link} ↗</b>
+
+<small>
+Opens ${g?i.by+"'s":"the partner's"} official ${g?'catalog':'menu'}.
+${g
+?'Orders are made with the partner.'
+:'You choose your own menu. Not sure what to pick? Ask us on WhatsApp.'}
+</small>
+
+</div>
+
+<span style="font-size:22px">↗</span>
+
+</${i.url?'a':'div'}>
+`}
+
+<p class="note">
+Plan My Date is not a shop. We recommend, plan, and assist.
+</p>
+
+</div>
+</div>`
+},
+
+plan(){
+
+return `<h1 style="font-size:46px;text-align:center">
+Let's Plan Your Perfect Date
+</h1>
+
+<p style="text-align:center;color:var(--mut)">
+Tell us what you like. We'll build a date plan around your budget.
+</p>
+
+<div class="card"
+style="max-width:720px;margin:20px auto">
+
+<form onsubmit="event.preventDefault();S.form=Object.fromEntries(new FormData(this));go('rec')">
+
+<label>
+Name
+<input name="name" required placeholder="Your name">
+</label>
+
+<label>
+Number of people
+<input name="ppl" type="number" min="2" value="2">
+</label>
+
+<label>
+Occasion
+<select name="occ">
+${['Casual Date','Anniversary','Birthday','First Date','Surprise','Other'].map(o=>`<option>${o}</option>`).join('')}
+</select>
+</label>
+
+<label>
+Location
+<select name="loc">
+<option>Pontianak</option>
+</select>
+</label>
+
+<label>
+Budget
+<select name="bud">
+<option>Under Rp100K</option>
+<option selected>Rp100K–300K</option>
+<option>Rp300K–500K</option>
+<option>Rp500K+</option>
+</select>
+</label>
+
+<label>
+Preferred date type
+<select name="type">
+${['Dining','Activity','Outdoor','Gift','Combination'].map(o=>
+`<option ${o=='Combination'?'selected':''}>${o}</option>`
+).join('')}
+</select>
+</label>
+
+<label class="full">
+Gift preference
+<input name="gift"
+placeholder="e.g. flowers, custom acrylic, no gift">
+</label>
+
+<label class="full">
+Special request
+<textarea name="req"
+rows="3"
+placeholder="Allergies, surprises, anything we should know"></textarea>
+</label>
+
+<button class="btn full" type="submit">
+Get My Recommendation
+</button>
+
+</form>
+</div>`
+},
+
+rec(){
+
+const f=S.form;
+const n=f.name||'you';
+const big=/300K|500K/.test(f.bud||'');
+const c=f.type||'Combination';
+
+const it=[
+['🍽️','Dinner Date','Cozy Café or Rooftop Dinner',big?[250,400]:[150,300],'Estimated budget'],
+['🎁','Custom Gift','Custom Couple Acrylic by Oh Jemari',[75,150],'Estimated Price'],
+['🎬','Movie','Cinema in Pontianak',[100,150],'Estimated budget']
+].filter((x,i)=>
+c=='Combination'||
+(c=='Gift'&&i==1)||
+(c!='Gift'&&i!=1&&(c!='Outdoor'||i==0))
+);
+
+const a=it.reduce((s,x)=>s+x[3][0],0);
+const b=it.reduce((s,x)=>s+x[3][1],0);
+
+return `<h1 style="font-size:46px;text-align:center">
+Here's a Date Plan Just for ${n}!
+</h1>
+
+<p style="text-align:center;color:var(--mut)">
+${f.occ||'Casual Date'} · ${f.ppl||2} people · ${f.loc||'Pontianak'} · ${f.bud||'Rp100K–300K'}
+</p>
+
+<div class="card plan"
+style="max-width:720px;margin:20px auto">
+
+${it.map(x=>`
+<div class="row">
+
+<div class="l">
+<div class="em">${x[0]}</div>
+
+<div>
+<b>${x[1]}</b><br>
+<small>${x[2]}</small>
+</div>
+
+</div>
+
+<div style="text-align:right">
+
+<span class="pill ${x[4]=='Estimated Price'?'p-prod':'p-est'}">
+${x[4]}
+</span>
+
+<br>
+
+<b>${rng(...x[3])}</b>
+
+</div>
+
+</div>
+`).join('')}
+
+<div class="total">
+<span>Estimated total</span>
+<span>${rng(a,b)}</span>
+</div>
+
+<p class="note"
+style="margin:0 0 14px">
+Paid to partners. Plan My Date's planning fee is separate and shown below.
+</p>
+
+<div class="stack"
+style="margin-bottom:20px">
+
+<button class="btn block"
+onclick="go('premium')">
+Plan This Date
+</button>
+
+<a class="btn o block"
+target="_blank"
+rel="noopener"
+href="${wa('Hi Plan My Date, I am '+n+'. Please help with my plan, est. total '+rng(a,b))}">
+Consult via WhatsApp
+</a>
+
+</div>
+
+</div>`
+},
+
+premium(){
+return premium()
+},
+
+partners(){
+
+const partners=P;
+
+return `<h1 style="font-size:46px">
+Our Partners
+</h1>
+
+<p style="color:var(--mut)">
+Local businesses that collaborate with Plan My Date. Their menus and catalogs stay with them.
+</p>
+
+<div class="grid g3"
+style="margin-top:20px">
+
+${partners.map((partner)=>{
+
+const [name,icon,role,logo,link]=partner;
+
+return `
+<div class="card pcard">
+
+<div class="av">
+${av(partner)}
+</div>
+
+<h3>${name}</h3>
+
+<span class="badge">
+${role}
+</span>
+
+<div class="loc"
+style="margin-top:8px">
+📍 Pontianak
+</div>
+
+<a class="btn o"
+style="padding:8px 18px"
+${link
+?ext(link)
+:'href="#" onclick="event.preventDefault();return false;"'}>
+View Partner ↗
+</a>
+
+</div>
+`;
+
+}).join('')}
+
+</div>
+
+<div class="card"
+style="margin-top:24px;padding:22px">
+
+<b>Want to become a partner?</b>
+
+<p style="margin:4px 0 12px;color:var(--mut)">
+Cafés, restaurants, florists and gift makers in Pontianak are welcome.
+</p>
+
+<a class="btn"
+target="_blank"
+rel="noopener"
+href="${wa('Hi, I want to become a Plan My Date partner.')}">
+Contact us
+</a>
+
+</div>`
+},
+
+about(){
+
+return `<h1 style="font-size:46px">
+About
+</h1>
+
+<p style="max-width:560px;color:var(--mut)">
+Plan My Date is a local date-planning service for couples in Pontianak. We recommend places, activities, and gifts, show estimated budgets, and help arrange everything through WhatsApp.
+</p>
+
+`+premium()
+
+}
+
+};
+
+function render(){
+
+const k=S.view;
+
+const nk=
+k=='detail'
+?'explore'
+:(k=='rec'||k=='premium')
+?'plan'
+:k;
+
+document.getElementById('nav').innerHTML=
+NAV.map(n=>
+`<a class="${nk==n[0]?'on':''}"
+onclick="go('${n[0]}')">
+${n[1]}
+</a>`
+).join('');
+
+document.getElementById('app').innerHTML=
+V[k]()
++(k=='home'?'':'')
++(k=='rec'||k=='plan'
+?(k=='rec'?premium():'')
+:'')
+
+}
+
+render();
+
 </script>
+
 </body>
 </html>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -16,18 +16,19 @@ h1,h2,h3,.logo{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;li
 .script{font-family:'Pinyon Script',cursive;color:var(--pink);font-weight:400}
 a{color:inherit;text-decoration:none}
 button{font:inherit;cursor:pointer}
-button:focus-visible,a:focus-visible,select:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--pink);outline-offset:2px}
+button:focus-visible,a:focus-visible,select:focus-visible,input:focus-visible,textarea:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--pink);outline-offset:2px}
 header{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-.bar{max-width:1080px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:12px 20px}
-.logo{font-size:26px;cursor:pointer}
+.bar{max-width:1080px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 20px}
+.logo{font-size:26px;cursor:pointer;background:none;border:0;color:var(--ink);padding:0}
 nav{display:flex;gap:24px}
-nav a{cursor:pointer;padding:4px 0;color:var(--mut);font-size:14px}
-nav a.on{color:var(--ink);border-bottom:2px solid var(--pink)}
+nav button{cursor:pointer;padding:4px 0;color:var(--mut);font-size:14px;background:none;border:0;border-bottom:2px solid transparent}
+nav button.on{color:var(--ink);border-bottom-color:var(--pink)}
+.right{display:flex;align-items:center;gap:8px}
+.lang{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:5px 12px;font-size:13px;font-weight:600}
 .burger{display:none;background:none;border:0;font-size:26px;color:var(--ink)}
 main{max-width:1080px;margin:auto;padding:28px 20px 60px}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 22px;border-radius:999px;border:1.5px solid var(--pink);background:var(--pink);color:#fff;font-weight:600}
 .btn.o{background:transparent;color:var(--pink)}
-.btn.g{background:transparent;border-color:var(--line);color:var(--mut)}
 .btn.block{width:100%}
 .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:30px;align-items:center;background:linear-gradient(135deg,var(--soft),var(--cream));border-radius:28px;padding:44px}
 .hero h1{font-size:clamp(38px,6vw,64px);margin:10px 0 14px}
@@ -39,39 +40,18 @@ main{max-width:1080px;margin:auto;padding:28px 20px 60px}
 h2{font-size:32px;margin:44px 0 16px}
 .grid{display:grid;gap:18px}
 .g3{grid-template-columns:repeat(3,1fr)}
-.g2{grid-template-columns:repeat(2,1fr)}
 .card{background:var(--card);border:1px solid var(--line);border-radius:22px;overflow:hidden}
-.pick{cursor:pointer;display:block;padding:22px;transition:transform .2s}
+.pick{cursor:pointer;display:block;padding:22px;transition:transform .2s;text-align:left;font:inherit;color:inherit;width:100%}
 .pick:hover{transform:translateY(-3px)}
 .pick .ic{font-size:30px}
 .pick h3{font-size:26px;margin:10px 0 4px}
 .pick p{margin:0;color:var(--mut)}
 .partners{display:flex;gap:22px;overflow-x:auto;padding-bottom:6px}
-.pt{flex:0 0 auto;text-align:center;width:96px;font-size:13px}
-.av{
-  width:72px;
-  height:72px;
-  aspect-ratio:1/1;
-  border-radius:50%;
-  margin:0 auto 6px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  overflow:hidden;
-  flex-shrink:0;
-  font-size:30px;
-  background:var(--soft);
-  border:2px solid var(--pink2);
-}
-.av img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  display:block;
-}
+.pt{flex:0 0 auto;text-align:center;width:110px;font-size:13px;background:none;border:0;color:inherit}
+.av{width:72px;height:72px;aspect-ratio:1/1;border-radius:50%;margin:0 auto 6px;display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0;font-size:30px;background:var(--soft);border:2px solid var(--pink2)}
+.av img{width:100%;height:100%;object-fit:cover;display:block}
 .img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
 .img{overflow:hidden}
-a.partnerbox{color:inherit}
 .pt small{display:block;color:var(--mut)}
 .flow{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:20px}
 .flow div{padding:14px 10px;border-radius:16px;background:var(--card);border:1px solid var(--line);text-align:center;font-weight:600;font-size:14px}
@@ -83,7 +63,7 @@ a.partnerbox{color:inherit}
 select,input,textarea{font:inherit;padding:10px 14px;border-radius:14px;border:1px solid var(--line);background:var(--card);color:var(--ink);width:auto}
 .item{cursor:pointer}
 .img{height:150px;display:grid;place-items:center;font-size:48px;position:relative}
-.heart{position:absolute;top:10px;right:10px;width:32px;height:32px;border-radius:50%;border:0;background:rgba(255,255,255,.9);color:var(--pink);font-size:16px}
+.heart{position:absolute;top:10px;right:10px;width:32px;height:32px;border-radius:50%;border:0;background:rgba(255,255,255,.9);color:var(--pink);font-size:16px;z-index:2}
 .body{padding:14px 16px 16px}
 .body h3{font-size:22px}
 .loc{color:var(--mut);font-size:13px;margin:2px 0 8px}
@@ -96,6 +76,7 @@ select,input,textarea{font:inherit;padding:10px 14px;border-radius:14px;border:1
 .p-prod{background:var(--cream);color:var(--gold)}
 .p-fee{background:var(--ink);color:var(--bg)}
 .note{font-size:13px;color:var(--mut);margin-top:14px}
+.warn{background:var(--cream);border:1px solid var(--gold);color:var(--ink);border-radius:14px;padding:10px 14px;font-size:13px;margin:0 0 14px}
 .detail{display:grid;grid-template-columns:1.1fr .9fr;gap:30px}
 .detail .img{height:380px;border-radius:24px;font-size:110px}
 .badge{display:inline-block;background:var(--soft);color:var(--ink);padding:3px 12px;border-radius:999px;font-size:12px;font-weight:600}
@@ -112,9 +93,9 @@ form select,form input,form textarea{width:100%}
 .plan{padding:6px 20px}
 .row{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:16px 0;border-bottom:1px solid var(--line)}
 .row .l{display:flex;gap:14px;align-items:center}
-.row .em{font-size:28px;width:52px;height:52px;display:grid;place-items:center;border-radius:14px;background:var(--soft)}
+.row .em{font-size:28px;width:52px;height:52px;display:grid;place-items:center;border-radius:14px;background:var(--soft);flex-shrink:0}
 .row small{color:var(--mut)}
-.total{display:flex;justify-content:space-between;padding:18px 0;font-size:20px;font-family:'Cormorant Garamond',serif;font-weight:700}
+.total{display:flex;justify-content:space-between;gap:10px;padding:18px 0;font-size:20px;font-family:'Cormorant Garamond',serif;font-weight:700}
 .tier{padding:24px;display:flex;flex-direction:column;gap:6px}
 .tier ul{padding-left:18px;margin:8px 0 14px;color:var(--mut);flex:1}
 .tier.hot{border:2px solid var(--pink)}
@@ -124,11 +105,11 @@ form select,form input,form textarea{width:100%}
 @media(max-width:760px){
 nav{display:none;position:absolute;top:100%;left:0;right:0;background:var(--bg);flex-direction:column;gap:0;padding:8px 20px 16px;border-bottom:1px solid var(--line)}
 nav.open{display:flex}
-nav a{padding:12px 0;font-size:16px}
+nav button{padding:12px 0;font-size:16px;text-align:left;border-bottom:0}
 .burger{display:block}
 .hero,.detail{grid-template-columns:1fr}
 .hero{padding:26px}
-.g3,.g2{grid-template-columns:1fr 1fr}
+.g3{grid-template-columns:1fr 1fr}
 .g3.picks{grid-template-columns:1fr}
 .flow{grid-template-columns:1fr 1fr}
 .detail .img{height:260px}
@@ -137,106 +118,302 @@ form{grid-template-columns:1fr}
 .tiers{grid-template-columns:1fr!important}
 .polaroid{display:none}
 }
-@media(max-width:420px){.g3,.g2{grid-template-columns:1fr}}
+@media(max-width:420px){.g3{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
-<header><div class="bar"><div class="logo" onclick="go('home')">Plan My Date <span class="script" style="font-size:20px">♡</span></div>
-<nav id="nav"></nav><button class="burger" aria-label="Menu" onclick="document.getElementById('nav').classList.toggle('open')">☰</button></div></header>
+<header><div class="bar"><button class="logo" onclick="go('home')">Plan My Date <span class="script" style="font-size:20px">♡</span></button>
+<nav id="nav"></nav>
+<div class="right"><button class="lang" id="langbtn" onclick="toggleLang()" aria-label="Language / Bahasa"></button><button class="burger" aria-label="Menu" onclick="document.getElementById('nav').classList.toggle('open')">☰</button></div></div></header>
 <main id="app"></main>
 <script>
-const OJ_CATALOG='https://akukiii.my.canva.site/jemari-catalogue?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAb21jcAUxTqdleHRuA2FlbQIxMQBwZG9mAnNydGMGYXBwX2lkDzU2NzA2NzM0MzM1MjQyNwABp6hXoyrCbeOvpV58w-rgVWeNH_us4xJ6NkiNGVNDpjeysaq4DuY9KQ5PhERG_aem_oShE164NuJyMMITNPjU6Nw';
-const OJ_IG='https://www.instagram.com/oh.jemari?stkn=MTR4MnlnaWd3Nms1NA==';
-const BLOOM_IG='#'; // TODO: paste Bloom & Co Instagram link
-const ext=u=>u=='#'?'href="#" onclick="event.preventDefault()"':`href="${u}" target="_blank" rel="noopener"`;
-const WA='https://wa.me/6281200000000?text=';
+/* ====== PENGATURAN ====== */
+// Isi nomor WhatsApp dengan format internasional tanpa + atau 0 di depan, contoh: '6281234567890'
+// Jika dikosongkan, tombol WhatsApp tetap membuka WhatsApp dan pengguna memilih kontaknya sendiri.
+const WA_NUMBER='';
+const WA='https://wa.me/'+WA_NUMBER+'?text=';
+const OJ_CATALOG='https://akukiii.my.canva.site/jemari-catalogue';
+const OJ_IG='https://www.instagram.com/oh.jemari/';
+const HARMONY_IG='https://www.instagram.com/hotelharmony.in/';
+const AB_SITE='https://abgaming.id/';
+const AB_IG='https://www.instagram.com/abgamingrental/';
+
+/* ====== TEKS ID / EN ====== */
+const T={
+id:{
+n_home:'Beranda',n_explore:'Jelajahi',n_plan:'Rencanakan Kencan',n_partners:'Mitra',n_about:'Tentang',
+h_tag:'Kencan impianmu, dibuat mudah',h_title:'Rencanakan Kencan Lebih Baik, Ciptakan Lebih Banyak Kenangan.',
+h_p:'Temukan tempat, aktivitas, atau hadiah yang pas untuk momen spesialmu, dan biarkan kami membantu merencanakannya sesuai caramu.',
+h_cta:'Rencanakan Kencanmu',h_alt:'Pasangan menikmati senja romantis',
+f1:'Temukan',f1s:'Jelajahi ide kencan',f2:'Pilih',f2s:'Pilih kencan atau hadiah',f3:'Rencanakan',f3s:'Atur budgetmu',f4:'Konsultasi',f4s:'Chat kami lewat WhatsApp',f5:'Nikmati',f5s:'Nikmati hari spesialmu',
+help:'Apa yang bisa kami bantu?',pk_date:'Kencan',pk_date_s:'Cari tempat dan aktivitas untuk kencanmu.',pk_gift:'Hadiah',pk_gift_s:'Cari sesuatu yang spesial untuk pasanganmu.',pk_cons:'Konsultasi',pk_cons_s:'Biar kami bantu merencanakannya.',
+partners_h:'Mitra Kami',
+ex_h:'Jelajahi',ex_p:'Temukan tempat, aktivitas, dan hadiah untuk momen spesialmu.',
+tab_all:'Semua',tab_date:'Kencan',tab_gift:'Hadiah',
+any_bud:'Semua budget',any_cat:'Semua kategori',any_occ:'Semua acara',
+b1:'Di bawah Rp100K',b2:'Rp100K–300K',b3:'Rp300K–500K',b4:'Rp500K+',
+c_dining:'Makan',c_activity:'Aktivitas',c_outdoor:'Outdoor',c_personalized:'Personalisasi',c_flowers:'Bunga',
+o_casual:'Kencan Santai',o_anniv:'Anniversary',o_birthday:'Ulang Tahun',o_first:'Kencan Pertama',o_surprise:'Kejutan',o_other:'Lainnya',
+ex_note:'Perkiraan biaya. Harga akhir bisa berbeda tergantung menu atau layanan yang dipilih.',
+no_match:'Belum ada yang cocok. Coba budget atau kategori lain.',
+est_budget:'Perkiraan budget',est_price:'Perkiraan harga',per_couple:'/ pasangan',per_hour:'/ jam',by:'oleh',
+back:'← Kembali ke Jelajahi',official:'✓ Mitra Resmi',
+duration:'Durasi',bestfor:'Cocok untuk',location:'Lokasi',
+plan_this:'Rencanakan Kencan Ini',add_plan:'Tambahkan ke rencana kencanku',consult_wa:'Konsultasi via WhatsApp',consult_pmd:'Konsultasi dengan Plan My Date ↗',
+not_shop:'Plan My Date bukan toko. Kami merekomendasikan, merencanakan, dan membantu.',
+pkg_h:'Paket Romantic Dinner',pkg_note:'Setting meja romantis, menu dinner spesial, dekorasi romantis, dan tempat, sesuai poster paket.',
+ala_h:'Menu À la Carte',ala_note:'Perkiraan harga per hidangan.',veg_h:'Menu Vegetarian',veg_note:'Perkiraan harga per hidangan. Konfirmasi ketersediaan ke restoran.',
+view_pkg:'Lihat Paket Romantic Dinner ↗',view_price:'Lihat Daftar Harga ↗',view_ig:'Lihat Instagram ↗',view_catalog:'Lihat Katalog ↗',
+pf_h:'Rencanakan Kencan Sempurnamu',pf_p:'Ceritakan seleramu. Kami susun rencana kencan sesuai budgetmu.',
+f_name:'Nama',f_name_ph:'Namamu',f_ppl:'Jumlah orang',f_occ:'Acara',f_loc:'Lokasi',f_bud:'Budget',f_type:'Jenis kencan',f_gift:'Preferensi hadiah',f_gift_ph:'mis. akrilik custom, tanpa hadiah',f_req:'Permintaan khusus',f_req_ph:'Alergi, kejutan, atau hal lain yang perlu kami tahu',f_submit:'Lihat Rekomendasiku',
+t_dining:'Makan',t_activity:'Aktivitas',t_gift:'Hadiah',t_combo:'Kombinasi',
+r_h:'Rencana Kencan Khusus untuk',r_people:'orang',
+r_dinner:'Dinner Date',r_gift:'Hadiah Custom',r_game:'Main Game',
+r_pkg:'Paket Romantic Dinner untuk',r_pkg2:'pasangan',r_ala:'À la carte untuk',r_ala2:'orang',
+r_total:'Perkiraan total',r_paid:'Dibayar langsung ke mitra. Biaya perencanaan Plan My Date terpisah dan ada di bawah.',
+r_over:'Perkiraan biaya minimal melebihi budget yang kamu pilih. Coba naikkan budget atau pilih satu jenis kencan saja.',
+r_wa:'Halo Plan My Date, saya {n}. Tolong bantu rencanaku, perkiraan total {t}.',
+pr_h:'Rencanakan bersama kami',pr_p:'Biaya perencanaan kami terpisah dari harga kafe, aktivitas, atau hadiah.',
+pr_free:'Gratis',pr_fee:'Biaya perencanaan',
+pr1:'Jelajahi',pr1a:'Lihat ide kencan',pr1b:'Lihat hadiah',pr1c:'Perkiraan budget',pr1d:'Rekomendasi lokal',pr1cta:'Mulai jelajahi',
+pr2:'Rencanakan bersama kami',pr2a:'Rekomendasi kencan personal',pr2b:'Sesuai budget dan preferensimu',pr2c:'Rekomendasi hadiah',pr2d:'Bantuan reservasi',pr2cta:'Pilih paket ini',pr2wa:'Halo Plan My Date, saya mau layanan Rencanakan bersama kami.',
+pr3:'Perencanaan penuh',pr3a:'Itinerary personal',pr3b:'Reservasi tempat',pr3c:'Koordinasi hadiah',pr3d:'Pengaturan kejutan',pr3e:'Didampingi dari perencanaan sampai hari H',pr3cta:'Hubungi kami',pr3wa:'Halo Plan My Date, saya mau Perencanaan penuh.',
+pr_note:'Biaya mitra dibayar langsung ke mitra.',
+pa_h:'Mitra Kami',pa_p:'Bisnis lokal yang bekerja sama dengan Plan My Date. Menu dan katalog tetap dikelola masing-masing mitra.',
+pa_view:'Lihat Mitra ↗',pa_join:'Mau jadi mitra?',pa_join_p:'Kafe, restoran, florist, dan pembuat hadiah di Pontianak sangat kami tunggu.',pa_contact:'Hubungi kami',pa_wa:'Halo, saya mau jadi mitra Plan My Date.',
+role_gift:'Mitra Hadiah',role_game:'Mitra Gaming',role_rest:'Mitra Restoran',role_cafe:'Mitra Kafe',role_florist:'Mitra Florist',role_exp:'Mitra Pengalaman',
+ab_h:'Tentang',ab_p:'Plan My Date adalah layanan perencanaan kencan lokal untuk pasangan di Pontianak. Kami merekomendasikan tempat, aktivitas, dan hadiah, menampilkan perkiraan budget, dan membantu mengaturnya lewat WhatsApp.',
+tg_cafe:'Kafe',tg_popular:'Populer',tg_outdoor:'Outdoor',tg_park:'Taman',tg_flowers:'Bunga',tg_restaurant:'Restoran',tg_rooftop:'Rooftop',tg_veg:'Menu Vegetarian',tg_gaming:'Gaming',tg_indoor:'Indoor',tg_gift:'Hadiah',tg_personalized:'Personalisasi',
+kind_date:'Kencan',kind_gift:'Hadiah',fav:'Favorit',menu:'Menu',
+hr:'jam',
+},
+en:{
+n_home:'Home',n_explore:'Explore',n_plan:'Plan Your Date',n_partners:'Partners',n_about:'About',
+h_tag:'Your perfect date, made easy',h_title:'Plan Better Dates, Create More Memories.',
+h_p:'Find the right place, activity, or gift for your special moment, and let us help you plan it your way.',
+h_cta:'Plan Your Date',h_alt:'A couple enjoying a romantic sunset',
+f1:'Discover',f1s:'Explore date ideas',f2:'Choose',f2s:'Pick a date or gift',f3:'Plan',f3s:'Set your budget',f4:'Consult',f4s:'Chat with us on WhatsApp',f5:'Enjoy',f5s:'Enjoy your special day',
+help:'What can we help you with?',pk_date:'Date',pk_date_s:'Find places and activities for your date.',pk_gift:'Gift',pk_gift_s:'Find something special for your partner.',pk_cons:'Consultation',pk_cons_s:'Let us help you plan it.',
+partners_h:'Our Partners',
+ex_h:'Explore',ex_p:'Discover places, activities, and gifts for your special moment.',
+tab_all:'All',tab_date:'Date',tab_gift:'Gift',
+any_bud:'Any budget',any_cat:'All categories',any_occ:'Any occasion',
+b1:'Under Rp100K',b2:'Rp100K–300K',b3:'Rp300K–500K',b4:'Rp500K+',
+c_dining:'Dining',c_activity:'Activity',c_outdoor:'Outdoor',c_personalized:'Personalized',c_flowers:'Flowers',
+o_casual:'Casual Date',o_anniv:'Anniversary',o_birthday:'Birthday',o_first:'First Date',o_surprise:'Surprise',o_other:'Other',
+ex_note:'Estimated cost. Final price may vary depending on the selected menu or service.',
+no_match:'No matches. Try a wider budget or category.',
+est_budget:'Estimated budget',est_price:'Estimated price',per_couple:'/ couple',per_hour:'/ hour',by:'by',
+back:'← Back to Explore',official:'✓ Official Partner',
+duration:'Duration',bestfor:'Best for',location:'Location',
+plan_this:'Plan This Date',add_plan:'Add to my date plan',consult_wa:'Consult via WhatsApp',consult_pmd:'Consult with Plan My Date ↗',
+not_shop:'Plan My Date is not a shop. We recommend, plan, and assist.',
+pkg_h:'Romantic Dinner Package',pkg_note:'Romantic table setup, special dinner menu, romantic decoration, and venue, according to the package poster.',
+ala_h:'À la Carte Menu',ala_note:'Estimated price per dish.',veg_h:'Vegetarian Menu',veg_note:'Estimated price per dish. Confirm availability with the restaurant.',
+view_pkg:'View Romantic Dinner Packages ↗',view_price:'View Price List ↗',view_ig:'View Instagram ↗',view_catalog:'View Catalog ↗',
+pf_h:"Let's Plan Your Perfect Date",pf_p:"Tell us what you like. We'll build a date plan around your budget.",
+f_name:'Name',f_name_ph:'Your name',f_ppl:'Number of people',f_occ:'Occasion',f_loc:'Location',f_bud:'Budget',f_type:'Preferred date type',f_gift:'Gift preference',f_gift_ph:'e.g. custom acrylic, no gift',f_req:'Special request',f_req_ph:'Allergies, surprises, anything we should know',f_submit:'Get My Recommendation',
+t_dining:'Dining',t_activity:'Activity',t_gift:'Gift',t_combo:'Combination',
+r_h:"Here's a Date Plan Just for",r_people:'people',
+r_dinner:'Dinner Date',r_gift:'Custom Gift',r_game:'Gaming Time',
+r_pkg:'Romantic Dinner package for',r_pkg2:'couple(s)',r_ala:'À la carte for',r_ala2:'people',
+r_total:'Estimated total',r_paid:"Paid directly to partners. Plan My Date's planning fee is separate and shown below.",
+r_over:'The minimum estimated cost is above your selected budget. Try a higher budget or choose a single date type.',
+r_wa:'Hi Plan My Date, I am {n}. Please help with my plan, est. total {t}.',
+pr_h:'Plan it with us',pr_p:'Our planning fee is separate from café, activity, or gift prices.',
+pr_free:'Free',pr_fee:'Planning fee',
+pr1:'Explore',pr1a:'Browse date ideas',pr1b:'Browse gifts',pr1c:'Estimated budgets',pr1d:'Local recommendations',pr1cta:'Start exploring',
+pr2:'Plan with us',pr2a:'Personalized date recommendation',pr2b:'Based on your budget and preferences',pr2c:'Gift recommendation',pr2d:'Reservation assistance',pr2cta:'Choose this plan',pr2wa:'Hi Plan My Date, I want the Plan with us service.',
+pr3:'Full planning',pr3a:'Personalized itinerary',pr3b:'Place reservation',pr3c:'Gift coordination',pr3d:'Surprise arrangement',pr3e:'Support from planning to execution',pr3cta:'Talk to us',pr3wa:'Hi Plan My Date, I want Full planning.',
+pr_note:'Partner costs are paid directly to partners.',
+pa_h:'Our Partners',pa_p:'Local businesses that collaborate with Plan My Date. Their menus and catalogs stay with them.',
+pa_view:'View Partner ↗',pa_join:'Want to become a partner?',pa_join_p:'Cafés, restaurants, florists and gift makers in Pontianak are welcome.',pa_contact:'Contact us',pa_wa:'Hi, I want to become a Plan My Date partner.',
+role_gift:'Gift Partner',role_game:'Gaming Partner',role_rest:'Restaurant Partner',role_cafe:'Café Partner',role_florist:'Florist Partner',role_exp:'Experience Partner',
+ab_h:'About',ab_p:'Plan My Date is a local date-planning service for couples in Pontianak. We recommend places, activities, and gifts, show estimated budgets, and help arrange everything through WhatsApp.',
+tg_cafe:'Café',tg_popular:'Popular',tg_outdoor:'Outdoor',tg_park:'Park',tg_flowers:'Flowers',tg_restaurant:'Restaurant',tg_rooftop:'Rooftop',tg_veg:'Vegetarian Menu',tg_gaming:'Gaming',tg_indoor:'Indoor',tg_gift:'Gift',tg_personalized:'Personalized',
+kind_date:'Date',kind_gift:'Gift',fav:'Favorite',menu:'Menu',
+hr:'hour',
+}};
+
+/* ====== DATA (hanya 3 mitra resmi) ====== */
 const D=[
-{id:1,t:'date',n:'Cozy Café Date',loc:'Pontianak',a:150,b:300,cat:'Dining',tags:['Café','Popular'],e:'☕',bg:'#f6d3b8,#e9a98a',dur:'2–3 hours',best:'Casual, Anniversary, First Date',who:'Café Partner',link:'View Café Menu',desc:'A cozy place for couples who want to enjoy good food and quality time together. We can help with the reservation; you choose your own menu.'},
-{id:2,t:'date',n:'Rooftop Dinner',by:'Hotel Harmony Inn',img:'harmony dinner 1.jpeg',detailImg:'harmony inn 2.jpeg',menuImg:'menu couple harmony inn.jpeg',url:'https://www.instagram.com/hotelharmony.in/',loc:'Pontianak',a:350,b:500,cat:'Dining',tags:['Restaurant','Rooftop','Vegetarian Menu'],e:'🌇',bg:'#f9c7a6,#d97b94',best:'Anniversary, Surprise',who:'Restaurant Partner',link:'View Hotel Instagram',ala:'Rp30.000–Rp120.000 per dish',veg:'Rp35.000–Rp70.000 per dish',desc:'Enjoy a romantic rooftop dining experience at Hotel Harmony Inn, Pontianak. Choose a Romantic Dinner package or order à la carte. Vegetarian menu options are also available.'},
-{id:3,t:'date',n:'PS Gaming Date',by:'AB Gaming',img:'AB Gaming produk.jpg',url:'https://abgaming.id/',ig:'https://www.instagram.com/abgamingrental/',loc:'Pontianak',a:13,b:50,cat:'Activity',tags:['Gaming','Indoor'],e:'🎮',bg:'#d8c7f0,#f0b6d0',dur:'1 hours',best:'Casual Date',who:'Gaming Partner',link:'View Gaming Packages',desc:'A relaxed, playful gaming date with AB Gaming. Play together, enjoy games, and spend quality time together.'},
-{id:4,t:'date',n:'Picnic Date',loc:'Pontianak',a:200,b:400,cat:'Outdoor',tags:['Outdoor','Park'],e:'🧺',bg:'#cfe8c0,#f5d6b0',dur:'3 hours',best:'Birthday, Casual',who:'Experience Partner',link:'View Picnic Setups',desc:'A simple outdoor setup with food and good company. Weather-friendly alternatives are available on request.'},
-{id:5,t:'gift',n:'Custom Acrylic',by:'Oh Jemari',img:'oh-jemari-product.jpeg',url:OJ_CATALOG,ig:OJ_IG,loc:'Pontianak',a:36,b:80,cat:'Personalized',tags:['Gift','Personalized'],e:'🔑',bg:'#fbd0da,#f0a6c0',who:'Gift Partner',link:'View Catalog',desc:'A unique and meaningful acrylic frame for someone special. Perfect for anniversaries, birthdays, and other special moments.'},
-{id:6,t:'gift',n:'Fresh Flower Bouquet',by:'Bloom & Co',ig:BLOOM_IG,loc:'Pontianak',a:100,b:300,cat:'Flowers',tags:['Gift','Flowers'],e:'💐',bg:'#fcd5dc,#e9a1b4',who:'Florist Partner',link:'View Bouquet Catalog',desc:'Hand-tied bouquets in soft romantic palettes, ready for same-day pickup or delivery.'}];
-const P=[
-['Oh Jemari','🎁','Gift Partner','oh-jemari-logo.jpeg','https://www.instagram.com/oh.jemari?stkn=MTR4MnlnaWd3Nms1NA=='],
-['Kopi Senja','☕','Café Partner'],
-['AB Gaming','🎮','Gaming Partner','AB GAMING.jpeg','https://abgaming.id/'],
-['Bloom & Co','💐','Florist Partner'],
-['Hotel Harmony Inn','🌇','Restaurant Partner','Harmony inn.jpeg','https://www.instagram.com/hotelharmony.in/'],
-['Picnic Pontianak','🧺','Experience Partner']
+{id:1,t:'date',ex:true,n:'Cozy Café Date',by:'Kopi Senja',loc:'Pontianak',a:150,b:300,cat:'dining',unit:'per_couple',tags:['cafe','popular'],e:'☕',bg:'#f6d3b8,#e9a98a',dur:{id:'2–3 jam',en:'2–3 hours'},occ:['casual','anniv','first'],
+ link:{id:'Lihat Menu Kafe',en:'View Café Menu'},
+ box:{id:'Membuka menu resmi mitra. Kamu memilih menu sendiri. Bingung memilih? Tanya kami lewat WhatsApp.',en:"Opens the partner's official menu. You choose your own menu. Not sure what to pick? Ask us on WhatsApp."},
+ note:{id:'Perkiraan biaya makanan dan minuman. Harga akhir tergantung menu yang kamu pilih.',en:'Estimated cost for food & drinks. Final price depends on your selected menu.'},
+ desc:{id:'Tempat yang nyaman untuk pasangan yang ingin menikmati makanan enak dan waktu berkualitas bersama. Kami bisa bantu reservasi; menu kamu pilih sendiri.',en:'A cozy place for couples who want to enjoy good food and quality time together. We can help with the reservation; you choose your own menu.'}},
+{id:2,t:'date',n:'Rooftop Dinner',by:'Hotel Harmony Inn',img:'harmony dinner 1.jpeg',detailImg:'harmony inn 2.jpeg',menuImg:'menu couple harmony inn.jpeg',url:HARMONY_IG,loc:'Pontianak',a:350,b:500,cat:'dining',unit:'per_couple',tags:['restaurant','rooftop','veg'],e:'🌇',bg:'#f9c7a6,#d97b94',occ:['anniv','surprise'],
+ link:{id:'Lihat Instagram Hotel',en:'View Hotel Instagram'},
+ box:{id:'Membuka Instagram resmi mitra. Kamu memilih menu sendiri. Bingung memilih? Tanya kami lewat WhatsApp.',en:"Opens the partner's official Instagram. You choose your own menu. Not sure what to pick? Ask us on WhatsApp."},
+ note:{id:'Paket Romantic Dinner untuk berdua. Tersedia juga pilihan à la carte.',en:'Romantic Dinner package for two. À la carte options are available.'},
+ ala:'Rp30.000–Rp120.000',veg:'Rp35.000–Rp70.000',
+ desc:{id:'Nikmati pengalaman makan malam romantis di rooftop Hotel Harmony Inn, Pontianak. Pilih paket Romantic Dinner atau pesan à la carte. Menu vegetarian juga tersedia.',en:'Enjoy a romantic rooftop dining experience at Hotel Harmony Inn, Pontianak. Choose a Romantic Dinner package or order à la carte. Vegetarian menu options are also available.'}},
+{id:3,t:'date',n:'PS Gaming Date',by:'AB Gaming',img:'AB Gaming produk.jpg',url:AB_SITE,ig:AB_IG,loc:'Pontianak',a:13,b:50,cat:'activity',unit:'per_hour',tags:['gaming','indoor'],e:'🎮',bg:'#d8c7f0,#f0b6d0',dur:{id:'1 jam',en:'1 hour'},occ:['casual'],
+ link:{id:'Lihat Daftar Harga',en:'View Price List'},
+ box:{id:'Membuka daftar harga resmi mitra. Bingung memilih paket? Tanya kami lewat WhatsApp.',en:"Opens the partner's official price list. Not sure which package? Ask us on WhatsApp."},
+ note:{id:'Harga sewa per jam. Harga akhir tergantung paket gaming yang dipilih.',en:'Rental price per hour. Final price depends on the selected gaming package.'},
+ desc:{id:'Kencan gaming yang santai dan seru bersama AB Gaming. Main bareng, nikmati game, dan habiskan waktu berkualitas berdua.',en:'A relaxed, playful gaming date with AB Gaming. Play together, enjoy games, and spend quality time together.'}},
+{id:4,t:'date',ex:true,n:'Picnic Date',by:'Picnic Pontianak',loc:'Pontianak',a:200,b:400,cat:'outdoor',unit:'per_couple',tags:['outdoor','park'],e:'🧺',bg:'#cfe8c0,#f5d6b0',dur:{id:'3 jam',en:'3 hours'},occ:['birthday','casual'],
+ link:{id:'Lihat Setup Piknik',en:'View Picnic Setups'},
+ box:{id:'Membuka setup piknik resmi mitra. Bingung memilih? Tanya kami lewat WhatsApp.',en:"Opens the partner's official picnic setups. Not sure what to pick? Ask us on WhatsApp."},
+ note:{id:'Perkiraan biaya makanan dan minuman. Harga akhir tergantung menu yang kamu pilih.',en:'Estimated cost for food & drinks. Final price depends on your selected menu.'},
+ desc:{id:'Setup piknik outdoor yang sederhana dengan makanan dan teman bicara yang menyenangkan. Alternatif ramah cuaca tersedia atas permintaan.',en:'A simple outdoor setup with food and good company. Weather-friendly alternatives are available on request.'}},
+{id:5,t:'gift',n:'Custom Acrylic',by:'Oh Jemari',img:'oh-jemari-product.jpeg',url:OJ_CATALOG,ig:OJ_IG,loc:'Pontianak',a:36,b:80,cat:'personalized',unit:'',tags:['gift','personalized'],e:'🔑',bg:'#fbd0da,#f0a6c0',occ:['anniv','birthday'],
+ link:{id:'Lihat Katalog',en:'View Catalog'},
+ box:{id:'Membuka katalog resmi mitra. Pemesanan dilakukan langsung dengan mitra.',en:"Opens the partner's official catalog. Orders are made with the partner."},
+ note:{id:'Harga akhir bisa berbeda tergantung desain, ukuran, dan permintaan custom.',en:'Final price may vary depending on design, size, and custom request.'},
+ desc:{id:'Frame akrilik yang unik dan bermakna untuk seseorang yang spesial. Cocok untuk anniversary, ulang tahun, dan momen spesial lainnya.',en:'A unique and meaningful acrylic frame for someone special. Perfect for anniversaries, birthdays, and other special moments.'}},
+{id:6,t:'gift',ex:true,n:'Fresh Flower Bouquet',by:'Bloom & Co',loc:'Pontianak',a:100,b:300,cat:'flowers',unit:'',tags:['gift','flowers'],e:'💐',bg:'#fcd5dc,#e9a1b4',occ:['anniv','birthday'],
+ link:{id:'Lihat Katalog Buket',en:'View Bouquet Catalog'},
+ box:{id:'Membuka katalog resmi mitra. Pemesanan dilakukan langsung dengan mitra.',en:"Opens the partner's official catalog. Orders are made with the partner."},
+ note:{id:'Harga akhir bisa berbeda tergantung rangkaian, ukuran, dan permintaan custom.',en:'Final price may vary depending on arrangement, size, and custom request.'},
+ desc:{id:'Buket bunga rangkai tangan dengan palet warna romantis yang lembut, siap diambil atau diantar di hari yang sama.',en:'Hand-tied bouquets in soft romantic palettes, ready for same-day pickup or delivery.'}}
 ];
-const IMG={};
-const av=p=>p[3]?`<img src="${IMG[p[3]]||p[3]}" alt="" onerror="this.parentNode.textContent='${p[1]}'">`:p[1];
-const NAV=[['home','Home'],['explore','Explore'],['plan','Plan Your Date'],['partners','Partners'],['about','About']];
-let S={tab:'all',bud:'',cat:'',fav:{},view:'home',form:{}};
-const rp=k=>'Rp'+(k*1000).toLocaleString('id-ID');
-const rng=(a,b)=>rp(a)+' – '+rp(b);
-function go(v,x){S.view=v;S.sel=x;document.getElementById('nav').classList.remove('open');render();scrollTo(0,0)}
-function wa(t){return WA+encodeURIComponent(t)}
-function card(i){return `<div class="card item" onclick="go('detail',${i.id})"><div class="img" style="background:linear-gradient(135deg,${i.bg})">${i.img?`<img src="${IMG[i.img]||i.img}" alt="${i.n}" onerror="this.outerHTML='${i.e}'">`:i.e}<button class="heart" aria-label="Favorite" onclick="event.stopPropagation();S.fav[${i.id}]=!S.fav[${i.id}];render()">${S.fav[i.id]?'♥':'♡'}</button></div><div class="body"><h3>${i.n}</h3><div class="loc">${i.by?'by '+i.by+' · ':''}📍 ${i.loc}</div><div class="est"><span class="pill ${i.t=='gift'?'p-prod':'p-est'}">${i.t=='gift'?'Estimated Price':'Estimated budget'}</span><b>${rng(i.a,i.b)}${i.id==3?' / jam':i.t=='date'?' / couple':''}</b></div>${i.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div></div>`}
-function premium(){return `<h2>Plan it with us</h2><p style="color:var(--mut);margin-top:-8px">Our planning fee is separate from café, activity, or gift prices.</p><div class="grid g3 tiers">
-<div class="card tier"><h3>Explore</h3><span class="pill p-fee" style="align-self:flex-start">Free</span><div class="price">Rp0</div><ul><li>Browse date ideas</li><li>Browse gifts</li><li>Estimated budgets</li><li>Local recommendations</li></ul><button class="btn o block" onclick="go('explore')">Start exploring</button></div>
-<div class="card tier hot"><h3>Plan with us</h3><span class="pill p-fee" style="align-self:flex-start">Planning fee</span><div class="price" style="display:flex;align-items:center;gap:10px;flex-wrap:wrap"><span style="font-size:18px;color:#999;text-decoration:line-through">Rp49.999</span><span style="color:#e85d89">Rp29.999</span></div><ul><li>Personalized date recommendation</li><li>Based on your budget and preferences</li><li>Gift recommendation</li><li>Reservation assistance</li></ul><a class="btn block" href="${wa('Hi Plan My Date, I want the Plan with us service.')}" target="_blank" rel="noopener">Choose this plan</a></div>
-<div class="card tier"><h3>Full planning</h3><span class="pill p-fee" style="align-self:flex-start">Planning fee</span><div class="price" style="display:flex;align-items:center;gap:10px;flex-wrap:wrap"><span style="font-size:18px;color:#999;text-decoration:line-through">Rp99.999</span><span style="color:#e85d89">Rp69.999</span></div><ul><li>Personalized itinerary</li><li>Place reservation</li><li>Gift coordination</li><li>Surprise arrangement</li><li>Support from planning to execution</li></ul><a class="btn o block" href="${wa('Hi Plan My Date, I want Full planning.')}" target="_blank" rel="noopener">Talk to us</a></div></div>
-<p class="note">Placeholder pricing. Partner costs are paid directly to partners.</p>`}
+/* Daftar mitra tampil sebagai contoh (6 mitra). Mitra tanpa url belum punya link. */
+const P=[
+{n:'Oh Jemari',e:'🎁',role:'role_gift',logo:'oh-jemari-logo.jpeg',url:OJ_IG},
+{n:'Kopi Senja',e:'☕',role:'role_cafe'},
+{n:'AB Gaming',e:'🎮',role:'role_game',logo:'AB GAMING.jpeg',url:AB_SITE},
+{n:'Bloom & Co',e:'💐',role:'role_florist'},
+{n:'Hotel Harmony Inn',e:'🌇',role:'role_rest',logo:'Harmony inn.jpeg',url:HARMONY_IG},
+{n:'Picnic Pontianak',e:'🧺',role:'role_exp'}
+];
+
+/* ====== UTIL ====== */
+let S={tab:'all',bud:'',cat:'',occ:'',fav:{},view:'home',sel:null,form:{},lang:'id'};
+try{const l=localStorage.getItem('pmd_lang');if(l==='en'||l==='id')S.lang=l}catch(e){}
+const t=k=>(T[S.lang]&&T[S.lang][k])||k;
+const L=o=>typeof o==='string'?o:o[S.lang];
+const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const src=f=>encodeURI(f);
+const rp=k=>'Rp'+Math.round(k*1000).toLocaleString('id-ID');
+const rng=(a,b)=>a===b?rp(a):rp(a)+' – '+rp(b);
+const wa=txt=>WA+encodeURIComponent(txt);
+const ext=u=>`href="${u}" target="_blank" rel="noopener"`;
+function toggleLang(){S.lang=S.lang==='id'?'en':'id';try{localStorage.setItem('pmd_lang',S.lang)}catch(e){}render()}
+function go(v,x){S.view=v;S.sel=x==null?null:x;document.getElementById('nav').classList.remove('open');render();scrollTo(0,0)}
+const key=(e,fn)=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();fn()}};
+const avatar=p=>p.logo?`<img src="${src(p.logo)}" alt="" onerror="this.parentNode.textContent='${p.e}'">`:p.e;
+
+/* ====== KOMPONEN ====== */
+function card(i){
+ const g=i.t==='gift';
+ return `<article class="card item" role="link" tabindex="0" onclick="go('detail',${i.id})" onkeydown="key(event,()=>go('detail',${i.id}))">
+ <div class="img" style="background:linear-gradient(135deg,${i.bg})">${i.img?`<img src="${src(i.img)}" alt="${esc(i.n)}" onerror="this.outerHTML='${i.e}'">`:i.e}
+ <button class="heart" aria-label="${t('fav')}" onclick="event.stopPropagation();S.fav[${i.id}]=!S.fav[${i.id}];render()">${S.fav[i.id]?'♥':'♡'}</button></div>
+ <div class="body"><h3>${i.n}</h3><div class="loc">${i.by?t('by')+' '+i.by+' · ':''}📍 ${i.loc}</div>
+ <div class="est"><span class="pill ${g?'p-prod':'p-est'}">${g?t('est_price'):t('est_budget')}</span><b>${rng(i.a,i.b)} ${i.unit?t(i.unit):''}</b></div>
+ ${i.tags.map(x=>`<span class="tag">${t('tg_'+x)}</span>`).join('')}</div></article>`}
+
+function premium(){
+ const li=a=>a.map(x=>`<li>${t(x)}</li>`).join('');
+ return `<h2>${t('pr_h')}</h2><p style="color:var(--mut);margin-top:-8px">${t('pr_p')}</p><div class="grid g3 tiers">
+ <div class="card tier"><h3>${t('pr1')}</h3><span class="pill p-fee" style="align-self:flex-start">${t('pr_free')}</span><div class="price">Rp0</div><ul>${li(['pr1a','pr1b','pr1c','pr1d'])}</ul><button class="btn o block" onclick="go('explore')">${t('pr1cta')}</button></div>
+ <div class="card tier hot"><h3>${t('pr2')}</h3><span class="pill p-fee" style="align-self:flex-start">${t('pr_fee')}</span><div class="price" style="display:flex;align-items:center;gap:10px;flex-wrap:wrap"><span style="font-size:18px;color:#999;text-decoration:line-through">Rp49.999</span><span style="color:var(--pink)">Rp29.999</span></div><ul>${li(['pr2a','pr2b','pr2c','pr2d'])}</ul><a class="btn block" href="${wa(t('pr2wa'))}" target="_blank" rel="noopener">${t('pr2cta')}</a></div>
+ <div class="card tier"><h3>${t('pr3')}</h3><span class="pill p-fee" style="align-self:flex-start">${t('pr_fee')}</span><div class="price" style="display:flex;align-items:center;gap:10px;flex-wrap:wrap"><span style="font-size:18px;color:#999;text-decoration:line-through">Rp99.999</span><span style="color:var(--pink)">Rp69.999</span></div><ul>${li(['pr3a','pr3b','pr3c','pr3d','pr3e'])}</ul><a class="btn o block" href="${wa(t('pr3wa'))}" target="_blank" rel="noopener">${t('pr3cta')}</a></div></div>
+ <p class="note">${t('pr_note')}</p>`}
+
+/* Susun rencana sesuai budget, jenis, dan jumlah orang */
+function buildPlan(f){
+ const ppl=Math.max(2,Math.min(50,parseInt(f.ppl,10)||2)),couples=Math.ceil(ppl/2);
+ const bmax=[100,300,500,Infinity][(parseInt(f.bud,10)||2)-1];
+ const pkg=bmax>=350;
+ const dinner={em:'🍽️',title:t('r_dinner'),sub:'Rooftop Dinner · Hotel Harmony Inn · '+(pkg?`${t('r_pkg')} ${couples} ${t('r_pkg2')}`:`${t('r_ala')} ${ppl} ${t('r_ala2')}`),r:pkg?[350*couples,500*couples]:[30*ppl,120*ppl],g:false};
+ const gift={em:'🎁',title:t('r_gift'),sub:'Custom Acrylic · Oh Jemari',r:[36,80],g:true};
+ const game={em:'🎮',title:t('r_game'),sub:'PS Gaming · AB Gaming '+t('per_hour'),r:[13,50],g:false};
+ const type=f.type||'combo';let list;
+ if(type==='dining')list=[dinner];else if(type==='activity')list=[game];else if(type==='gift')list=[gift];
+ else{list=[];let m=0;for(const x of [dinner,gift,game]){if(m+x.r[0]<=bmax){list.push(x);m+=x.r[0]}}if(!list.length)list=[game]}
+ const a=list.reduce((s,x)=>s+x.r[0],0),b=list.reduce((s,x)=>s+x.r[1],0);
+ return{list,a,b,over:a>bmax,ppl}}
+
 const V={
-home(){return `<section class="hero"><div><div class="script" style="font-size:24px">Your perfect date, made easy</div><h1>Plan Better Dates, Create More Memories.</h1><p>Find the right place, activity, or gift for your special moment — and let us help you plan it your way.</p><button class="btn" onclick="go('plan')">Plan Your Date</button></div><div class="polaroid" style="width:100%;max-width:320px;min-width:0;justify-self:center"><div class="ph" style="height:230px;overflow:hidden"><img src="foto-senja.jpg" onerror="this.style.display='none'" alt="Pasangan menikmati senja romantis" style="display:block;width:100%;height:100%;object-fit:cover;object-position:72% 50%"></div><span class="script">Good Dates, Happier Us</span></div></section>
-<div class="flow"><div>Discover<small>Explore date ideas</small></div><div>Choose<small>Pick a date or gift</small></div><div>Plan<small>Set your budget</small></div><div>Consult<small>Chat with us on WhatsApp</small></div><div>Enjoy<small>Enjoy your special day</small></div></div></div>
-<h2>What can we help you with?</h2><div class="grid g3 picks">
-<a class="card pick" onclick="S.tab='date';go('explore')"><div class="ic">🍽️</div><h3>Date</h3><p>Find places & activities for your date.</p></a>
-<a class="card pick" onclick="S.tab='gift';go('explore')"><div class="ic">🎁</div><h3>Gift</h3><p>Find something special for your partner.</p></a>
-<a class="card pick" onclick="go('plan')"><div class="ic">💬</div><h3>Consultation</h3><p>Let us help you plan it.</p></a></div>
-<h2>Featured Partners</h2><div class="partners">${P.map(p=>`<div class="pt" onclick="go('partners')" style="cursor:pointer"><div class="av">${av(p)}</div><b>${p[0]}</b><small>${p[2]}</small></div>`).join('')}</div>`},
-explore(){let l=D.filter(i=>(S.tab=='all'||i.t==S.tab)&&(!S.cat||i.cat==S.cat)&&(!S.bud||(S.bud=='1'?i.a<100:S.bud=='2'?i.a>=100&&i.a<300:S.bud=='3'?i.a>=300&&i.a<500:i.a>=500||i.b>=500)));
-return `<h1 style="font-size:46px">Explore</h1><p style="color:var(--mut)">Discover places, activities, and gifts for your special moment.</p>
-<div class="tabs">${['all','date','gift'].map(t=>`<button class="tab ${S.tab==t?'on':''}" onclick="S.tab='${t}';render()">${t[0].toUpperCase()+t.slice(1)}</button>`).join('')}</div>
-<div class="filters"><select aria-label="Location"><option>Pontianak</option></select><select aria-label="Budget" onchange="S.bud=this.value;render()"><option value="">Any budget</option>${['Under Rp100K','Rp100K–300K','Rp300K–500K','Rp500K+'].map((b,i)=>`<option value="${i+1}" ${S.bud==i+1?'selected':''}>${b}</option>`).join('')}</select><select aria-label="Category" onchange="S.cat=this.value;render()"><option value="">All categories</option>${['Dining','Activity','Outdoor','Personalized','Flowers'].map(c=>`<option ${S.cat==c?'selected':''}>${c}</option>`).join('')}</select><select aria-label="Occasion"><option>Any occasion</option><option>Anniversary</option><option>Birthday</option><option>First Date</option></select></div>
-<p class="note">Estimated cost. Final price may vary depending on selected menu or service.</p>
-<div class="grid g3" style="margin-top:14px">${l.map(card).join('')||'<p>No matches. Try a wider budget or category.</p>'}</div>`},
-detail(){const i=D.find(x=>x.id==S.sel)||D[0],g=i.t=='gift';
-return `<a class="loc" style="cursor:pointer" onclick="go('explore')">← Back to Explore</a><div class="detail"><div class="img" style="background:linear-gradient(135deg,${i.bg})">${i.id==2?`<img src="${i.detailImg}" alt="${i.n}" onerror="this.outerHTML='${i.e}'">`:i.img?`<img src="${IMG[i.img]||i.img}" alt="${i.n}" onerror="this.outerHTML='${i.e}'">`:i.e}</div><div>
-<span class="tag">${g?'Gift':'Date'}</span><span class="tag">${i.cat}</span><h1 style="font-size:44px;margin-top:8px">${i.n}</h1>
-<div class="loc" style="margin-top:6px">${g?`by ${i.by} <span class="badge">✓ Official Partner</span> · `:''}📍 ${i.loc}</div>
-<div class="est" style="margin-top:16px"><span class="pill ${g?'p-prod':'p-est'}">${g?'Estimated Price':'Estimated budget'}</span><b style="font-size:26px">${rng(i.a,i.b)}${i.id==3?' / jam':g?'':' / couple'}</b><i>${i.id==3?'Rental price per hour. Final price depends on the selected gaming package.':g?'Final price may vary depending on design, size, and custom request.':i.id==2?'Romantic Dinner package for two. À la carte options are available.':'Estimated cost for food & drinks. Final price depends on your selected menu.'}</i></div>
-${g?'':`<div class="facts">${i.id==2?'':`<div><small>Duration</small>${i.dur}</div>`}<div><small>Best for</small>${i.best}</div><div><small>Location</small>${i.loc}</div></div>`}
-<p>${i.desc}</p>${i.id==2?`<div style="padding-top:14px"><b>Romantic Dinner Package</b><div style="font-size:18px;font-weight:600;margin-top:4px">Rp350.000–Rp500.000 / couple</div><small style="color:var(--mut)">Romantic table setup, special dinner menu, romantic decoration, and venue, according to the package poster.</small></div><div style="padding-top:14px"><b>À la Carte Menu</b><div style="font-weight:600;margin-top:4px">${i.ala}</div><small style="color:var(--mut)">Estimated price per dish.</small></div><div style="padding-top:14px"><b>Vegetarian Menu</b><div style="font-weight:600;margin-top:4px">${i.veg}</div><small style="color:var(--mut)">Estimated price per dish. Confirm availability with the restaurant.</small></div>`:''}
-${g?`<div class="stack"><button class="btn block" onclick="go('plan')">Add to my date plan</button>${i.url?`<a class="btn o block" ${ext(i.url)}>${i.link} ↗</a>`:''}${i.ig?`<a class="btn o block" ${ext(i.ig)}>View Instagram ↗</a>`:''}<a class="btn o block" target="_blank" rel="noopener" href="${wa('Hi Plan My Date, I am interested in '+i.n)}">Consult with Plan My Date ↗</a></div><p class="note">${i.url?'Orders are made with the partner. Not sure what to pick? Ask us on WhatsApp.':'See their Instagram for designs, then order via WhatsApp.'}</p>`:`<div class="stack"><button class="btn block" onclick="go('plan')">Plan This Date</button>${i.id==2?`<a class="btn o block" href="${i.menuImg}" target="_blank" rel="noopener">View Romantic Dinner Packages ↗</a>`:''}${i.id==3?`<a class="btn o block" ${ext(i.url)}>View Price List ↗</a><a class="btn o block" ${ext(i.ig)}>View Instagram ↗</a>`:''}<a class="btn o block" target="_blank" rel="noopener" href="${wa('Hi Plan My Date, I am interested in '+i.n)}">Consult via WhatsApp</a></div>`}
-<${i.url?'a href="'+i.url+'" target="_blank" rel="noopener"':'div'} class="partnerbox"><div><b>${i.link} ↗</b><small>Opens ${g?i.by+"'s":"the partner's"} official ${i.id==3?'price list':g?'catalog':'menu'}. ${g?'Orders are made with the partner.':'You choose your own menu. Not sure what to pick? Ask us on WhatsApp.'}</small></div><span style="font-size:22px">↗</span></${i.url?'a':'div'}>
-<p class="note">Plan My Date is not a shop. We recommend, plan, and assist.</p></div></div>`},
-plan(){return `<h1 style="font-size:46px;text-align:center">Let's Plan Your Perfect Date</h1><p style="text-align:center;color:var(--mut)">Tell us what you like. We'll build a date plan around your budget.</p>
-<div class="card" style="max-width:720px;margin:20px auto"><form onsubmit="event.preventDefault();S.form=Object.fromEntries(new FormData(this));go('rec')">
-<label>Name<input name="name" required placeholder="Your name"></label>
-<label>Number of people<input name="ppl" type="number" min="2" value="2"></label>
-<label>Occasion<select name="occ">${['Casual Date','Anniversary','Birthday','First Date','Surprise','Other'].map(o=>`<option>${o}</option>`).join('')}</select></label>
-<label>Location<select name="loc"><option>Pontianak</option></select></label>
-<label>Budget<select name="bud"><option>Under Rp100K</option><option selected>Rp100K–300K</option><option>Rp300K–500K</option><option>Rp500K+</option></select></label>
-<label>Preferred date type<select name="type">${['Dining','Activity','Outdoor','Gift','Combination'].map(o=>`<option ${o=='Combination'?'selected':''}>${o}</option>`).join('')}</select></label>
-<label class="full">Gift preference<input name="gift" placeholder="e.g. flowers, custom acrylic, no gift"></label>
-<label class="full">Special request<textarea name="req" rows="3" placeholder="Allergies, surprises, anything we should know"></textarea></label>
-<button class="btn full" type="submit">Get My Recommendation</button></form></div>`},
-rec(){const f=S.form,n=f.name||'you',big=/300K|500K/.test(f.bud||''),c=f.type||'Combination';
-const it=[['🍽️','Dinner Date','Cozy Café or Rooftop Dinner',big?[250,400]:[150,300],'Estimated budget'],['🎁','Custom Gift','Custom Couple Acrylic by Oh Jemari',[75,150],'Estimated Price'],['🎬','Movie','Cinema in Pontianak',[100,150],'Estimated budget']].filter((x,i)=>c=='Combination'||(c=='Gift'&&i==1)||(c!='Gift'&&i!=1&&(c!='Outdoor'||i==0)));
-const a=it.reduce((s,x)=>s+x[3][0],0),b=it.reduce((s,x)=>s+x[3][1],0);
-return `<h1 style="font-size:46px;text-align:center">Here's a Date Plan Just for ${n}!</h1><p style="text-align:center;color:var(--mut)">${f.occ||'Casual Date'} · ${f.ppl||2} people · ${f.loc||'Pontianak'} · ${f.bud||'Rp100K–300K'}</p>
-<div class="card plan" style="max-width:720px;margin:20px auto">${it.map(x=>`<div class="row"><div class="l"><div class="em">${x[0]}</div><div><b>${x[1]}</b><br><small>${x[2]}</small></div></div><div style="text-align:right"><span class="pill ${x[4]=='Estimated Price'?'p-prod':'p-est'}">${x[4]}</span><br><b>${rng(...x[3])}</b></div></div>`).join('')}
-<div class="total"><span>Estimated total</span><span>${rng(a,b)}</span></div>
-<p class="note" style="margin:0 0 14px">Paid to partners. Plan My Date's planning fee is separate and shown below.</p>
-<div class="stack" style="margin-bottom:20px"><button class="btn block" onclick="go('premium')">Plan This Date</button><a class="btn o block" target="_blank" rel="noopener" href="${wa('Hi Plan My Date, I am '+n+'. Please help with my plan, est. total '+rng(a,b))}">Consult via WhatsApp</a></div></div>`},
+home(){return `<section class="hero"><div><div class="script" style="font-size:24px">${t('h_tag')}</div><h1>${t('h_title')}</h1><p>${t('h_p')}</p><button class="btn" onclick="go('plan')">${t('h_cta')}</button></div>
+ <div class="polaroid" style="width:100%;max-width:320px;min-width:0;justify-self:center"><div class="ph"><img src="foto-senja.jpg" onerror="this.style.display='none'" alt="${t('h_alt')}"></div><span class="script">Good Dates, Happier Us</span></div></section>
+ <div class="flow">${[1,2,3,4,5].map(n=>`<div>${t('f'+n)}<small>${t('f'+n+'s')}</small></div>`).join('')}</div>
+ <h2>${t('help')}</h2><div class="grid g3 picks">
+ <button class="card pick" onclick="S.tab='date';go('explore')"><div class="ic">🍽️</div><h3>${t('pk_date')}</h3><p>${t('pk_date_s')}</p></button>
+ <button class="card pick" onclick="S.tab='gift';go('explore')"><div class="ic">🎁</div><h3>${t('pk_gift')}</h3><p>${t('pk_gift_s')}</p></button>
+ <button class="card pick" onclick="go('plan')"><div class="ic">💬</div><h3>${t('pk_cons')}</h3><p>${t('pk_cons_s')}</p></button></div>
+ <h2>${t('partners_h')}</h2><div class="partners">${P.map(p=>`<button class="pt" onclick="go('partners')"><div class="av">${avatar(p)}</div><b>${p.n}</b><small>${t(p.role)}</small></button>`).join('')}</div>`},
+
+explore(){
+ const l=D.filter(i=>(S.tab==='all'||i.t===S.tab)&&(!S.cat||i.cat===S.cat)&&(!S.bud||(S.bud==='1'?i.a<100:S.bud==='2'?(i.a<300&&i.b>=100):S.bud==='3'?(i.a<500&&i.b>=300):i.b>=500)));
+ return `<h1 style="font-size:46px">${t('ex_h')}</h1><p style="color:var(--mut)">${t('ex_p')}</p>
+ <div class="tabs">${['all','date','gift'].map(x=>`<button class="tab ${S.tab===x?'on':''}" onclick="S.tab='${x}';render()">${t('tab_'+x)}</button>`).join('')}</div>
+ <div class="filters"><select aria-label="${t('f_loc')}"><option>Pontianak</option></select>
+ <select aria-label="${t('f_bud')}" onchange="S.bud=this.value;render()"><option value="">${t('any_bud')}</option>${[1,2,3,4].map(n=>`<option value="${n}" ${S.bud==n?'selected':''}>${t('b'+n)}</option>`).join('')}</select>
+ <select aria-label="Category" onchange="S.cat=this.value;render()"><option value="">${t('any_cat')}</option>${['dining','activity','outdoor','personalized','flowers'].map(c=>`<option value="${c}" ${S.cat===c?'selected':''}>${t('c_'+c)}</option>`).join('')}</select>
+ <select aria-label="${t('f_occ')}"><option>${t('any_occ')}</option>${['anniv','birthday','first'].map(o=>`<option>${t('o_'+o)}</option>`).join('')}</select></div>
+ <p class="note">${t('ex_note')}</p>
+ <div class="grid g3" style="margin-top:14px">${l.map(card).join('')||`<p>${t('no_match')}</p>`}</div>`},
+
+detail(){
+ const i=D.find(x=>x.id==S.sel)||D[0],g=i.t==='gift';
+ const im=i.detailImg||i.img;
+ const waMsg=wa((S.lang==='id'?'Halo Plan My Date, saya tertarik dengan ':'Hi Plan My Date, I am interested in ')+i.n);
+ return `<button class="loc" style="cursor:pointer;background:none;border:0;color:var(--mut);padding:0;font-size:14px" onclick="go('explore')">${t('back')}</button>
+ <div class="detail"><div class="img" style="background:linear-gradient(135deg,${i.bg})">${im?`<img src="${src(im)}" alt="${esc(i.n)}" onerror="this.outerHTML='${i.e}'">`:i.e}</div><div>
+ <span class="tag">${g?t('kind_gift'):t('kind_date')}</span><span class="tag">${t('c_'+i.cat)}</span>
+ <h1 style="font-size:44px;margin-top:8px">${i.n}</h1>
+ <div class="loc" style="margin-top:6px">${i.by?t('by')+' '+i.by+' ':''}${i.ex?'':`<span class="badge">${t('official')}</span> `}· 📍 ${i.loc}</div>
+ <div class="est" style="margin-top:16px"><span class="pill ${g?'p-prod':'p-est'}">${g?t('est_price'):t('est_budget')}</span><b style="font-size:26px">${rng(i.a,i.b)} ${i.unit?t(i.unit):''}</b><i>${L(i.note)}</i></div>
+ ${g?'':`<div class="facts">${i.dur?`<div><small>${t('duration')}</small>${L(i.dur)}</div>`:''}<div><small>${t('bestfor')}</small>${i.occ.map(o=>t('o_'+o)).join(', ')}</div><div><small>${t('location')}</small>${i.loc}</div></div>`}
+ <p>${L(i.desc)}</p>
+ ${i.id===2?`<div style="padding-top:14px"><b>${t('pkg_h')}</b><div style="font-size:18px;font-weight:600;margin-top:4px">${rng(350,500)} ${t('per_couple')}</div><small style="color:var(--mut)">${t('pkg_note')}</small></div>
+ <div style="padding-top:14px"><b>${t('ala_h')}</b><div style="font-weight:600;margin-top:4px">${i.ala}</div><small style="color:var(--mut)">${t('ala_note')}</small></div>
+ <div style="padding-top:14px"><b>${t('veg_h')}</b><div style="font-weight:600;margin-top:4px">${i.veg}</div><small style="color:var(--mut)">${t('veg_note')}</small></div>`:''}
+ <div class="stack"><button class="btn block" onclick="go('plan')">${g?t('add_plan'):t('plan_this')}</button>
+ ${i.menuImg?`<a class="btn o block" href="${src(i.menuImg)}" target="_blank" rel="noopener">${t('view_pkg')}</a>`:''}
+ ${i.id===3?`<a class="btn o block" ${ext(i.url)}>${t('view_price')}</a><a class="btn o block" ${ext(i.ig)}>${t('view_ig')}</a>`:''}
+ ${i.id===5?`<a class="btn o block" ${ext(i.url)}>${t('view_catalog')}</a><a class="btn o block" ${ext(i.ig)}>${t('view_ig')}</a>`:''}
+ <a class="btn o block" target="_blank" rel="noopener" href="${waMsg}">${g?t('consult_pmd'):t('consult_wa')}</a></div>
+ <${i.url?'a '+ext(i.url):'div'} class="partnerbox"><div><b>${L(i.link)}${i.url?' ↗':''}</b><small>${L(i.box)}</small></div>${i.url?'<span style="font-size:22px">↗</span>':''}</${i.url?'a':'div'}>
+ <p class="note">${t('not_shop')}</p></div></div>`},
+
+plan(){
+ const f=S.form||{};
+ return `<h1 style="font-size:46px;text-align:center">${t('pf_h')}</h1><p style="text-align:center;color:var(--mut)">${t('pf_p')}</p>
+ <div class="card" style="max-width:720px;margin:20px auto"><form onsubmit="event.preventDefault();S.form=Object.fromEntries(new FormData(this));go('rec')">
+ <label>${t('f_name')}<input name="name" required maxlength="40" placeholder="${t('f_name_ph')}" value="${esc(f.name||'')}"></label>
+ <label>${t('f_ppl')}<input name="ppl" type="number" min="2" max="50" value="${esc(f.ppl||2)}"></label>
+ <label>${t('f_occ')}<select name="occ">${['casual','anniv','birthday','first','surprise','other'].map(o=>`<option value="${o}" ${f.occ===o?'selected':''}>${t('o_'+o)}</option>`).join('')}</select></label>
+ <label>${t('f_loc')}<select name="loc"><option>Pontianak</option></select></label>
+ <label>${t('f_bud')}<select name="bud">${[1,2,3,4].map(n=>`<option value="${n}" ${(f.bud||'2')==n?'selected':''}>${t('b'+n)}</option>`).join('')}</select></label>
+ <label>${t('f_type')}<select name="type">${['dining','activity','gift','combo'].map(o=>`<option value="${o}" ${(f.type||'combo')===o?'selected':''}>${t('t_'+o)}</option>`).join('')}</select></label>
+ <label class="full">${t('f_gift')}<input name="gift" maxlength="80" placeholder="${t('f_gift_ph')}" value="${esc(f.gift||'')}"></label>
+ <label class="full">${t('f_req')}<textarea name="req" rows="3" maxlength="300" placeholder="${t('f_req_ph')}">${esc(f.req||'')}</textarea></label>
+ <button class="btn full" type="submit">${t('f_submit')}</button></form></div>`},
+
+rec(){
+ const f=S.form||{},n=esc(f.name||'You'),plan=buildPlan(f);
+ const total=rng(plan.a,plan.b);
+ const msg=t('r_wa').replace('{n}',f.name||'').replace('{t}',total)+(f.req?` (${f.req})`:'');
+ return `<h1 style="font-size:46px;text-align:center">${t('r_h')} ${n}!</h1>
+ <p style="text-align:center;color:var(--mut)">${t('o_'+(f.occ||'casual'))} · ${plan.ppl} ${t('r_people')} · ${esc(f.loc||'Pontianak')} · ${t('b'+(f.bud||2))}</p>
+ <div class="card plan" style="max-width:720px;margin:20px auto">
+ ${plan.over?`<p class="warn" style="margin-top:16px">${t('r_over')}</p>`:''}
+ ${plan.list.map(x=>`<div class="row"><div class="l"><div class="em">${x.em}</div><div><b>${x.title}</b><br><small>${x.sub}</small></div></div><div style="text-align:right"><span class="pill ${x.g?'p-prod':'p-est'}">${x.g?t('est_price'):t('est_budget')}</span><br><b>${rng(x.r[0],x.r[1])}</b></div></div>`).join('')}
+ <div class="total"><span>${t('r_total')}</span><span>${total}</span></div>
+ <p class="note" style="margin:0 0 14px">${t('r_paid')}</p>
+ <div class="stack" style="margin-bottom:20px"><button class="btn block" onclick="go('premium')">${t('plan_this')}</button><a class="btn o block" target="_blank" rel="noopener" href="${wa(msg)}">${t('consult_wa')}</a></div></div>`+premium()},
+
 premium(){return premium()},
-partners(){return `<h1 style="font-size:46px">Our Partners</h1><p style="color:var(--mut)">Local businesses that collaborate with Plan My Date. Their menus and catalogs stay with them.</p>
-<div class="grid g3" style="margin-top:20px">${P.map(p=>`<div class="card pcard">
-<div class="av">${av(p)}</div>
-<h3>${p[0]}</h3>
-<span class="badge">${p[2]}</span>
-<div class="loc" style="margin-top:8px">📍 Pontianak</div>
-<a class="btn o" style="padding:8px 18px" ${p[4]?ext(p[4]):'href="#" onclick="event.preventDefault()"'}>View Partner ↗</a>
-</div>`).join('')}</div>
-<div class="card" style="margin-top:24px;padding:22px"><b>Want to become a partner?</b><p style="margin:4px 0 12px;color:var(--mut)">Cafés, restaurants, florists and gift makers in Pontianak are welcome.</p><a class="btn" target="_blank" rel="noopener" href="${wa('Hi, I want to become a Plan My Date partner.')}">Contact us</a></div>`},
-about(){return `<h1 style="font-size:46px">About</h1><p style="max-width:560px;color:var(--mut)">Plan My Date is a local date-planning service for couples in Pontianak. We recommend places, activities, and gifts, show estimated budgets, and help arrange everything through WhatsApp.</p>`+premium()}
+
+partners(){return `<h1 style="font-size:46px">${t('pa_h')}</h1><p style="color:var(--mut)">${t('pa_p')}</p>
+ <div class="grid g3" style="margin-top:20px">${P.map(p=>`<div class="card pcard"><div class="av">${avatar(p)}</div><h3>${p.n}</h3><span class="badge">${t(p.role)}</span><div class="loc" style="margin-top:8px">📍 Pontianak</div>${p.url?`<a class="btn o" style="padding:8px 18px" ${ext(p.url)}>${t('pa_view')}</a>`:`<button class="btn o" style="padding:8px 18px;opacity:.55;cursor:default" disabled>${t('pa_view')}</button>`}</div>`).join('')}</div>
+ <div class="card" style="margin-top:24px;padding:22px"><b>${t('pa_join')}</b><p style="margin:4px 0 12px;color:var(--mut)">${t('pa_join_p')}</p><a class="btn" target="_blank" rel="noopener" href="${wa(t('pa_wa'))}">${t('pa_contact')}</a></div>`},
+
+about(){return `<h1 style="font-size:46px">${t('ab_h')}</h1><p style="max-width:560px;color:var(--mut)">${t('ab_p')}</p>`+premium()}
 };
-function render(){const k=S.view,nk=k=='detail'?'explore':(k=='rec'||k=='premium')?'plan':k;
-document.getElementById('nav').innerHTML=NAV.map(n=>`<a class="${nk==n[0]?'on':''}" onclick="go('${n[0]}')">${n[1]}</a>`).join('');
-document.getElementById('app').innerHTML=V[k]()+(k=='home'?'':'')+(k=='rec'||k=='plan'?(k=='rec'?premium():''):'')}
+
+function render(){
+ const k=S.view,nk=k==='detail'?'explore':(k==='rec'||k==='premium')?'plan':k;
+ document.documentElement.lang=S.lang;
+ document.getElementById('langbtn').textContent=S.lang==='id'?'EN':'ID';
+ document.getElementById('nav').innerHTML=['home','explore','plan','partners','about'].map(n=>`<button class="${nk===n?'on':''}" ${nk===n?'aria-current="page"':''} onclick="go('${n}')">${t('n_'+n)}</button>`).join('');
+ document.getElementById('app').innerHTML=V[k]();
+}
 render();
 </script>
 </body>

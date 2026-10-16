@@ -280,7 +280,7 @@ const P=[
 {n:'Oh Jemari',e:'🎁',role:'role_gift',logo:'oh-jemari-logo.jpeg',url:OJ_IG},
 {n:'Kopi Senja',e:'☕',role:'role_cafe'},
 {n:'AB Gaming',e:'🎮',role:'role_game',logo:'AB GAMING.jpeg',url:AB_SITE},
-{n:'Bloomcha',e:'💐',role:'role_florist',logo:'Bloomcha logo.jpeg',url:'https://www.instagram.com/bloomcha.id/'},
+{n:'Bloomcha',e:'💐',role:'role_florist',logo:'bloomcha logo.jpeg',url:'https://www.instagram.com/bloomcha.id/'},
 {n:'Hotel Harmony Inn',e:'🌇',role:'role_rest',logo:'Harmony inn.jpeg',url:HARMONY_IG},
 {n:'Picnic Pontianak',e:'🧺',role:'role_exp'}
 ];
@@ -372,14 +372,14 @@ detail(){
  <div style="padding-top:14px"><b>${t('veg_h')}</b><div style="font-weight:600;margin-top:4px">${i.veg}</div><small style="color:var(--mut)">${t('veg_note')}</small></div>`:''}
  <div class="stack"><button class="btn block" onclick="go('plan')">${g?t('add_plan'):t('plan_this')}</button>
  ${i.menuImg?`<a class="btn o block" href="${src(i.menuImg)}" target="_blank" rel="noopener">${t('view_pkg')}</a>`:''}
- ${i.id===3?`<a class="btn o block" ${ext(i.url)}>${t('view_price')}</a><a class="btn o block" ${ext(i.ig)}>${t('view_ig')}</a>`:''}
+ ${i.id===3?`<a class="btn o block" ${ext(i.ig)}>Lihat Instagram ↗</a>`:''}
  ${i.id===5?`<a class="btn o block" ${ext(i.url)}>${t('view_catalog')}</a><a class="btn o block" ${ext(i.ig)}>${t('view_ig')}</a>`:''}
  ${i.id===6?`
  <a class="btn o block" ${ext(i.url)}>Lihat Katalog & Daftar Harga ↗</a>
  <a class="btn o block" ${ext(i.ig)}>Lihat Instagram Bloomcha ↗</a>
  <a class="btn o block" ${ext('https://www.google.com/maps/search/?api=1&query=Jl.+Uray+Bawadi+No.82a%2C+Sungai+Bangkong%2C+Pontianak+Kota%2C+Kalimantan+Barat+78113')}>📍 Lihat Lokasi</a>`:''}
  <a class="btn o block" target="_blank" rel="noopener" href="${waMsg}">${g?t('consult_pmd'):t('consult_wa')}</a></div>
- <${i.url?'a '+ext(i.url):'div'} class="partnerbox"><div><b>${L(i.link)}${i.url?' ↗':''}</b><small>${L(i.box)}</small></div>${i.url?'<span style="font-size:22px">↗</span>':''}</${i.url?'a':'div'}>
+ ${i.id===3?`<a class="partnerbox" ${ext(i.ig)}><div><b>Lihat Instagram AB Gaming ↗</b><small>Kunjungi Instagram resmi AB Gaming untuk melihat informasi dan penawaran terbaru.</small></div><span style="font-size:22px">↗</span></a>`:`<${i.url?'a '+ext(i.url):'div'} class="partnerbox"><div><b>${L(i.link)}${i.url?' ↗':''}</b><small>${L(i.box)}</small></div>${i.url?'<span style="font-size:22px">↗</span>':''}</${i.url?'a':'div'}>`}
  <p class="note">${t('not_shop')}</p></div></div>`},
 
 plan(){

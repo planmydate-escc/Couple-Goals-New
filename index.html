@@ -95,6 +95,7 @@ form select,form input,form textarea{width:100%}
 .row .l{display:flex;gap:14px;align-items:center}
 .row .em{font-size:28px;width:52px;height:52px;display:grid;place-items:center;border-radius:14px;background:var(--soft);flex-shrink:0}
 .row small{color:var(--mut)}
+.row.last{border-bottom:0}
 .total{display:flex;justify-content:space-between;gap:10px;padding:18px 0;font-size:20px;font-family:'Cormorant Garamond',serif;font-weight:700}
 .tier{padding:24px;display:flex;flex-direction:column;gap:6px}
 .tier ul{padding-left:18px;margin:8px 0 14px;color:var(--mut);flex:1}
@@ -164,14 +165,14 @@ not_shop:'Plan My Date bukan toko. Kami merekomendasikan, merencanakan, dan memb
 pkg_h:'Paket Romantic Dinner',pkg_note:'Setting meja romantis, menu dinner spesial, dekorasi romantis, dan tempat, sesuai poster paket.',
 ala_h:'Menu À la Carte',ala_note:'Perkiraan harga per hidangan.',veg_h:'Menu Vegetarian',veg_note:'Perkiraan harga per hidangan. Konfirmasi ketersediaan ke restoran.',
 view_pkg:'Lihat Paket Romantic Dinner ↗',view_price:'Lihat Daftar Harga ↗',view_ig:'Lihat Instagram ↗',view_catalog:'Lihat Katalog ↗',
-pf_h:'Rencanakan Kencan Sempurnamu',pf_p:'Ceritakan seleramu. Kami susun rencana kencan sesuai budgetmu.',
+pf_h:'Rencanakan Kencan Sempurnamu',pf_p:'Ceritakan seleramu. Kami pilihkan satu rekomendasi kencan sesuai budgetmu.',
 f_name:'Nama',f_name_ph:'Namamu',f_ppl:'Jumlah orang',f_occ:'Acara',f_loc:'Lokasi',f_bud:'Budget',f_type:'Jenis kencan',f_gift:'Preferensi hadiah',f_gift_ph:'mis. akrilik custom, tanpa hadiah',f_req:'Permintaan khusus',f_req_ph:'Alergi, kejutan, atau hal lain yang perlu kami tahu',f_submit:'Lihat Rekomendasiku',
 t_dining:'Makan',t_activity:'Aktivitas',t_gift:'Hadiah',t_combo:'Kombinasi',
 r_h:'Rencana Kencan Khusus untuk',r_people:'orang',
 r_dinner:'Dinner Date',r_gift:'Hadiah Custom',r_game:'Main Game',
 r_pkg:'Paket Romantic Dinner untuk',r_pkg2:'pasangan',r_ala:'À la carte untuk',r_ala2:'orang',
 r_total:'Perkiraan total',r_paid:'Dibayar langsung ke mitra. Biaya perencanaan Plan My Date terpisah dan ada di bawah.',
-r_over:'Perkiraan biaya minimal melebihi budget yang kamu pilih. Coba naikkan budget atau pilih satu jenis kencan saja.',
+r_over:'Perkiraan biaya minimal melebihi budget yang kamu pilih. Coba naikkan budget atau pilih jenis kencan lain.',
 r_wa:'Halo Plan My Date, saya {n}. Tolong bantu rencanaku, perkiraan total {t}.',
 pr_h:'Rencanakan bersama kami',pr_p:'Biaya perencanaan kami terpisah dari harga kafe, aktivitas, atau hadiah.',
 pr_free:'Gratis',pr_fee:'Biaya perencanaan',
@@ -185,7 +186,7 @@ role_gift:'Mitra Hadiah',role_game:'Mitra Gaming',role_rest:'Mitra Restoran',rol
 ab_h:'Tentang',ab_p:'Plan My Date adalah layanan perencanaan kencan lokal untuk pasangan di Pontianak. Kami merekomendasikan tempat, aktivitas, dan hadiah, menampilkan perkiraan budget, dan membantu mengaturnya lewat WhatsApp.',
 tg_cafe:'Kafe',tg_popular:'Populer',tg_outdoor:'Outdoor',tg_park:'Taman',tg_flowers:'Bunga',tg_restaurant:'Restoran',tg_rooftop:'Rooftop',tg_veg:'Menu Vegetarian',tg_gaming:'Gaming',tg_indoor:'Indoor',tg_gift:'Hadiah',tg_personalized:'Personalisasi',
 kind_date:'Kencan',kind_gift:'Hadiah',fav:'Favorit',menu:'Menu',
-hr:'jam',
+hr:'jam',g_none:'Tanpa hadiah',g_acrylic:'Akrilik custom (Oh Jemari)',
 },
 en:{
 n_home:'Home',n_explore:'Explore',n_plan:'Plan Your Date',n_partners:'Partners',n_about:'About',
@@ -211,14 +212,14 @@ not_shop:'Plan My Date is not a shop. We recommend, plan, and assist.',
 pkg_h:'Romantic Dinner Package',pkg_note:'Romantic table setup, special dinner menu, romantic decoration, and venue, according to the package poster.',
 ala_h:'À la Carte Menu',ala_note:'Estimated price per dish.',veg_h:'Vegetarian Menu',veg_note:'Estimated price per dish. Confirm availability with the restaurant.',
 view_pkg:'View Romantic Dinner Packages ↗',view_price:'View Price List ↗',view_ig:'View Instagram ↗',view_catalog:'View Catalog ↗',
-pf_h:"Let's Plan Your Perfect Date",pf_p:"Tell us what you like. We'll build a date plan around your budget.",
+pf_h:"Let's Plan Your Perfect Date",pf_p:"Tell us what you like. We'll pick one date recommendation that fits your budget.",
 f_name:'Name',f_name_ph:'Your name',f_ppl:'Number of people',f_occ:'Occasion',f_loc:'Location',f_bud:'Budget',f_type:'Preferred date type',f_gift:'Gift preference',f_gift_ph:'e.g. custom acrylic, no gift',f_req:'Special request',f_req_ph:'Allergies, surprises, anything we should know',f_submit:'Get My Recommendation',
 t_dining:'Dining',t_activity:'Activity',t_gift:'Gift',t_combo:'Combination',
 r_h:"Here's a Date Plan Just for",r_people:'people',
 r_dinner:'Dinner Date',r_gift:'Custom Gift',r_game:'Gaming Time',
 r_pkg:'Romantic Dinner package for',r_pkg2:'couple(s)',r_ala:'À la carte for',r_ala2:'people',
 r_total:'Estimated total',r_paid:"Paid directly to partners. Plan My Date's planning fee is separate and shown below.",
-r_over:'The minimum estimated cost is above your selected budget. Try a higher budget or choose a single date type.',
+r_over:'The minimum estimated cost is above your selected budget. Try a higher budget or choose another date type.',
 r_wa:'Hi Plan My Date, I am {n}. Please help with my plan, est. total {t}.',
 pr_h:'Plan it with us',pr_p:'Our planning fee is separate from café, activity, or gift prices.',
 pr_free:'Free',pr_fee:'Planning fee',
@@ -232,7 +233,7 @@ role_gift:'Gift Partner',role_game:'Gaming Partner',role_rest:'Restaurant Partne
 ab_h:'About',ab_p:'Plan My Date is a local date-planning service for couples in Pontianak. We recommend places, activities, and gifts, show estimated budgets, and help arrange everything through WhatsApp.',
 tg_cafe:'Café',tg_popular:'Popular',tg_outdoor:'Outdoor',tg_park:'Park',tg_flowers:'Flowers',tg_restaurant:'Restaurant',tg_rooftop:'Rooftop',tg_veg:'Vegetarian Menu',tg_gaming:'Gaming',tg_indoor:'Indoor',tg_gift:'Gift',tg_personalized:'Personalized',
 kind_date:'Date',kind_gift:'Gift',fav:'Favorite',menu:'Menu',
-hr:'hour',
+hr:'hour',g_none:'No gift',g_acrylic:'Custom acrylic (Oh Jemari)',
 }};
 
 /* ====== DATA (hanya 3 mitra resmi) ====== */
@@ -313,7 +314,7 @@ function premium(){
  <div class="card tier"><h3>${t('pr3')}</h3><span class="pill p-fee" style="align-self:flex-start">${t('pr_fee')}</span><div class="price" style="display:flex;align-items:center;gap:10px;flex-wrap:wrap"><span style="font-size:18px;color:#999;text-decoration:line-through">Rp99.999</span><span style="color:var(--pink)">Rp69.999</span></div><ul>${li(['pr3a','pr3b','pr3c','pr3d','pr3e'])}</ul><a class="btn o block" href="${wa(t('pr3wa'))}" target="_blank" rel="noopener">${t('pr3cta')}</a></div></div>
  <p class="note">${t('pr_note')}</p>`}
 
-/* Susun rencana sesuai budget, jenis, dan jumlah orang */
+/* Susun SATU rekomendasi sesuai budget, jenis, dan jumlah orang */
 function buildPlan(f){
  const ppl=Math.max(2,Math.min(50,parseInt(f.ppl,10)||2)),couples=Math.ceil(ppl/2);
  const bmax=[100,300,500,Infinity][(parseInt(f.bud,10)||2)-1];
@@ -321,9 +322,10 @@ function buildPlan(f){
  const dinner={em:'🍽️',title:t('r_dinner'),sub:'Rooftop Dinner · Hotel Harmony Inn · '+(pkg?`${t('r_pkg')} ${couples} ${t('r_pkg2')}`:`${t('r_ala')} ${ppl} ${t('r_ala2')}`),r:pkg?[350*couples,500*couples]:[30*ppl,120*ppl],g:false};
  const gift={em:'🎁',title:t('r_gift'),sub:'Custom Acrylic · Oh Jemari',r:[36,80],g:true};
  const game={em:'🎮',title:t('r_game'),sub:'PS Gaming · AB Gaming '+t('per_hour'),r:[13,50],g:false};
- const type=f.type||'combo';let list;
- if(type==='dining')list=[dinner];else if(type==='activity')list=[game];else if(type==='gift')list=[gift];
- else{list=[];let m=0;for(const x of [dinner,gift,game]){if(m+x.r[0]<=bmax){list.push(x);m+=x.r[0]}}if(!list.length)list=[game]}
+ const type=f.type||'dining';
+ const main=type==='activity'?game:type==='gift'?gift:dinner;
+ const list=[main];
+ if(type!=='gift'&&f.gift==='acrylic')list.push(gift);
  const a=list.reduce((s,x)=>s+x.r[0],0),b=list.reduce((s,x)=>s+x.r[1],0);
  return{list,a,b,over:a>bmax,ppl}}
 
@@ -380,10 +382,10 @@ plan(){
  <label>${t('f_occ')}<select name="occ">${['casual','anniv','birthday','first','surprise','other'].map(o=>`<option value="${o}" ${f.occ===o?'selected':''}>${t('o_'+o)}</option>`).join('')}</select></label>
  <label>${t('f_loc')}<select name="loc"><option>Pontianak</option></select></label>
  <label>${t('f_bud')}<select name="bud">${[1,2,3,4].map(n=>`<option value="${n}" ${(f.bud||'2')==n?'selected':''}>${t('b'+n)}</option>`).join('')}</select></label>
- <label>${t('f_type')}<select name="type">${['dining','activity','gift','combo'].map(o=>`<option value="${o}" ${(f.type||'combo')===o?'selected':''}>${t('t_'+o)}</option>`).join('')}</select></label>
- <label class="full">${t('f_gift')}<input name="gift" maxlength="80" placeholder="${t('f_gift_ph')}" value="${esc(f.gift||'')}"></label>
+ <label>${t('f_type')}<select name="type">${['dining','activity','gift'].map(o=>`<option value="${o}" ${(f.type||'dining')===o?'selected':''}>${t('t_'+o)}</option>`).join('')}</select></label>
+ <label class="full">${t('f_gift')}<select name="gift"><option value="none" ${f.gift!=='acrylic'?'selected':''}>${t('g_none')}</option><option value="acrylic" ${f.gift==='acrylic'?'selected':''}>${t('g_acrylic')}</option></select></label>
  <label class="full">${t('f_req')}<textarea name="req" rows="3" maxlength="300" placeholder="${t('f_req_ph')}">${esc(f.req||'')}</textarea></label>
- <button class="btn full" type="submit">${t('f_submit')}</button></form></div>`},
+ <button class="btn full" type="button" onclick="submitPlan(this.form)">${t('f_submit')}</button></form></div>`},
 
 rec(){
  const f=S.form||{},n=esc(f.name||'You'),plan=buildPlan(f);
@@ -393,8 +395,8 @@ rec(){
  <p style="text-align:center;color:var(--mut)">${t('o_'+(f.occ||'casual'))} · ${plan.ppl} ${t('r_people')} · ${esc(f.loc||'Pontianak')} · ${t('b'+(f.bud||2))}</p>
  <div class="card plan" style="max-width:720px;margin:20px auto">
  ${plan.over?`<p class="warn" style="margin-top:16px">${t('r_over')}</p>`:''}
- ${plan.list.map(x=>`<div class="row"><div class="l"><div class="em">${x.em}</div><div><b>${x.title}</b><br><small>${x.sub}</small></div></div><div style="text-align:right"><span class="pill ${x.g?'p-prod':'p-est'}">${x.g?t('est_price'):t('est_budget')}</span><br><b>${rng(x.r[0],x.r[1])}</b></div></div>`).join('')}
- <div class="total"><span>${t('r_total')}</span><span>${total}</span></div>
+ ${plan.list.map((x,k)=>`<div class="row ${plan.list.length===1&&k===0?'last':''}"><div class="l"><div class="em">${x.em}</div><div><b>${x.title}</b><br><small>${x.sub}</small></div></div><div style="text-align:right"><span class="pill ${x.g?'p-prod':'p-est'}">${x.g?t('est_price'):t('est_budget')}</span><br><b>${rng(x.r[0],x.r[1])}</b></div></div>`).join('')}
+ ${plan.list.length>1?`<div class="total"><span>${t('r_total')}</span><span>${total}</span></div>`:''}
  <p class="note" style="margin:0 0 14px">${t('r_paid')}</p>
  <div class="stack" style="margin-bottom:20px"><button class="btn block" onclick="go('premium')">${t('plan_this')}</button><a class="btn o block" target="_blank" rel="noopener" href="${wa(msg)}">${t('consult_wa')}</a></div></div>`+premium()},
 
@@ -406,6 +408,12 @@ partners(){return `<h1 style="font-size:46px">${t('pa_h')}</h1><p style="color:v
 
 about(){return `<h1 style="font-size:46px">${t('ab_h')}</h1><p style="max-width:560px;color:var(--mut)">${t('ab_p')}</p>`+premium()}
 };
+
+function submitPlan(form){
+ if(!form.reportValidity())return;
+ S.form=Object.fromEntries(new FormData(form));
+ go('rec');
+}
 
 function render(){
  const k=S.view,nk=k==='detail'?'explore':(k==='rec'||k==='premium')?'plan':k;

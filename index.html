@@ -243,7 +243,7 @@ const D=[
  box:{id:'Membuka menu resmi mitra. Kamu memilih menu sendiri. Bingung memilih? Tanya kami lewat WhatsApp.',en:"Opens the partner's official menu. You choose your own menu. Not sure what to pick? Ask us on WhatsApp."},
  note:{id:'Perkiraan biaya makanan dan minuman. Harga akhir tergantung menu yang kamu pilih.',en:'Estimated cost for food & drinks. Final price depends on your selected menu.'},
  desc:{id:'Tempat yang nyaman untuk pasangan yang ingin menikmati makanan enak dan waktu berkualitas bersama. Kami bisa bantu reservasi; menu kamu pilih sendiri.',en:'A cozy place for couples who want to enjoy good food and quality time together. We can help with the reservation; you choose your own menu.'}},
-{id:2,t:'date',n:'Rooftop Dinner',by:'Hotel Harmony Inn',img:'harmony dinner 1.jpeg',detailImg:'harmony inn 2.jpeg',menuImg:'menu couple harmony inn.jpeg',url:HARMONY_IG,loc:'Pontianak',a:350,b:500,cat:'dining',unit:'per_couple',tags:['restaurant','rooftop','veg'],e:'🌇',bg:'#f9c7a6,#d97b94',occ:['anniv','surprise'],
+{id:2,t:'date',n:'Rooftop Dinner',by:'Hotel Harmony Inn',img:'harmony dinner 1.jpeg',detailImg:'harmony inn 2.jpeg',menuImg:'menu couple harmony inn.jpeg',url:HARMONY_IG,ig:HARMONY_IG,loc:'Pontianak',a:350,b:500,cat:'dining',unit:'per_couple',tags:['restaurant','rooftop','veg'],e:'🌇',bg:'#f9c7a6,#d97b94',occ:['anniv','surprise'],
  link:{id:'Lihat Instagram Hotel',en:'View Hotel Instagram'},
  box:{id:'Membuka Instagram resmi mitra. Kamu memilih menu sendiri. Bingung memilih? Tanya kami lewat WhatsApp.',en:"Opens the partner's official Instagram. You choose your own menu. Not sure what to pick? Ask us on WhatsApp."},
  note:{id:'Paket Romantic Dinner untuk berdua. Tersedia juga pilihan à la carte.',en:'Romantic Dinner package for two. À la carte options are available.'},
@@ -356,27 +356,33 @@ explore(){
  <div class="grid g3" style="margin-top:14px">${l.map(card).join('')||`<p>${t('no_match')}</p>`}</div>`},
 
 detail(){
- const i=D.find(x=>x.id==S.sel)||D[0],g=i.t==='gift';
- const im=i.detailImg||i.img;
- const waMsg=wa((S.lang==='id'?'Halo Plan My Date, saya tertarik dengan ':'Hi Plan My Date, I am interested in ')+i.n);
- return `<button class="loc" style="cursor:pointer;background:none;border:0;color:var(--mut);padding:0;font-size:14px" onclick="go('explore')">${t('back')}</button>
- <div class="detail"><div class="img" style="background:linear-gradient(135deg,${i.bg})">${im?`<img src="${src(im)}" alt="${esc(i.n)}" onerror="this.outerHTML='${i.e}'">`:i.e}</div><div>
- <span class="tag">${g?t('kind_gift'):t('kind_date')}</span><span class="tag">${t('c_'+i.cat)}</span>
- <h1 style="font-size:44px;margin-top:8px">${i.n}</h1>
- <div class="loc" style="margin-top:6px">${i.by?t('by')+' '+i.by+' ':''}${i.ex?'':`<span class="badge">${t('official')}</span> `}· 📍 ${i.loc}</div>
- <div class="est" style="margin-top:16px"><span class="pill ${g?'p-prod':'p-est'}">${g?t('est_price'):t('est_budget')}</span><b style="font-size:26px">${rng(i.a,i.b)} ${i.unit?t(i.unit):''}</b><i>${L(i.note)}</i></div>
- ${g?'':`<div class="facts">${i.dur?`<div><small>${t('duration')}</small>${L(i.dur)}</div>`:''}<div><small>${t('bestfor')}</small>${i.occ.map(o=>t('o_'+o)).join(', ')}</div><div><small>${t('location')}</small>${i.loc}</div></div>`}
- <p>${L(i.desc)}</p>
- ${i.id===2?`<div style="padding-top:14px"><b>${t('pkg_h')}</b><div style="font-size:18px;font-weight:600;margin-top:4px">${rng(350,500)} ${t('per_couple')}</div><small style="color:var(--mut)">${t('pkg_note')}</small></div>
- <div style="padding-top:14px"><b>${t('ala_h')}</b><div style="font-weight:600;margin-top:4px">${i.ala}</div><small style="color:var(--mut)">${t('ala_note')}</small></div>
- <div style="padding-top:14px"><b>${t('veg_h')}</b><div style="font-weight:600;margin-top:4px">${i.veg}</div><small style="color:var(--mut)">${t('veg_note')}</small></div>`:''}
- <div class="stack"><button class="btn block" onclick="go('plan')">${g?t('add_plan'):t('plan_this')}</button>
- ${i.menuImg?`<a class="btn o block" href="${src(i.menuImg)}" target="_blank" rel="noopener">${t('view_pkg')}</a>`:''}
- ${i.id===3?`<a class="btn o block" ${ext(i.url)}>${t('view_price')}</a>`:''}
- ${i.id===5?`<a class="btn o block" ${ext(i.url)}>${t('view_catalog')}</a>`:''}
- ${i.id===6?`<a class="btn o block" ${ext(i.url)}>Lihat Katalog & Daftar Harga ↗</a><a class="btn o block" ${ext('https://www.google.com/maps/search/?api=1&query=Jl.+Uray+Bawadi+No.82a%2C+Sungai+Bangkong%2C+Pontianak+Kota%2C+Kalimantan+Barat+78113')}>📍 Lihat Lokasi</a>`:''} <a class="btn o block" target="_blank" rel="noopener" href="${waMsg}">${g?t('consult_pmd'):t('consult_wa')}</a></div>
- ${i.ig?`<a class="partnerbox" ${ext(i.ig)}><div><b>${i.n==='Bloomcha'?'Lihat Instagram Bloomcha':i.n==='AB Gaming'?'Lihat Instagram AB Gaming':i.n==='Oh Jemari'?'Lihat Instagram Oh Jemari':i.n==='Hotel Harmony Inn'?'Lihat Instagram Hotel Harmony Inn':'Lihat Instagram '+i.n} ↗</b><small>Kunjungi Instagram resmi ${i.n} untuk melihat informasi dan koleksi terbaru.</small></div><span style="font-size:22px">↗</span></a>`:`<div class="partnerbox"><div><b>${i.n}</b><small>Instagram resmi belum tersedia.</small></div></div>`}
- <p class="note">${t('not_shop')}</p></div></div>`},
+  const i=D.find(x=>x.id==S.sel)||D[0],g=i.t==='gift';
+  const im=i.detailImg||i.img;
+  const waMsg=wa((S.lang==='id'?'Halo Plan My Date, saya tertarik dengan ':'Hi Plan My Date, I am interested in ')+i.n);
+  const harmonyMap='https://www.google.com/maps/place/Hotel+Harmony+In+%26+Karaoke/@-0.0925676,109.3445931,767m/data=!3m1!1e3!4m9!3m8!1s0x2e1d59f0f17b4697:0xa64e6d9d09e62adf!5m2!4m1!1i2!8m2!3d-0.092573!4d109.347168!16s%2Fg%2F1pztq3wq4?entry=ttu';
+  return `<button class="loc" style="cursor:pointer;background:none;border:0;color:var(--mut);padding:0;font-size:14px" onclick="go('explore')">${t('back')}</button>
+  <div class="detail"><div class="img" style="background:linear-gradient(135deg,${i.bg})">${im?`<img src="${src(im)}" alt="${esc(i.n)}" onerror="this.outerHTML='${i.e}'">`:i.e}</div><div>
+  <span class="tag">${g?t('kind_gift'):t('kind_date')}</span><span class="tag">${t('c_'+i.cat)}</span>
+  <h1 style="font-size:44px;margin-top:8px">${i.n}</h1>
+  <div class="loc" style="margin-top:6px">${i.by?t('by')+' '+i.by+' ':''}${i.ex?'':`<span class="badge">${t('official')}</span> `}· 📍 ${i.loc}</div>
+  <div class="est" style="margin-top:16px"><span class="pill ${g?'p-prod':'p-est'}">${g?t('est_price'):t('est_budget')}</span><b style="font-size:26px">${rng(i.a,i.b)} ${i.unit?t(i.unit):''}</b><i>${L(i.note)}</i></div>
+  ${g?'':`<div class="facts">${i.dur?`<div><small>${t('duration')}</small>${L(i.dur)}</div>`:''}<div><small>${t('bestfor')}</small>${i.occ.map(o=>t('o_'+o)).join(', ')}</div><div><small>${t('location')}</small>${i.loc}</div></div>`}
+  <p>${L(i.desc)}</p>
+  ${i.id===2?`<div style="padding-top:14px"><b>${t('pkg_h')}</b><div style="font-size:18px;font-weight:600;margin-top:4px">${rng(350,500)} ${t('per_couple')}</div><small style="color:var(--mut)">${t('pkg_note')}</small></div>
+  <div style="padding-top:14px"><b>${t('ala_h')}</b><div style="font-weight:600;margin-top:4px">${i.ala}</div><small style="color:var(--mut)">${t('ala_note')}</small></div>
+  <div style="padding-top:14px"><b>${t('veg_h')}</b><div style="font-weight:600;margin-top:4px">${i.veg}</div><small style="color:var(--mut)">${t('veg_note')}</small></div>`:''}
+  <div class="stack">
+  <button class="btn block" onclick="go('plan')">${g?t('add_plan'):t('plan_this')}</button>
+  ${i.menuImg?`<a class="btn o block" href="${src(i.menuImg)}" target="_blank" rel="noopener">${t('view_pkg')}</a>`:''}
+  ${i.id===3?`<a class="btn o block" ${ext(i.url)}>${t('view_price')}</a>`:''}
+  ${i.id===5?`<a class="btn o block" ${ext(i.url)}>${t('view_catalog')}</a>`:''}
+  ${i.id===6?`<a class="btn o block" ${ext(i.url)}>Lihat Katalog & Daftar Harga ↗</a><a class="btn o block" ${ext('https://www.google.com/maps/search/?api=1&query=Jl.+Uray+Bawadi+No.82a%2C+Sungai+Bangkong%2C+Pontianak+Kota%2C+Kalimantan+Barat+78113')}>📍 Lihat Lokasi</a>`:''}
+  ${i.id===3?`<button class="btn o block" type="button" onclick="const x=document.getElementById('abLocations');x.style.display=x.style.display==='none'?'grid':'none'">📍 Lihat Lokasi</button><div id="abLocations" style="display:none;gap:10px"><a class="btn o block" ${ext('https://maps.google.com/maps?cid=2917263280663741796')}>Sepakat II ↗</a><a class="btn o block" ${ext('https://maps.google.com/maps?cid=8876611101611200401')}>Putri Dara Hitam ↗</a><a class="btn o block" ${ext('https://maps.google.com/maps?cid=4541549405652233605')}>Desa Kapur ↗</a></div>`:''}
+  ${i.id===2?`<a class="btn o block" ${ext(harmonyMap)}>📍 Lihat Lokasi</a>`:''}
+  <a class="btn o block" target="_blank" rel="noopener" href="${waMsg}">${t('consult_wa')}</a>
+  </div>
+  ${i.ig?`<a class="partnerbox" ${ext(i.ig)}><div><b>Lihat Instagram ${i.n==='Rooftop Dinner'?'Hotel Harmony Inn':i.n} ↗</b><small>Kunjungi Instagram resmi ${i.n==='Rooftop Dinner'?'Hotel Harmony Inn':i.n} untuk melihat informasi dan koleksi terbaru.</small></div><span style="font-size:22px">↗</span></a>`:`<div class="partnerbox"><div><b>${i.n}</b><small>Instagram resmi belum tersedia.</small></div></div>`}
+  <p class="note">${t('not_shop')}</p></div></div>`},
 
 plan(){
  const f=S.form||{};

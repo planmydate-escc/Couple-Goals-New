@@ -373,18 +373,9 @@ detail(){
  <div class="stack"><button class="btn block" onclick="go('plan')">${g?t('add_plan'):t('plan_this')}</button>
  ${i.menuImg?`<a class="btn o block" href="${src(i.menuImg)}" target="_blank" rel="noopener">${t('view_pkg')}</a>`:''}
  ${i.id===3?`<a class="btn o block" ${ext(i.url)}>${t('view_price')}</a>`:''}
- ${i.id===5?`<a class="btn o block" ${ext(i.url)}>${t('view_catalog')}</a><a class="btn o block" ${ext(i.ig)}>${t('view_ig')}</a>`:''}
- ${i.id===6?`
- <a class="btn o block" ${ext(i.url)}>Lihat Katalog & Daftar Harga ↗</a>
- <a class="btn o block" ${ext(i.ig)}>Lihat Instagram Bloomcha ↗</a>
- <a class="btn o block" ${ext('https://www.google.com/maps/search/?api=1&query=Jl.+Uray+Bawadi+No.82a%2C+Sungai+Bangkong%2C+Pontianak+Kota%2C+Kalimantan+Barat+78113')}>📍 Lihat Lokasi</a>`:''}
- <a class="btn o block" target="_blank" rel="noopener" href="${waMsg}">${g?t('consult_pmd'):t('consult_wa')}</a></div>
- ${i.id===3?`<a class="partnerbox" ${ext(i.ig)}><div><b>Lihat Instagram AB Gaming ↗</b><small>Kunjungi Instagram resmi AB Gaming untuk melihat informasi dan penawaran terbaru.</small></div><span style="font-size:22px">↗</span></a>
- <div class="stack">
- <a class="btn o block" ${ext('https://maps.google.com/maps?cid=2917263280663741796')}>📍 Lokasi Sepakat II ↗</a>
- <a class="btn o block" ${ext('https://maps.google.com/maps?cid=8876611101611200401')}>📍 Lokasi Putri Dara Hitam ↗</a>
- <a class="btn o block" ${ext('https://maps.google.com/maps?cid=4541549405652233605')}>📍 Lokasi Desa Kapur ↗</a>
- </div>`:`<${i.url?'a '+ext(i.url):'div'} class="partnerbox"><div><b>${L(i.link)}${i.url?' ↗':''}</b><small>${L(i.box)}</small></div>${i.url?'<span style="font-size:22px">↗</span>':''}</${i.url?'a':'div'}>`}
+ ${i.id===5?`<a class="btn o block" ${ext(i.url)}>${t('view_catalog')}</a>`:''}
+ ${i.id===6?`<a class="btn o block" ${ext(i.url)}>Lihat Katalog & Daftar Harga ↗</a><a class="btn o block" ${ext('https://www.google.com/maps/search/?api=1&query=Jl.+Uray+Bawadi+No.82a%2C+Sungai+Bangkong%2C+Pontianak+Kota%2C+Kalimantan+Barat+78113')}>📍 Lihat Lokasi</a>`:''} <a class="btn o block" target="_blank" rel="noopener" href="${waMsg}">${g?t('consult_pmd'):t('consult_wa')}</a></div>
+ ${i.ig?`<a class="partnerbox" ${ext(i.ig)}><div><b>${i.n==='Bloomcha'?'Lihat Instagram Bloomcha':i.n==='AB Gaming'?'Lihat Instagram AB Gaming':i.n==='Oh Jemari'?'Lihat Instagram Oh Jemari':i.n==='Hotel Harmony Inn'?'Lihat Instagram Hotel Harmony Inn':'Lihat Instagram '+i.n} ↗</b><small>Kunjungi Instagram resmi ${i.n} untuk melihat informasi dan koleksi terbaru.</small></div><span style="font-size:22px">↗</span></a>`:`<div class="partnerbox"><div><b>${i.n}</b><small>Instagram resmi belum tersedia.</small></div></div>`}
  <p class="note">${t('not_shop')}</p></div></div>`},
 
 plan(){

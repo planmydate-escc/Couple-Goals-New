@@ -4,6 +4,15 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Plan My Date</title>
+<meta name="description" content="Rencanakan kencan lebih baik di Pontianak. Temukan tempat, aktivitas, dan hadiah, lengkap dengan perkiraan budget.">
+<meta name="theme-color" content="#e5628a">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Plan My Date: Rencanakan Kencan, Ciptakan Kenangan">
+<meta property="og:description" content="Temukan tempat, aktivitas, dan hadiah untuk momen spesialmu di Pontianak.">
+<!-- PENTING: og:image harus URL lengkap (https://...) agar muncul di preview WhatsApp/Instagram. Ganti setelah web di-hosting. -->
+<meta property="og:image" content="foto-senja.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%92%97%3C/text%3E%3C/svg%3E">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Pinyon+Script&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#fffafa;--card:#fff;--soft:#ffeaf1;--pink:#e5628a;--pink2:#ffc4d6;--ink:#6a2440;--mut:#94687a;--line:#fbe0e8;--cream:#fff7ee;--gold:#b27d33;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
@@ -131,7 +140,7 @@ form{grid-template-columns:1fr}
 /* ====== PENGATURAN ====== */
 // Isi nomor WhatsApp dengan format internasional tanpa + atau 0 di depan, contoh: '6281234567890'
 // Jika dikosongkan, tombol WhatsApp tetap membuka WhatsApp dan pengguna memilih kontaknya sendiri.
-const WA_NUMBER='';
+const WA_NUMBER='0895357281070';
 const WA='https://wa.me/'+WA_NUMBER+'?text=';
 const OJ_CATALOG='https://akukiii.my.canva.site/jemari-catalogue';
 const OJ_IG='https://www.instagram.com/oh.jemari/';
@@ -165,6 +174,8 @@ not_shop:'Plan My Date bukan toko. Kami merekomendasikan, merencanakan, dan memb
 pkg_h:'Paket Romantic Dinner',pkg_note:'Setting meja romantis, menu dinner spesial, dekorasi romantis, dan tempat, sesuai poster paket.',
 ala_h:'Menu À la Carte',ala_note:'Perkiraan harga per hidangan.',veg_h:'Menu Vegetarian',veg_note:'Perkiraan harga per hidangan. Konfirmasi ketersediaan ke restoran.',
 view_pkg:'Lihat Paket Romantic Dinner ↗',view_price:'Lihat Daftar Harga ↗',view_ig:'Lihat Instagram ↗',view_catalog:'Lihat Katalog ↗',
+view_catprice:'Lihat Katalog & Daftar Harga ↗',view_loc:'📍 Lihat Lokasi',
+ig_title:'Lihat Instagram {n} ↗',ig_sub:'Kunjungi Instagram resmi {n} untuk melihat informasi dan koleksi terbaru.',ig_none:'Instagram resmi belum tersedia.',
 pf_h:'Rencanakan Kencan Sempurnamu',pf_p:'Ceritakan seleramu. Kami pilihkan satu rekomendasi kencan sesuai budgetmu.',
 f_name:'Nama',f_name_ph:'Namamu',f_ppl:'Jumlah orang',f_occ:'Acara',f_loc:'Lokasi',f_bud:'Budget',f_type:'Jenis kencan',f_gift:'Preferensi hadiah',f_gift_ph:'mis. akrilik custom, tanpa hadiah',f_req:'Permintaan khusus',f_req_ph:'Alergi, kejutan, atau hal lain yang perlu kami tahu',f_submit:'Lihat Rekomendasiku',
 t_dining:'Makan',t_activity:'Aktivitas',t_gift:'Hadiah',t_combo:'Kombinasi',
@@ -186,7 +197,8 @@ role_gift:'Mitra Hadiah',role_game:'Mitra Gaming',role_rest:'Mitra Restoran',rol
 ab_h:'Tentang',ab_p:'Plan My Date adalah layanan perencanaan kencan lokal untuk pasangan di Pontianak. Kami merekomendasikan tempat, aktivitas, dan hadiah, menampilkan perkiraan budget, dan membantu mengaturnya lewat WhatsApp.',
 tg_cafe:'Kafe',tg_popular:'Populer',tg_outdoor:'Outdoor',tg_park:'Taman',tg_flowers:'Bunga',tg_restaurant:'Restoran',tg_rooftop:'Rooftop',tg_veg:'Menu Vegetarian',tg_gaming:'Gaming',tg_indoor:'Indoor',tg_gift:'Hadiah',tg_personalized:'Personalisasi',
 kind_date:'Kencan',kind_gift:'Hadiah',fav:'Favorit',menu:'Menu',
-hr:'jam',g_none:'Tanpa hadiah',g_acrylic:'Akrilik custom (Oh Jemari)',
+hr:'jam',g_none:'Tanpa hadiah',g_acrylic:'Akrilik custom (Oh Jemari)',g_flowers:'Bunga (Bloomcha)',g_both:'Akrilik + Bunga',r_flowers:'Bunga',r_when:'Jadwal',
+n_favs:'Favorit',favs_h:'Favoritku',favs_p:'Tempat dan hadiah yang kamu simpan. Kirim ke kami lewat WhatsApp supaya kami bantu merencanakannya.',favs_empty:'Belum ada favorit. Tekan ♡ pada kartu untuk menyimpannya.',favs_send:'Kirim Favorit via WhatsApp',favs_wa:'Halo Plan My Date, ini favorit saya: {l}. Tolong bantu rencanakan.',fav_add:'♡ Simpan ke favorit',fav_saved:'♥ Tersimpan di favorit',f_date:'Tanggal',f_time:'Jam',
 },
 en:{
 n_home:'Home',n_explore:'Explore',n_plan:'Plan Your Date',n_partners:'Partners',n_about:'About',
@@ -212,6 +224,8 @@ not_shop:'Plan My Date is not a shop. We recommend, plan, and assist.',
 pkg_h:'Romantic Dinner Package',pkg_note:'Romantic table setup, special dinner menu, romantic decoration, and venue, according to the package poster.',
 ala_h:'À la Carte Menu',ala_note:'Estimated price per dish.',veg_h:'Vegetarian Menu',veg_note:'Estimated price per dish. Confirm availability with the restaurant.',
 view_pkg:'View Romantic Dinner Packages ↗',view_price:'View Price List ↗',view_ig:'View Instagram ↗',view_catalog:'View Catalog ↗',
+view_catprice:'View Catalog & Price List ↗',view_loc:'📍 View Location',
+ig_title:'View {n} Instagram ↗',ig_sub:'Visit the official {n} Instagram for the latest info and collection.',ig_none:'Official Instagram is not available yet.',
 pf_h:"Let's Plan Your Perfect Date",pf_p:"Tell us what you like. We'll pick one date recommendation that fits your budget.",
 f_name:'Name',f_name_ph:'Your name',f_ppl:'Number of people',f_occ:'Occasion',f_loc:'Location',f_bud:'Budget',f_type:'Preferred date type',f_gift:'Gift preference',f_gift_ph:'e.g. custom acrylic, no gift',f_req:'Special request',f_req_ph:'Allergies, surprises, anything we should know',f_submit:'Get My Recommendation',
 t_dining:'Dining',t_activity:'Activity',t_gift:'Gift',t_combo:'Combination',
@@ -233,7 +247,8 @@ role_gift:'Gift Partner',role_game:'Gaming Partner',role_rest:'Restaurant Partne
 ab_h:'About',ab_p:'Plan My Date is a local date-planning service for couples in Pontianak. We recommend places, activities, and gifts, show estimated budgets, and help arrange everything through WhatsApp.',
 tg_cafe:'Café',tg_popular:'Popular',tg_outdoor:'Outdoor',tg_park:'Park',tg_flowers:'Flowers',tg_restaurant:'Restaurant',tg_rooftop:'Rooftop',tg_veg:'Vegetarian Menu',tg_gaming:'Gaming',tg_indoor:'Indoor',tg_gift:'Gift',tg_personalized:'Personalized',
 kind_date:'Date',kind_gift:'Gift',fav:'Favorite',menu:'Menu',
-hr:'hour',g_none:'No gift',g_acrylic:'Custom acrylic (Oh Jemari)',
+hr:'hour',g_none:'No gift',g_acrylic:'Custom acrylic (Oh Jemari)',g_flowers:'Flowers (Bloomcha)',g_both:'Acrylic + Flowers',r_flowers:'Flowers',r_when:'Schedule',
+n_favs:'Favorites',favs_h:'My Favorites',favs_p:'Places and gifts you saved. Send them to us on WhatsApp and we will help plan it.',favs_empty:'No favorites yet. Tap ♡ on a card to save it.',favs_send:'Send Favorites via WhatsApp',favs_wa:'Hi Plan My Date, these are my favorites: {l}. Please help me plan.',fav_add:'♡ Save to favorites',fav_saved:'♥ Saved to favorites',f_date:'Date',f_time:'Time',
 }};
 
 /* ====== DATA (hanya 3 mitra resmi) ====== */
@@ -249,7 +264,7 @@ const D=[
  note:{id:'Paket Romantic Dinner untuk berdua. Tersedia juga pilihan à la carte.',en:'Romantic Dinner package for two. À la carte options are available.'},
  ala:'Rp30.000–Rp120.000',veg:'Rp35.000–Rp70.000',
  desc:{id:'Nikmati pengalaman makan malam romantis di rooftop Hotel Harmony Inn, Pontianak. Pilih paket Romantic Dinner atau pesan à la carte. Menu vegetarian juga tersedia.',en:'Enjoy a romantic rooftop dining experience at Hotel Harmony Inn, Pontianak. Choose a Romantic Dinner package or order à la carte. Vegetarian menu options are also available.'}},
-{id:3,t:'date',n:'PS Gaming Date',by:'AB Gaming',img:'AB Gaming produk.jpg',url:AB_SITE,ig:AB_IG,loc:'Pontianak',a:13,b:50,cat:'activity',unit:'per_hour',tags:['gaming','indoor'],e:'🎮',bg:'#d8c7f0,#f0b6d0',dur:{id:'1 jam',en:'1 hour'},occ:['casual'],
+{id:3,t:'date',n:'PS Gaming Date',by:'AB Gaming',img:'AB Gaming produk.jpg',url:AB_SITE,ig:AB_IG,loc:'Pontianak',a:13,b:50,cat:'activity',unit:'per_hour',tags:['gaming','indoor'],e:'🎮',bg:'#d8c7f0,#f0b6d0',dur:'-',occ:['casual'],
  link:{id:'Lihat Daftar Harga',en:'View Price List'},
  box:{id:'Membuka daftar harga resmi mitra. Bingung memilih paket? Tanya kami lewat WhatsApp.',en:"Opens the partner's official price list. Not sure which package? Ask us on WhatsApp."},
  note:{id:'Harga sewa per jam. Harga akhir tergantung paket gaming yang dipilih.',en:'Rental price per hour. Final price depends on the selected gaming package.'},
@@ -265,7 +280,8 @@ const D=[
  note:{id:'Harga akhir bisa berbeda tergantung desain, ukuran, dan permintaan custom.',en:'Final price may vary depending on design, size, and custom request.'},
  desc:{id:'Frame akrilik yang unik dan bermakna untuk seseorang yang spesial. Cocok untuk anniversary, ulang tahun, dan momen spesial lainnya.',en:'A unique and meaningful acrylic frame for someone special. Perfect for anniversaries, birthdays, and other special moments.'}},
 {id:6,t:'gift',n:'Bloomcha',by:'Bloomcha',img:'bloomcha 1.jpeg',detailImg:'bloomcha 2.jpeg',
- url:'https://www.canva.com/design/DAGK6xlMxgc/WQPP2UiLdpqtOr8cowYL8Q/edit',
+ /* Link Canva mode lihat saja (view). Jika tidak terbuka, ambil dari Canva: Share > Anyone with the link > Can view */
+ url:'https://www.canva.com/design/DAGK6xlMxgc/WQPP2UiLdpqtOr8cowYL8Q/view',
  ig:'https://www.instagram.com/bloomcha.id/',
  loc:'Pontianak',a:25,b:750,cat:'flowers',unit:'',
  tags:['gift','flowers'],e:'💐',bg:'#fcd5dc,#e9a1b4',
@@ -296,6 +312,11 @@ const rp=k=>'Rp'+Math.round(k*1000).toLocaleString('id-ID');
 const rng=(a,b)=>a===b?rp(a):rp(a)+' – '+rp(b);
 const wa=txt=>WA+encodeURIComponent(txt);
 const ext=u=>`href="${u}" target="_blank" rel="noopener"`;
+try{const fv=JSON.parse(localStorage.getItem('pmd_fav')||'{}');if(fv&&typeof fv==='object')S.fav=fv}catch(e){}
+const favCount=()=>Object.keys(S.fav).filter(k=>S.fav[k]).length;
+function toggleFav(id){if(S.fav[id])delete S.fav[id];else S.fav[id]=true;try{localStorage.setItem('pmd_fav',JSON.stringify(S.fav))}catch(e){}render()}
+const today=()=>{const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')};
+const fmtDate=d=>{try{return new Date(d+'T00:00:00').toLocaleDateString(S.lang==='id'?'id-ID':'en-GB',{day:'numeric',month:'long',year:'numeric'})}catch(e){return d}};
 function toggleLang(){S.lang=S.lang==='id'?'en':'id';try{localStorage.setItem('pmd_lang',S.lang)}catch(e){}render()}
 function go(v,x){S.view=v;S.sel=x==null?null:x;document.getElementById('nav').classList.remove('open');render();scrollTo(0,0)}
 const key=(e,fn)=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();fn()}};
@@ -306,7 +327,7 @@ function card(i){
  const g=i.t==='gift';
  return `<article class="card item" role="link" tabindex="0" onclick="go('detail',${i.id})" onkeydown="key(event,()=>go('detail',${i.id}))">
  <div class="img" style="background:linear-gradient(135deg,${i.bg})">${i.img?`<img src="${src(i.img)}" alt="${esc(i.n)}" onerror="this.outerHTML='${i.e}'">`:i.e}
- <button class="heart" aria-label="${t('fav')}" onclick="event.stopPropagation();S.fav[${i.id}]=!S.fav[${i.id}];render()">${S.fav[i.id]?'♥':'♡'}</button></div>
+ <button class="heart" aria-label="${t('fav')}" aria-pressed="${S.fav[i.id]?'true':'false'}" onclick="event.stopPropagation();toggleFav(${i.id})">${S.fav[i.id]?'♥':'♡'}</button></div>
  <div class="body"><h3>${i.n}</h3><div class="loc">${i.by?t('by')+' '+i.by+' · ':''}📍 ${i.loc}</div>
  <div class="est"><span class="pill ${g?'p-prod':'p-est'}">${g?t('est_price'):t('est_budget')}</span><b>${rng(i.a,i.b)} ${i.unit?t(i.unit):''}</b></div>
  ${i.tags.map(x=>`<span class="tag">${t('tg_'+x)}</span>`).join('')}</div></article>`}
@@ -315,8 +336,8 @@ function premium(){
  const li=a=>a.map(x=>`<li>${t(x)}</li>`).join('');
  return `<h2>${t('pr_h')}</h2><p style="color:var(--mut);margin-top:-8px">${t('pr_p')}</p><div class="grid g3 tiers">
  <div class="card tier"><h3>${t('pr1')}</h3><span class="pill p-fee" style="align-self:flex-start">${t('pr_free')}</span><div class="price">Rp0</div><ul>${li(['pr1a','pr1b','pr1c','pr1d'])}</ul><button class="btn o block" onclick="go('explore')">${t('pr1cta')}</button></div>
- <div class="card tier hot"><h3>${t('pr2')}</h3><span class="pill p-fee" style="align-self:flex-start">${t('pr_fee')}</span><div class="price" style="display:flex;align-items:center;gap:10px;flex-wrap:wrap"><span style="font-size:18px;color:#999;text-decoration:line-through">Rp49.999</span><span style="color:var(--pink)">Rp29.999</span></div><ul>${li(['pr2a','pr2b','pr2c','pr2d'])}</ul><a class="btn block" href="${wa(t('pr2wa'))}" target="_blank" rel="noopener">${t('pr2cta')}</a></div>
- <div class="card tier"><h3>${t('pr3')}</h3><span class="pill p-fee" style="align-self:flex-start">${t('pr_fee')}</span><div class="price" style="display:flex;align-items:center;gap:10px;flex-wrap:wrap"><span style="font-size:18px;color:#999;text-decoration:line-through">Rp99.999</span><span style="color:var(--pink)">Rp69.999</span></div><ul>${li(['pr3a','pr3b','pr3c','pr3d','pr3e'])}</ul><a class="btn o block" href="${wa(t('pr3wa'))}" target="_blank" rel="noopener">${t('pr3cta')}</a></div></div>
+ <div class="card tier hot"><h3>${t('pr2')}</h3><span class="pill p-fee" style="align-self:flex-start">${t('pr_fee')}</span><div class="price" style="display:flex;align-items:center;gap:10px;flex-wrap:wrap"><span style="font-size:18px;color:var(--mut);text-decoration:line-through">Rp49.999</span><span style="color:var(--pink)">Rp29.999</span></div><ul>${li(['pr2a','pr2b','pr2c','pr2d'])}</ul><a class="btn block" href="${wa(t('pr2wa'))}" target="_blank" rel="noopener">${t('pr2cta')}</a></div>
+ <div class="card tier"><h3>${t('pr3')}</h3><span class="pill p-fee" style="align-self:flex-start">${t('pr_fee')}</span><div class="price" style="display:flex;align-items:center;gap:10px;flex-wrap:wrap"><span style="font-size:18px;color:var(--mut);text-decoration:line-through">Rp99.999</span><span style="color:var(--pink)">Rp69.999</span></div><ul>${li(['pr3a','pr3b','pr3c','pr3d','pr3e'])}</ul><a class="btn o block" href="${wa(t('pr3wa'))}" target="_blank" rel="noopener">${t('pr3cta')}</a></div></div>
  <p class="note">${t('pr_note')}</p>`}
 
 /* Susun SATU rekomendasi sesuai budget, jenis, dan jumlah orang */
@@ -327,12 +348,40 @@ function buildPlan(f){
  const dinner={em:'🍽️',title:t('r_dinner'),sub:'Rooftop Dinner · Hotel Harmony Inn · '+(pkg?`${t('r_pkg')} ${couples} ${t('r_pkg2')}`:`${t('r_ala')} ${ppl} ${t('r_ala2')}`),r:pkg?[350*couples,500*couples]:[30*ppl,120*ppl],g:false};
  const gift={em:'🎁',title:t('r_gift'),sub:'Custom Acrylic · Oh Jemari',r:[36,80],g:true};
  const game={em:'🎮',title:t('r_game'),sub:'PS Gaming · AB Gaming '+t('per_hour'),r:[13,50],g:false};
+ const flowers={em:'💐',title:t('r_flowers'),sub:'Bloomcha',r:[25,750],g:true};
  const type=f.type||'dining';
- const main=type==='activity'?game:type==='gift'?gift:dinner;
- const list=[main];
- if(type!=='gift'&&f.gift==='acrylic')list.push(gift);
+ const gs=f.gift==='flowers'?[flowers]:f.gift==='both'?[gift,flowers]:f.gift==='acrylic'?[gift]:[];
+ const list=type==='activity'?[game,...gs]:type==='gift'?(gs.length?gs:[gift]):[dinner,...gs];
  const a=list.reduce((s,x)=>s+x.r[0],0),b=list.reduce((s,x)=>s+x.r[1],0);
  return{list,a,b,over:a>bmax,ppl}}
+
+/* Pesan WhatsApp lengkap untuk tim Plan My Date (selalu Bahasa Indonesia) */
+function waPlanMsg(f){
+ const keep=S.lang;S.lang='id';
+ try{
+  const I=T.id,plan=buildPlan(f);
+  const when=[f.date?fmtDate(f.date):'',f.time||''].filter(Boolean).join(' pukul ');
+  const items=plan.list.map(x=>`• ${x.title}: ${x.sub} (${rng(x.r[0],x.r[1])})`).join('\n');
+  const lines=[
+   `Halo Plan My Date, saya ${f.name||''}. Mohon bantu rencanakan kencan saya:`,
+   '',
+   `Acara: ${I['o_'+(f.occ||'casual')]}`,
+   `Jumlah orang: ${plan.ppl}`,
+   `Lokasi: ${f.loc||'Pontianak'}`,
+   `Budget: ${I['b'+(f.bud||2)]}`,
+   `Jenis kencan: ${I['t_'+(f.type||'dining')]}`,
+   `Hadiah: ${I['g_'+(f.gift||'none')]}`,
+   when?`Jadwal: ${when}`:'Jadwal: belum ditentukan',
+   '',
+   'Rekomendasi dari web:',
+   items,
+   '',
+   `Perkiraan total: ${rng(plan.a,plan.b)}`,
+   f.req?`Permintaan khusus: ${f.req}`:''
+  ];
+  return lines.filter((l,i,a)=>!(l===''&&(i===a.length-1||a[i-1]===''))).join('\n').trim();
+ }finally{S.lang=keep}
+}
 
 const V={
 home(){return `<section class="hero"><div><div class="script" style="font-size:24px">${t('h_tag')}</div><h1>${t('h_title')}</h1><p>${t('h_p')}</p><button class="btn" onclick="go('plan')">${t('h_cta')}</button></div>
@@ -345,13 +394,13 @@ home(){return `<section class="hero"><div><div class="script" style="font-size:2
  <h2>${t('partners_h')}</h2><div class="partners">${P.map(p=>`<button class="pt" onclick="go('partners')"><div class="av">${avatar(p)}</div><b>${p.n}</b><small>${t(p.role)}</small></button>`).join('')}</div>`},
 
 explore(){
- const l=D.filter(i=>(S.tab==='all'||i.t===S.tab)&&(!S.cat||i.cat===S.cat)&&(!S.bud||(S.bud==='1'?i.a<100:S.bud==='2'?(i.a<300&&i.b>=100):S.bud==='3'?(i.a<500&&i.b>=300):i.b>=500)));
+ const l=D.filter(i=>(S.tab==='all'||i.t===S.tab)&&(!S.cat||i.cat===S.cat)&&(!S.occ||i.occ.includes(S.occ))&&(!S.bud||(S.bud==='1'?i.a<100:S.bud==='2'?(i.a<300&&i.b>=100):S.bud==='3'?(i.a<500&&i.b>=300):i.b>=500)));
  return `<h1 style="font-size:46px">${t('ex_h')}</h1><p style="color:var(--mut)">${t('ex_p')}</p>
  <div class="tabs">${['all','date','gift'].map(x=>`<button class="tab ${S.tab===x?'on':''}" onclick="S.tab='${x}';render()">${t('tab_'+x)}</button>`).join('')}</div>
  <div class="filters"><select aria-label="${t('f_loc')}"><option>Pontianak</option></select>
  <select aria-label="${t('f_bud')}" onchange="S.bud=this.value;render()"><option value="">${t('any_bud')}</option>${[1,2,3,4].map(n=>`<option value="${n}" ${S.bud==n?'selected':''}>${t('b'+n)}</option>`).join('')}</select>
  <select aria-label="Category" onchange="S.cat=this.value;render()"><option value="">${t('any_cat')}</option>${['dining','activity','outdoor','personalized','flowers'].map(c=>`<option value="${c}" ${S.cat===c?'selected':''}>${t('c_'+c)}</option>`).join('')}</select>
- <select aria-label="${t('f_occ')}"><option>${t('any_occ')}</option>${['anniv','birthday','first'].map(o=>`<option>${t('o_'+o)}</option>`).join('')}</select></div>
+ <select aria-label="${t('f_occ')}" onchange="S.occ=this.value;render()"><option value="">${t('any_occ')}</option>${['casual','anniv','birthday','first','surprise'].map(o=>`<option value="${o}" ${S.occ===o?'selected':''}>${t('o_'+o)}</option>`).join('')}</select></div>
  <p class="note">${t('ex_note')}</p>
  <div class="grid g3" style="margin-top:14px">${l.map(card).join('')||`<p>${t('no_match')}</p>`}</div>`},
 
@@ -360,6 +409,7 @@ detail(){
   const im=i.detailImg||i.img;
   const waMsg=wa((S.lang==='id'?'Halo Plan My Date, saya tertarik dengan ':'Hi Plan My Date, I am interested in ')+i.n);
   const harmonyMap='https://www.google.com/maps/place/Hotel+Harmony+In+%26+Karaoke/@-0.0925676,109.3445931,767m/data=!3m1!1e3!4m9!3m8!1s0x2e1d59f0f17b4697:0xa64e6d9d09e62adf!5m2!4m1!1i2!8m2!3d-0.092573!4d109.347168!16s%2Fg%2F1pztq3wq4?entry=ttu';
+  const igName=i.id===2?'Hotel Harmony Inn':i.n;
   return `<button class="loc" style="cursor:pointer;background:none;border:0;color:var(--mut);padding:0;font-size:14px" onclick="go('explore')">${t('back')}</button>
   <div class="detail"><div class="img" style="background:linear-gradient(135deg,${i.bg})">${im?`<img src="${src(im)}" alt="${esc(i.n)}" onerror="this.outerHTML='${i.e}'">`:i.e}</div><div>
   <span class="tag">${g?t('kind_gift'):t('kind_date')}</span><span class="tag">${t('c_'+i.cat)}</span>
@@ -373,15 +423,16 @@ detail(){
   <div style="padding-top:14px"><b>${t('veg_h')}</b><div style="font-weight:600;margin-top:4px">${i.veg}</div><small style="color:var(--mut)">${t('veg_note')}</small></div>`:''}
   <div class="stack">
   <button class="btn block" onclick="go('plan')">${g?t('add_plan'):t('plan_this')}</button>
+  <button class="btn o block" onclick="toggleFav(${i.id})">${S.fav[i.id]?t('fav_saved'):t('fav_add')}</button>
   ${i.menuImg?`<a class="btn o block" href="${src(i.menuImg)}" target="_blank" rel="noopener">${t('view_pkg')}</a>`:''}
   ${i.id===3?`<a class="btn o block" ${ext(i.url)}>${t('view_price')}</a>`:''}
   ${i.id===5?`<a class="btn o block" ${ext(i.url)}>${t('view_catalog')}</a>`:''}
-  ${i.id===6?`<a class="btn o block" ${ext(i.url)}>Lihat Katalog & Daftar Harga ↗</a><a class="btn o block" ${ext('https://www.google.com/maps/search/?api=1&query=Jl.+Uray+Bawadi+No.82a%2C+Sungai+Bangkong%2C+Pontianak+Kota%2C+Kalimantan+Barat+78113')}>📍 Lihat Lokasi</a>`:''}
-  ${i.id===3?`<button class="btn o block" type="button" onclick="const x=document.getElementById('abLocations');x.style.display=x.style.display==='none'?'grid':'none'">📍 Lihat Lokasi</button><div id="abLocations" style="display:none;gap:10px"><a class="btn o block" ${ext('https://maps.google.com/maps?cid=2917263280663741796')}>Sepakat II ↗</a><a class="btn o block" ${ext('https://maps.google.com/maps?cid=8876611101611200401')}>Putri Dara Hitam ↗</a><a class="btn o block" ${ext('https://maps.google.com/maps?cid=4541549405652233605')}>Desa Kapur ↗</a></div>`:''}
-  ${i.id===2?`<a class="btn o block" ${ext(harmonyMap)}>📍 Lihat Lokasi</a>`:''}
+  ${i.id===6?`<a class="btn o block" ${ext(i.url)}>${t('view_catprice')}</a><a class="btn o block" ${ext('https://www.google.com/maps/search/?api=1&query=Jl.+Uray+Bawadi+No.82a%2C+Sungai+Bangkong%2C+Pontianak+Kota%2C+Kalimantan+Barat+78113')}>${t('view_loc')}</a>`:''}
+  ${i.id===3?`<button class="btn o block" type="button" onclick="const x=document.getElementById('abLocations');x.style.display=x.style.display==='none'?'grid':'none'">${t('view_loc')}</button><div id="abLocations" style="display:none;gap:10px"><a class="btn o block" ${ext('https://maps.google.com/maps?cid=2917263280663741796')}>Sepakat II ↗</a><a class="btn o block" ${ext('https://maps.google.com/maps?cid=8876611101611200401')}>Putri Dara Hitam ↗</a><a class="btn o block" ${ext('https://maps.google.com/maps?cid=4541549405652233605')}>Desa Kapur ↗</a></div>`:''}
+  ${i.id===2?`<a class="btn o block" ${ext(harmonyMap)}>${t('view_loc')}</a>`:''}
   <a class="btn o block" target="_blank" rel="noopener" href="${waMsg}">${t('consult_wa')}</a>
   </div>
-  ${i.ig?`<a class="partnerbox" ${ext(i.ig)}><div><b>Lihat Instagram ${i.n==='Rooftop Dinner'?'Hotel Harmony Inn':i.n} ↗</b><small>Kunjungi Instagram resmi ${i.n==='Rooftop Dinner'?'Hotel Harmony Inn':i.n} untuk melihat informasi dan koleksi terbaru.</small></div><span style="font-size:22px">↗</span></a>`:`<div class="partnerbox"><div><b>${i.n}</b><small>Instagram resmi belum tersedia.</small></div></div>`}
+  ${i.ig?`<a class="partnerbox" ${ext(i.ig)}><div><b>${t('ig_title').replace('{n}',esc(igName))}</b><small>${t('ig_sub').replace('{n}',esc(igName))}</small></div><span style="font-size:22px">↗</span></a>`:`<div class="partnerbox"><div><b>${i.n}</b><small>${t('ig_none')}</small></div></div>`}
   <p class="note">${t('not_shop')}</p></div></div>`},
 
 plan(){
@@ -394,22 +445,32 @@ plan(){
  <label>${t('f_loc')}<select name="loc"><option>Pontianak</option></select></label>
  <label>${t('f_bud')}<select name="bud">${[1,2,3,4].map(n=>`<option value="${n}" ${(f.bud||'2')==n?'selected':''}>${t('b'+n)}</option>`).join('')}</select></label>
  <label>${t('f_type')}<select name="type">${['dining','activity','gift'].map(o=>`<option value="${o}" ${(f.type||'dining')===o?'selected':''}>${t('t_'+o)}</option>`).join('')}</select></label>
- <label class="full">${t('f_gift')}<select name="gift"><option value="none" ${f.gift!=='acrylic'?'selected':''}>${t('g_none')}</option><option value="acrylic" ${f.gift==='acrylic'?'selected':''}>${t('g_acrylic')}</option></select></label>
+ <label>${t('f_date')}<input name="date" type="date" min="${today()}" value="${esc(f.date||'')}"></label>
+ <label>${t('f_time')}<input name="time" type="time" value="${esc(f.time||'')}"></label>
+ <label class="full">${t('f_gift')}<select name="gift">${['none','acrylic','flowers','both'].map(o=>`<option value="${o}" ${(f.gift||'none')===o?'selected':''}>${t('g_'+o)}</option>`).join('')}</select></label>
  <label class="full">${t('f_req')}<textarea name="req" rows="3" maxlength="300" placeholder="${t('f_req_ph')}">${esc(f.req||'')}</textarea></label>
  <button class="btn full" type="button" onclick="submitPlan(this.form)">${t('f_submit')}</button></form></div>`},
 
 rec(){
  const f=S.form||{},n=esc(f.name||'You'),plan=buildPlan(f);
  const total=rng(plan.a,plan.b);
- const msg=t('r_wa').replace('{n}',f.name||'').replace('{t}',total)+(f.req?` (${f.req})`:'');
+ const when=[f.date?fmtDate(f.date):'',f.time||''].filter(Boolean).join(' ');
+ const msg=waPlanMsg(f);
  return `<h1 style="font-size:46px;text-align:center">${t('r_h')} ${n}!</h1>
- <p style="text-align:center;color:var(--mut)">${t('o_'+(f.occ||'casual'))} · ${plan.ppl} ${t('r_people')} · ${esc(f.loc||'Pontianak')} · ${t('b'+(f.bud||2))}</p>
+ <p style="text-align:center;color:var(--mut)">${t('o_'+(f.occ||'casual'))} · ${plan.ppl} ${t('r_people')} · ${esc(f.loc||'Pontianak')} · ${t('b'+(f.bud||2))}${when?' · '+esc(when):''}</p>
  <div class="card plan" style="max-width:720px;margin:20px auto">
  ${plan.over?`<p class="warn" style="margin-top:16px">${t('r_over')}</p>`:''}
  ${plan.list.map((x,k)=>`<div class="row ${plan.list.length===1&&k===0?'last':''}"><div class="l"><div class="em">${x.em}</div><div><b>${x.title}</b><br><small>${x.sub}</small></div></div><div style="text-align:right"><span class="pill ${x.g?'p-prod':'p-est'}">${x.g?t('est_price'):t('est_budget')}</span><br><b>${rng(x.r[0],x.r[1])}</b></div></div>`).join('')}
  ${plan.list.length>1?`<div class="total"><span>${t('r_total')}</span><span>${total}</span></div>`:''}
  <p class="note" style="margin:0 0 14px">${t('r_paid')}</p>
  <div class="stack" style="margin-bottom:20px"><button class="btn block" onclick="go('premium')">${t('plan_this')}</button><a class="btn o block" target="_blank" rel="noopener" href="${wa(msg)}">${t('consult_wa')}</a></div></div>`+premium()},
+
+favs(){
+ const l=D.filter(i=>S.fav[i.id]);
+ const names=l.map(i=>i.n+(i.by?' ('+i.by+')':'')).join(', ');
+ return `<h1 style="font-size:46px">${t('favs_h')}</h1><p style="color:var(--mut)">${t('favs_p')}</p>`+(l.length
+  ?`<div class="grid g3" style="margin-top:14px">${l.map(card).join('')}</div><div class="stack" style="max-width:420px;margin-top:20px"><a class="btn block" target="_blank" rel="noopener" href="${wa(t('favs_wa').replace('{l}',names))}">${t('favs_send')}</a></div>`
+  :`<p style="margin:24px 0">${t('favs_empty')}</p><button class="btn" onclick="go('explore')">${t('ex_h')}</button>`)},
 
 premium(){return premium()},
 
@@ -430,7 +491,7 @@ function render(){
  const k=S.view,nk=k==='detail'?'explore':(k==='rec'||k==='premium')?'plan':k;
  document.documentElement.lang=S.lang;
  document.getElementById('langbtn').textContent=S.lang==='id'?'EN':'ID';
- document.getElementById('nav').innerHTML=['home','explore','plan','partners','about'].map(n=>`<button class="${nk===n?'on':''}" ${nk===n?'aria-current="page"':''} onclick="go('${n}')">${t('n_'+n)}</button>`).join('');
+ document.getElementById('nav').innerHTML=['home','explore','favs','plan','partners','about'].map(n=>`<button class="${nk===n?'on':''}" ${nk===n?'aria-current="page"':''} onclick="go('${n}')">${t('n_'+n)}${n==='favs'&&favCount()?' ('+favCount()+')':''}</button>`).join('');
  document.getElementById('app').innerHTML=V[k]();
 }
 render();

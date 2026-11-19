@@ -69,6 +69,11 @@ h2{font-size:32px;margin:44px 0 16px}
 .tab{padding:8px 24px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink)}
 .tab.on{background:var(--pink);color:#fff;border-color:var(--pink)}
 .filters{display:flex;gap:10px;flex-wrap:wrap}
+.category-label{font-size:14px;font-weight:600;margin:22px 0 10px}
+.category-chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.category-chip{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:9px 16px;font-size:13px;font-weight:600;white-space:nowrap}
+.category-chip.on{background:var(--pink);border-color:var(--pink);color:#fff}
+.category-chip:focus-visible{outline:2px solid var(--pink);outline-offset:2px}
 select,input,textarea{font:inherit;padding:10px 14px;border-radius:14px;border:1px solid var(--line);background:var(--card);color:var(--ink);width:auto}
 .item{cursor:pointer}
 .img{height:150px;display:grid;place-items:center;font-size:48px;position:relative}
@@ -87,6 +92,21 @@ select,input,textarea{font:inherit;padding:10px 14px;border-radius:14px;border:1
 .note{font-size:13px;color:var(--mut);margin-top:14px}
 .warn{background:var(--cream);border:1px solid var(--gold);color:var(--ink);border-radius:14px;padding:10px 14px;font-size:13px;margin:0 0 14px}
 .detail{display:grid;grid-template-columns:1.1fr .9fr;gap:30px}
+.experience-hero{display:block;margin-top:18px;max-width:640px}
+.experience-photo{height:320px;border-radius:22px;overflow:hidden;background:var(--soft)}
+.experience-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.venue-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:16px}
+.venue-card{background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden;cursor:pointer;text-align:left;color:inherit;padding:0;font:inherit;transition:transform .2s,border-color .2s}
+.venue-card:hover{transform:translateY(-3px);border-color:var(--pink)}
+.venue-card img{display:block;width:100%;height:180px;object-fit:cover}
+.venue-copy{padding:16px}
+.venue-copy h3{font-size:25px;margin:0 0 4px}
+.venue-copy p{margin:0;color:var(--mut);font-size:13px}
+.price-kind{display:block;margin-top:12px;color:var(--ink);font-size:17px;font-weight:700}
+.price-sub{display:block;margin-top:2px;color:var(--mut);font-size:12px}
+.experience-note{color:var(--mut);font-size:13px;margin-top:22px}
+@media(max-width:760px){.experience-hero{grid-template-columns:1fr}.experience-photo{height:240px}.venue-grid{grid-template-columns:1fr 1fr}.venue-card img{height:130px}}
+@media(max-width:420px){.venue-grid{grid-template-columns:1fr}}
 .detail .img{height:380px;border-radius:24px;font-size:110px}
 .badge{display:inline-block;background:var(--soft);color:var(--ink);padding:3px 12px;border-radius:999px;font-size:12px;font-weight:600}
 .facts{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:16px 0;font-size:13px}
@@ -176,6 +196,10 @@ f1:'Temukan',f1s:'Jelajahi ide kencan',f2:'Pilih',f2s:'Pilih kencan atau hadiah'
 help:'Apa yang bisa kami bantu?',pk_date:'Kencan',pk_date_s:'Cari tempat dan aktivitas untuk kencanmu.',pk_gift:'Hadiah',pk_gift_s:'Cari sesuatu yang spesial untuk pasanganmu.',pk_cons:'Konsultasi',pk_cons_s:'Biar kami bantu merencanakannya.',
 partners_h:'Mitra Kami',
 ex_h:'Jelajahi',ex_p:'Temukan tempat, aktivitas, dan hadiah untuk momen spesialmu.',
+cat_label:'Pilih jenis pengalaman',cat_all:'Semua',cat_dining:'Dining',cat_outdoor:'Outdoor',cat_photo:'Photobooth',cat_gaming:'Gaming',cat_gift:'Gift',cat_soon:'Belum ada mitra photobooth yang tersedia. Nantikan pilihan tempat baru dari Plan My Date.',
+rom_h:'Romantic Dinner',rom_p:'Pilih suasana makan malam yang paling cocok untuk momen spesialmu.',rom_choose:'Pilih tempat kencan',
+rom_harmony:'Hotel & Rooftop Dinner',rom_atmos:'Coffee Shop & Resto',rom_pair:'Harga paket per pasangan',rom_menu:'Harga mengikuti menu yang dipilih',
+rom_note:'Setiap mitra memiliki sistem harga yang berbeda. Harmony Inn menawarkan paket Romantic Dinner per pasangan, sedangkan Atmos Brew menggunakan harga per menu. Lihat detail masing-masing tempat untuk informasi lebih lanjut.',rom_detail:'Lihat detail tempat',
 tab_all:'Semua',tab_date:'Kencan',tab_gift:'Hadiah',
 any_bud:'Semua budget',any_cat:'Semua kategori',any_occ:'Semua acara',
 b1:'Di bawah Rp100K',b2:'Rp100K–300K',b3:'Rp300K–500K',b4:'Rp500K+',
@@ -227,6 +251,10 @@ f1:'Discover',f1s:'Explore date ideas',f2:'Choose',f2s:'Pick a date or gift',f3:
 help:'What can we help you with?',pk_date:'Date',pk_date_s:'Find places and activities for your date.',pk_gift:'Gift',pk_gift_s:'Find something special for your partner.',pk_cons:'Consultation',pk_cons_s:'Let us help you plan it.',
 partners_h:'Our Partners',
 ex_h:'Explore',ex_p:'Discover places, activities, and gifts for your special moment.',
+cat_label:'Choose an experience',cat_all:'All',cat_dining:'Dining',cat_outdoor:'Outdoor',cat_photo:'Photobooth',cat_gaming:'Gaming',cat_gift:'Gifts',cat_soon:'No photobooth partners are available yet. Stay tuned for new Plan My Date experiences.',
+rom_h:'Romantic Dinner',rom_p:'Choose the dining atmosphere that best suits your special moment.',rom_choose:'Choose your date venue',
+rom_harmony:'Hotel & Rooftop Dinner',rom_atmos:'Coffee Shop & Restaurant',rom_pair:'Package price per couple',rom_menu:'Price depends on selected menu',
+rom_note:'Each partner has a different pricing structure. Harmony Inn offers Romantic Dinner packages priced per couple, while Atmos Brew uses per-menu pricing. Open each venue for more details.',rom_detail:'View venue details',
 tab_all:'All',tab_date:'Date',tab_gift:'Gift',
 any_bud:'Any budget',any_cat:'All categories',any_occ:'Any occasion',
 b1:'Under Rp100K',b2:'Rp100K–300K',b3:'Rp300K–500K',b4:'Rp500K+',
@@ -330,7 +358,7 @@ const P=[
 ];
 
 /* ====== UTIL ====== */
-let S={tab:'all',bud:'',cat:'',occ:'',fav:{},view:'home',sel:null,form:{},lang:'id'};
+let S={tab:'all',bud:'',cat:'all',occ:'',fav:{},view:'home',sel:null,form:{},lang:'id'};
 try{const l=localStorage.getItem('pmd_lang');if(l==='en'||l==='id')S.lang=l}catch(e){}
 const t=k=>(T[S.lang]&&T[S.lang][k])||k;
 const L=o=>typeof o==='string'?o:o[S.lang];
@@ -383,6 +411,24 @@ function card(i){
  <div class="body"><h3>${i.n}</h3><div class="loc">${i.by?t('by')+' '+i.by+' · ':''}📍 ${i.loc}</div>
  <div class="est"><span class="pill ${g?'p-prod':'p-est'}">${g?t('est_price'):t('est_budget')}</span><b>${rng(i.a,i.b)} ${i.unit?t(i.unit):''}</b></div>
  ${i.tags.map(x=>`<span class="tag">${t('tg_'+x)}</span>`).join('')}</div></article>`}
+
+function categoryChips(){
+ const cats=[
+  ['all','cat_all','✨'],['dining','cat_dining','🍽️'],['outdoor','cat_outdoor','🌳'],
+  ['photobooth','cat_photo','📸'],['gaming','cat_gaming','🎮'],['gift','cat_gift','🎁']
+ ];
+ return `<div class="category-label">${t('cat_label')}</div><div class="category-chips" role="group" aria-label="${t('cat_label')}">
+ ${cats.map(([id,label,emoji])=>`<button type="button" class="category-chip ${S.cat===id?'on':''}" aria-pressed="${S.cat===id}" onclick="S.cat='${id}';render()">${t(label)}</button>`).join('')}
+ </div>`;
+}
+
+function romanticDinnerCard(){
+ return `<article class="card item" role="link" tabindex="0" onclick="go('romanticDinner')" onkeydown="key(event,()=>go('romanticDinner'))">
+ <div class="img" style="height:190px;background:#3a202b"><img src="${src('harmony dinner 1.jpeg')}" alt="Romantic Dinner" onerror="this.style.display='none'"></div>
+ <div class="body"><h3>${t('rom_h')}</h3><div class="loc">📍 Pontianak · ${t('kind_date')}</div>
+ <p style="color:var(--mut);margin:6px 0 0">${t('rom_p')}</p>
+ <p style="color:var(--pink);font-weight:600;font-size:14px;margin:14px 0 0">${t('rom_detail')} →</p></div></article>`;
+}
 
 function premium(){
  const li=a=>a.map(x=>`<li>${t(x)}</li>`).join('');
@@ -440,22 +486,58 @@ home(){return `<section class="hero"><div><div class="script" style="font-size:2
  <div class="polaroid" style="width:100%;max-width:320px;min-width:0;justify-self:center"><div class="ph"><img src="foto-senja.jpg" onerror="this.style.display='none'" alt="${t('h_alt')}"></div><span class="script">Good Dates, Happier Us</span></div></section>
  <div class="flow">${[1,2,3,4,5].map(n=>`<div>${t('f'+n)}<small>${t('f'+n+'s')}</small></div>`).join('')}</div>
  <h2>${t('help')}</h2><div class="grid g3 picks">
- <button class="card pick" onclick="S.tab='date';go('explore')"><div class="ic">🍽️</div><h3>${t('pk_date')}</h3><p>${t('pk_date_s')}</p></button>
- <button class="card pick" onclick="S.tab='gift';go('explore')"><div class="ic">🎁</div><h3>${t('pk_gift')}</h3><p>${t('pk_gift_s')}</p></button>
+ <button class="card pick" onclick="S.cat='all';go('explore')"><div class="ic">🍽️</div><h3>${t('pk_date')}</h3><p>${t('pk_date_s')}</p></button>
+ <button class="card pick" onclick="S.cat='gift';go('explore')"><div class="ic">🎁</div><h3>${t('pk_gift')}</h3><p>${t('pk_gift_s')}</p></button>
  <button class="card pick" onclick="go('plan')"><div class="ic">💬</div><h3>${t('pk_cons')}</h3><p>${t('pk_cons_s')}</p></button></div>
  <h2>${t('partners_h')}</h2><div class="partners">${P.map(p=>`<button class="pt" onclick="go('partners')"><div class="av">${avatar(p)}</div><b>${p.n}</b><small>${t(p.role)}</small></button>`).join('')}</div>`},
 
 explore(){
- const l=D.filter(i=>(S.tab==='all'||i.t===S.tab)&&(!S.cat||i.cat===S.cat)&&(!S.occ||i.occ.includes(S.occ))&&(!S.bud||(S.bud==='1'?i.a<100:S.bud==='2'?(i.a<300&&i.b>=100):S.bud==='3'?(i.a<500&&i.b>=300):i.b>=500)));
+ const matchesCategory=i=>{
+  if(S.cat==='all') return true;
+  if(S.cat==='dining') return i.cat==='dining';
+  if(S.cat==='outdoor') return i.cat==='outdoor';
+  if(S.cat==='gaming') return i.cat==='activity';
+  if(S.cat==='gift') return i.t==='gift';
+  if(S.cat==='photobooth') return false;
+  return true;
+ };
+ const l=D.filter(i=>![2,7].includes(i.id)&&matchesCategory(i)&&(!S.bud||(S.bud==='1'?i.a<100:S.bud==='2'?(i.a<300&&i.b>=100):S.bud==='3'?(i.a<500&&i.b>=300):i.b>=500)));
+ const budOK=i=>!S.bud||(S.bud==='1'?i.a<100:S.bud==='2'?(i.a<300&&i.b>=100):S.bud==='3'?(i.a<500&&i.b>=300):i.b>=500);
+ const showRomantic=(S.cat==='all'||S.cat==='dining')&&D.some(i=>[2,7].includes(i.id)&&budOK(i));
+ const cards=(showRomantic?[romanticDinnerCard()]:[]).concat(l.map(card));
+ const emptyPhotobooth=S.cat==='photobooth';
  return `<h1 style="font-size:46px">${t('ex_h')}</h1><p style="color:var(--mut)">${t('ex_p')}</p>
- <div class="tabs">${['all','date','gift'].map(x=>`<button class="tab ${S.tab===x?'on':''}" onclick="S.tab='${x}';render()">${t('tab_'+x)}</button>`).join('')}</div>
- <div class="filters"><select aria-label="${t('f_loc')}"><option>Pontianak</option></select>
- <select aria-label="${t('f_bud')}" onchange="S.bud=this.value;render()"><option value="">${t('any_bud')}</option>${[1,2,3,4].map(n=>`<option value="${n}" ${S.bud==n?'selected':''}>${t('b'+n)}</option>`).join('')}</select>
- <select aria-label="Category" onchange="S.cat=this.value;render()"><option value="">${t('any_cat')}</option>${['dining','activity','outdoor','personalized','flowers'].map(c=>`<option value="${c}" ${S.cat===c?'selected':''}>${t('c_'+c)}</option>`).join('')}</select>
- <select aria-label="${t('f_occ')}" onchange="S.occ=this.value;render()"><option value="">${t('any_occ')}</option>${['casual','anniv','birthday','first','surprise'].map(o=>`<option value="${o}" ${S.occ===o?'selected':''}>${t('o_'+o)}</option>`).join('')}</select></div>
+ <div class="filters">
+  <select aria-label="${t('f_loc')}"><option>Pontianak</option></select>
+  <select aria-label="${t('f_bud')}" onchange="S.bud=this.value;render()"><option value="">${t('any_bud')}</option>${[1,2,3,4].map(n=>`<option value="${n}" ${S.bud==n?'selected':''}>${t('b'+n)}</option>`).join('')}</select>
+ </div>
+ ${categoryChips()}
  <p class="note">${t('ex_note')}</p>
- <div class="grid g3" style="margin-top:14px">${l.map(card).join('')||`<p>${t('no_match')}</p>`}</div>`},
+ <div class="grid g3" style="margin-top:14px">${emptyPhotobooth?`<p class="note">${t('cat_soon')}</p>`:cards.join('')||`<p>${t('no_match')}</p>`}</div>`},
 
+
+romanticDinner(){
+ const h=D.find(x=>x.id===2),a=D.find(x=>x.id===7);
+ return `<button class="loc" style="cursor:pointer;background:none;border:0;color:var(--mut);padding:0;font-size:14px" onclick="go('explore')">${t('back')}</button>
+ <section class="experience-hero">
+  <div><span class="tag">${t('kind_date')}</span>
+   <h1 style="font-size:clamp(38px,5vw,54px);margin:10px 0">${t('rom_h')}</h1>
+   <p style="color:var(--mut)">${t('rom_p')}</p>
+  </div>
+ </section>
+ <h2 style="margin-top:34px">${t('rom_choose')}</h2>
+ <div class="venue-grid">
+  <button class="venue-card" onclick="go('detail',2)">
+   <img src="${src('harmony dinner 1.jpeg')}" alt="Hotel Harmony Inn">
+   <div class="venue-copy"><h3>Harmony Inn</h3><p>${t('rom_harmony')}</p><span class="price-kind">${rp(h.a)} – ${rp(h.b)}</span><span class="price-sub">${t('rom_pair')}</span><p style="margin-top:12px;color:var(--pink);font-weight:600">→</p></div>
+  </button>
+  <button class="venue-card" onclick="go('detail',7)">
+   <img src="${src('borneo sky.jpeg')}" alt="Atmos Brew">
+   <div class="venue-copy"><h3>Atmos Brew</h3><p>${t('rom_atmos')}</p><span class="price-kind">${rp(a.a)} – ${rp(a.b)}</span><span class="price-sub">${t('rom_menu')}</span><p style="margin-top:12px;color:var(--pink);font-weight:600">→</p></div>
+  </button>
+ </div>
+ <div class="experience-note">${t('rom_note')}</div>`;
+},
 detail(){
   const i=D.find(x=>x.id==S.sel)||D[0],g=i.t==='gift';
   const im=i.detailImg||i.img;

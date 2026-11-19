@@ -112,6 +112,17 @@ form select,form input,form textarea{width:100%}
 .price{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:700}
 .pcard{padding:20px;text-align:center}
 .pcard .av{width:84px;height:84px;aspect-ratio:1/1}
+.cat-ov{position:fixed;inset:0;z-index:20;background:rgba(40,16,28,.6);display:flex;align-items:center;justify-content:center;padding:16px}
+.cat-box{background:var(--card);border:1px solid var(--line);border-radius:22px;width:100%;max-width:960px;height:min(92vh,900px);display:flex;flex-direction:column;overflow:hidden}
+.cat-head{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;padding:14px 18px 6px}
+.cat-head h3{font-size:26px}
+.cat-head small{color:var(--mut)}
+.cat-x{background:none;border:0;font-size:30px;line-height:1;color:var(--ink);padding:0 4px}
+.cat-tabs{display:flex;gap:8px;flex-wrap:wrap;padding:6px 18px 0}
+.cat-body{flex:1;min-height:0;overflow:auto;padding:12px 18px 18px;display:flex;flex-direction:column;gap:10px}
+.cat-body iframe{flex:1;width:100%;min-height:0;border:1px solid var(--line);border-radius:14px;background:#fff}
+.cat-body img{width:100%;height:auto;border-radius:14px;display:block}
+@media(max-width:760px){.cat-box{height:auto;max-height:92vh}.cat-head h3{font-size:22px}}
 @media(max-width:760px){
 nav{display:none;position:absolute;top:100%;left:0;right:0;background:var(--bg);flex-direction:column;gap:0;padding:8px 20px 16px;border-bottom:1px solid var(--line)}
 nav.open{display:flex}
@@ -147,6 +158,10 @@ const OJ_IG='https://www.instagram.com/oh.jemari/';
 const HARMONY_IG='https://www.instagram.com/hotelharmony.in/';
 const AB_SITE='https://abgaming.id/';
 const AB_IG='https://www.instagram.com/abgamingrental/';
+// Atmos Brew by Borneo Sky: Instagram diambil dari halaman terakhir menu Borneo Sky (akun Borneo Hotel Pontianak). Ganti jika Atmos Brew punya akun sendiri.
+const ATMOS_IG='instagram.com/atmosbrew/';
+// Nama file logo Atmos Brew di folder utama repo. Jika file belum ada, otomatis tampil ikon ☕.
+const ATMOS_LOGO='atmos logo.jpg';
 
 /* ====== TEKS ID / EN ====== */
 const T={
@@ -197,6 +212,7 @@ role_gift:'Mitra Hadiah',role_game:'Mitra Gaming',role_rest:'Mitra Restoran',rol
 ab_h:'Tentang',ab_p:'Plan My Date adalah layanan perencanaan kencan lokal untuk pasangan di Pontianak. Kami merekomendasikan tempat, aktivitas, dan hadiah, menampilkan perkiraan budget, dan membantu mengaturnya lewat WhatsApp.',
 tg_cafe:'Kafe',tg_popular:'Populer',tg_outdoor:'Outdoor',tg_park:'Taman',tg_flowers:'Bunga',tg_restaurant:'Restoran',tg_rooftop:'Rooftop',tg_veg:'Menu Vegetarian',tg_gaming:'Gaming',tg_indoor:'Indoor',tg_gift:'Hadiah',tg_personalized:'Personalisasi',
 kind_date:'Kencan',kind_gift:'Hadiah',fav:'Favorit',menu:'Menu',
+tg_coffee:'Coffee Shop',role_coffee:'Mitra Coffee Shop / Restoran',per_item:'/ menu',cat_btn:'Lihat Katalog',cat_open:'Buka di tab baru ↗',cat_close:'Tutup',cat_note:'Semua menu bisa dipesan di lokasi yang sama.',cat_mob:'Buka katalog PDF di tab baru agar mudah dibaca dan di-zoom.',
 hr:'jam',g_none:'Tanpa hadiah',g_acrylic:'Akrilik custom (Oh Jemari)',g_flowers:'Bunga (Bloomcha)',g_both:'Akrilik + Bunga',r_flowers:'Bunga',r_when:'Jadwal',
 n_favs:'Favorit',favs_h:'Favoritku',favs_p:'Tempat dan hadiah yang kamu simpan. Kirim ke kami lewat WhatsApp supaya kami bantu merencanakannya.',favs_empty:'Belum ada favorit. Tekan ♡ pada kartu untuk menyimpannya.',favs_send:'Kirim Favorit via WhatsApp',favs_wa:'Halo Plan My Date, ini favorit saya: {l}. Tolong bantu rencanakan.',fav_add:'♡ Simpan ke favorit',fav_saved:'♥ Tersimpan di favorit',f_date:'Tanggal',f_time:'Jam',
 },
@@ -247,6 +263,7 @@ role_gift:'Gift Partner',role_game:'Gaming Partner',role_rest:'Restaurant Partne
 ab_h:'About',ab_p:'Plan My Date is a local date-planning service for couples in Pontianak. We recommend places, activities, and gifts, show estimated budgets, and help arrange everything through WhatsApp.',
 tg_cafe:'Café',tg_popular:'Popular',tg_outdoor:'Outdoor',tg_park:'Park',tg_flowers:'Flowers',tg_restaurant:'Restaurant',tg_rooftop:'Rooftop',tg_veg:'Vegetarian Menu',tg_gaming:'Gaming',tg_indoor:'Indoor',tg_gift:'Gift',tg_personalized:'Personalized',
 kind_date:'Date',kind_gift:'Gift',fav:'Favorite',menu:'Menu',
+tg_coffee:'Coffee Shop',role_coffee:'Coffee Shop / Restaurant Partner',per_item:'/ item',cat_btn:'View Catalog',cat_open:'Open in new tab ↗',cat_close:'Close',cat_note:'All menus can be ordered at the same location.',cat_mob:'Open the PDF catalog in a new tab so it is easy to read and zoom.',
 hr:'hour',g_none:'No gift',g_acrylic:'Custom acrylic (Oh Jemari)',g_flowers:'Flowers (Bloomcha)',g_both:'Acrylic + Flowers',r_flowers:'Flowers',r_when:'Schedule',
 n_favs:'Favorites',favs_h:'My Favorites',favs_p:'Places and gifts you saved. Send them to us on WhatsApp and we will help plan it.',favs_empty:'No favorites yet. Tap ♡ on a card to save it.',favs_send:'Send Favorites via WhatsApp',favs_wa:'Hi Plan My Date, these are my favorites: {l}. Please help me plan.',fav_add:'♡ Save to favorites',fav_saved:'♥ Saved to favorites',f_date:'Date',f_time:'Time',
 }};
@@ -289,16 +306,25 @@ const D=[
  link:{id:'Lihat Katalog & Daftar Harga',en:'View Catalog & Price List'},
  box:{id:'Membuka katalog dan daftar harga Bloomcha.',en:'Opens Bloomcha’s catalog and price list.'},
  note:{id:'Kisaran harga Rp25.000–Rp750.000. Harga akhir mengikuti produk yang dipilih.',en:'Price range Rp25,000–Rp750,000. Final price depends on the selected product.'},
- desc:{id:'Temukan pilihan bunga dan hadiah dari Bloomcha untuk anniversary, ulang tahun, atau kejutan spesial bagi pasanganmu.',en:'Discover flowers and gifts from Bloomcha for anniversaries, birthdays, or a special surprise for your partner.'}}
+ desc:{id:'Temukan pilihan bunga dan hadiah dari Bloomcha untuk anniversary, ulang tahun, atau kejutan spesial bagi pasanganmu.',en:'Discover flowers and gifts from Bloomcha for anniversaries, birthdays, or a special surprise for your partner.'}},
+{id:7,t:'date',n:'Atmos Brew by Borneo Sky',img:ATMOS_LOGO,url:ATMOS_IG,ig:ATMOS_IG,loc:'Pontianak',a:10,b:130,cat:'dining',unit:'per_item',tags:['coffee','restaurant'],e:'☕',bg:'#f3d6c6,#c9876f',occ:['casual','anniv','first'],
+ link:{id:'Lihat Katalog',en:'View Catalog'},
+ box:{id:'Membuka katalog menu resmi mitra. Kamu memilih menu sendiri. Bingung memilih? Tanya kami lewat WhatsApp.',en:"Opens the partner's official menu catalog. You choose your own menu. Not sure what to pick? Ask us on WhatsApp."},
+ note:{id:'Kisaran harga per menu makanan dan minuman. Harga akhir tergantung menu yang kamu pilih.',en:'Price range per food and drink item. Final price depends on your selected menu.'},
+ desc:{id:'Tempat nongkrong yang nyaman untuk menikmati kopi dan menghabiskan waktu bersama pasangan. Tidak hanya cocok untuk coffee date santai, Atmos Brew juga menawarkan pengalaman dinner melalui pilihan menu makanan dari Borneo Sky Rooftop & Cafe.',en:'A cozy hangout spot to enjoy coffee and spend time with your partner. Not only perfect for a relaxed coffee date, Atmos Brew also offers a dinner experience through the food menu from Borneo Sky Rooftop & Cafe.'},
+ catalogs:[
+  {label:{id:'Atmos Brew · Kopi & Minuman',en:'Atmos Brew · Coffee & Beverages'},file:'atmos-brew-menu.jpg',type:'img'},
+  {label:{id:'Borneo Sky Rooftop & Cafe · Makanan & Minuman',en:'Borneo Sky Rooftop & Cafe · Food & Drinks'},file:'borneo-sky-menu.pdf',type:'pdf'}]}
 ];
-/* Daftar mitra tampil sebagai contoh (6 mitra). Mitra tanpa url belum punya link. */
+/* Daftar mitra tampil sebagai contoh (7 mitra). Mitra tanpa url belum punya link. */
 const P=[
 {n:'Oh Jemari',e:'🎁',role:'role_gift',logo:'oh-jemari-logo.jpeg',url:OJ_IG},
 {n:'Kopi Senja',e:'☕',role:'role_cafe'},
 {n:'AB Gaming',e:'🎮',role:'role_game',logo:'AB GAMING.jpeg',url:AB_SITE},
 {n:'Bloomcha',e:'💐',role:'role_florist',logo:'bloomcha logo.jpeg',url:'https://www.instagram.com/bloomcha.id/'},
 {n:'Hotel Harmony Inn',e:'🌇',role:'role_rest',logo:'Harmony inn.jpeg',url:HARMONY_IG},
-{n:'Picnic Pontianak',e:'🧺',role:'role_exp'}
+{n:'Picnic Pontianak',e:'🧺',role:'role_exp'},
+{n:'Atmos Brew by Borneo Sky',e:'☕',role:'role_coffee',logo:ATMOS_LOGO,url:ATMOS_IG}
 ];
 
 /* ====== UTIL ====== */
@@ -321,6 +347,30 @@ function toggleLang(){S.lang=S.lang==='id'?'en':'id';try{localStorage.setItem('p
 function go(v,x){S.view=v;S.sel=x==null?null:x;document.getElementById('nav').classList.remove('open');render();scrollTo(0,0)}
 const key=(e,fn)=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();fn()}};
 const avatar=p=>p.logo?`<img src="${src(p.logo)}" alt="" onerror="this.parentNode.textContent='${p.e}'">`:p.e;
+
+/* ====== KATALOG (modal PDF / gambar) ====== */
+/* Dipakai oleh listing yang punya daftar `catalogs` (saat ini Atmos Brew). Desktop: PDF tampil di dalam halaman. Mobile: PDF dibuka di tab baru agar mudah di-scroll dan di-zoom. */
+let CATSEL=null;
+const catMobile=()=>matchMedia('(max-width:760px), (pointer:coarse)').matches;
+function catView(){
+ const i=D.find(x=>x.id==CATSEL.id),c=i.catalogs[CATSEL.idx],u=src(c.file),lb=esc(L(c.label));
+ const open=`<a class="btn o" style="align-self:flex-start;padding:8px 18px" ${ext(u)}>${t('cat_open')}</a>`;
+ const body=c.type==='pdf'
+  ?(catMobile()?`<p class="note" style="margin:0">${t('cat_mob')}</p><a class="btn block" ${ext(u)}>${t('cat_open')}</a>`:`<iframe src="${u}#view=FitH" title="${lb}"></iframe>${open}`)
+  :`<img src="${u}" alt="${lb}">${open}`;
+ return `<div class="cat-box" role="dialog" aria-modal="true" aria-label="${esc(i.n)}">
+ <div class="cat-head"><div><h3>${esc(i.n)}</h3><small>${t('cat_note')}</small></div><button class="cat-x" type="button" aria-label="${t('cat_close')}" onclick="closeCatalog()">×</button></div>
+ <div class="cat-tabs">${i.catalogs.map((x,k)=>`<button class="tab ${k===CATSEL.idx?'on':''}" type="button" onclick="openCatalog(${i.id},${k})">${esc(L(x.label))}</button>`).join('')}</div>
+ <div class="cat-body">${body}</div></div>`}
+function openCatalog(id,idx){
+ CATSEL={id,idx:idx||0};
+ let o=document.getElementById('catov'),fresh=!o;
+ if(fresh){o=document.createElement('div');o.id='catov';o.className='cat-ov';o.onclick=e=>{if(e.target===o)closeCatalog()};document.body.appendChild(o);document.body.style.overflow='hidden'}
+ o.innerHTML=catView();
+ if(fresh){const x=o.querySelector('.cat-x');if(x)x.focus()}
+}
+function closeCatalog(){const o=document.getElementById('catov');if(o)o.remove();document.body.style.overflow='';CATSEL=null}
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&CATSEL)closeCatalog()});
 
 /* ====== KOMPONEN ====== */
 function card(i){
@@ -409,7 +459,7 @@ detail(){
   const im=i.detailImg||i.img;
   const waMsg=wa((S.lang==='id'?'Halo Plan My Date, saya tertarik dengan ':'Hi Plan My Date, I am interested in ')+i.n);
   const harmonyMap='https://www.google.com/maps/place/Hotel+Harmony+In+%26+Karaoke/@-0.0925676,109.3445931,767m/data=!3m1!1e3!4m9!3m8!1s0x2e1d59f0f17b4697:0xa64e6d9d09e62adf!5m2!4m1!1i2!8m2!3d-0.092573!4d109.347168!16s%2Fg%2F1pztq3wq4?entry=ttu';
-  const igName=i.id===2?'Hotel Harmony Inn':i.n;
+  const igName=i.id===2?'Hotel Harmony Inn':i.id===7?'Borneo Hotel Pontianak':i.n;
   return `<button class="loc" style="cursor:pointer;background:none;border:0;color:var(--mut);padding:0;font-size:14px" onclick="go('explore')">${t('back')}</button>
   <div class="detail"><div class="img" style="background:linear-gradient(135deg,${i.bg})">${im?`<img src="${src(im)}" alt="${esc(i.n)}" onerror="this.outerHTML='${i.e}'">`:i.e}</div><div>
   <span class="tag">${g?t('kind_gift'):t('kind_date')}</span><span class="tag">${t('c_'+i.cat)}</span>
@@ -425,6 +475,7 @@ detail(){
   <button class="btn block" onclick="go('plan')">${g?t('add_plan'):t('plan_this')}</button>
   <button class="btn o block" onclick="toggleFav(${i.id})">${S.fav[i.id]?t('fav_saved'):t('fav_add')}</button>
   ${i.menuImg?`<a class="btn o block" href="${src(i.menuImg)}" target="_blank" rel="noopener">${t('view_pkg')}</a>`:''}
+  ${i.catalogs?`<button class="btn o block" type="button" onclick="openCatalog(${i.id})">${t('cat_btn')}</button>`:''}
   ${i.id===3?`<a class="btn o block" ${ext(i.url)}>${t('view_price')}</a>`:''}
   ${i.id===5?`<a class="btn o block" ${ext(i.url)}>${t('view_catalog')}</a>`:''}
   ${i.id===6?`<a class="btn o block" ${ext(i.url)}>${t('view_catprice')}</a><a class="btn o block" ${ext('https://www.google.com/maps/search/?api=1&query=Jl.+Uray+Bawadi+No.82a%2C+Sungai+Bangkong%2C+Pontianak+Kota%2C+Kalimantan+Barat+78113')}>${t('view_loc')}</a>`:''}

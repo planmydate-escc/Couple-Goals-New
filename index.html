@@ -158,10 +158,12 @@ const OJ_IG='https://www.instagram.com/oh.jemari/';
 const HARMONY_IG='https://www.instagram.com/hotelharmony.in/';
 const AB_SITE='https://abgaming.id/';
 const AB_IG='https://www.instagram.com/abgamingrental/';
-// Atmos Brew by Borneo Sky: Instagram diambil dari halaman terakhir menu Borneo Sky (akun Borneo Hotel Pontianak). Ganti jika Atmos Brew punya akun sendiri.
+// Atmos Brew by Borneo Sky: link Instagram, logo (avatar di halaman Mitra), dan titik lokasi (tombol Lihat Lokasi).
 const ATMOS_IG='https://www.instagram.com/atmosbrew/';
 // Nama file logo Atmos Brew di folder utama repo. Jika file belum ada, otomatis tampil ikon ☕.
 const ATMOS_LOGO='atmos logo.jpg';
+// Titik lokasi: alamat Borneo Hotel Pontianak (dari halaman terakhir menu). Ganti dengan link Google Maps sendiri jika ada.
+const ATMOS_MAP='https://www.google.com/maps/search/?api=1&query=Borneo+Hotel+Pontianak%2C+Jl.+Merdeka+Barat+No.+428%2C+Pontianak';
 
 /* ====== TEKS ID / EN ====== */
 const T={
@@ -307,7 +309,7 @@ const D=[
  box:{id:'Membuka katalog dan daftar harga Bloomcha.',en:'Opens Bloomcha’s catalog and price list.'},
  note:{id:'Kisaran harga Rp25.000–Rp750.000. Harga akhir mengikuti produk yang dipilih.',en:'Price range Rp25,000–Rp750,000. Final price depends on the selected product.'},
  desc:{id:'Temukan pilihan bunga dan hadiah dari Bloomcha untuk anniversary, ulang tahun, atau kejutan spesial bagi pasanganmu.',en:'Discover flowers and gifts from Bloomcha for anniversaries, birthdays, or a special surprise for your partner.'}},
-{id:7,t:'date',n:'Atmos Brew by Borneo Sky',img:ATMOS_LOGO,url:ATMOS_IG,ig:ATMOS_IG,loc:'Pontianak',a:10,b:130,cat:'dining',unit:'per_item',tags:['coffee','restaurant'],e:'☕',bg:'#f3d6c6,#c9876f',occ:['casual','anniv','first'],
+{id:7,t:'date',n:'Atmos Brew by Borneo Sky',img:'borneo sky.jpeg',detailImg:'atmos dalam.jpeg',url:ATMOS_IG,ig:ATMOS_IG,loc:'Pontianak',a:10,b:130,cat:'dining',unit:'per_item',tags:['coffee','restaurant'],e:'☕',bg:'#f3d6c6,#c9876f',occ:['casual','anniv','first'],
  link:{id:'Lihat Katalog',en:'View Catalog'},
  box:{id:'Membuka katalog menu resmi mitra. Kamu memilih menu sendiri. Bingung memilih? Tanya kami lewat WhatsApp.',en:"Opens the partner's official menu catalog. You choose your own menu. Not sure what to pick? Ask us on WhatsApp."},
  note:{id:'Kisaran harga per menu makanan dan minuman. Harga akhir tergantung menu yang kamu pilih.',en:'Price range per food and drink item. Final price depends on your selected menu.'},
@@ -459,7 +461,7 @@ detail(){
   const im=i.detailImg||i.img;
   const waMsg=wa((S.lang==='id'?'Halo Plan My Date, saya tertarik dengan ':'Hi Plan My Date, I am interested in ')+i.n);
   const harmonyMap='https://www.google.com/maps/place/Hotel+Harmony+In+%26+Karaoke/@-0.0925676,109.3445931,767m/data=!3m1!1e3!4m9!3m8!1s0x2e1d59f0f17b4697:0xa64e6d9d09e62adf!5m2!4m1!1i2!8m2!3d-0.092573!4d109.347168!16s%2Fg%2F1pztq3wq4?entry=ttu';
-  const igName=i.id===2?'Hotel Harmony Inn':i.id===7?'Borneo Hotel Pontianak':i.n;
+  const igName=i.id===2?'Hotel Harmony Inn':i.n;
   return `<button class="loc" style="cursor:pointer;background:none;border:0;color:var(--mut);padding:0;font-size:14px" onclick="go('explore')">${t('back')}</button>
   <div class="detail"><div class="img" style="background:linear-gradient(135deg,${i.bg})">${im?`<img src="${src(im)}" alt="${esc(i.n)}" onerror="this.outerHTML='${i.e}'">`:i.e}</div><div>
   <span class="tag">${g?t('kind_gift'):t('kind_date')}</span><span class="tag">${t('c_'+i.cat)}</span>
@@ -476,6 +478,7 @@ detail(){
   <button class="btn o block" onclick="toggleFav(${i.id})">${S.fav[i.id]?t('fav_saved'):t('fav_add')}</button>
   ${i.menuImg?`<a class="btn o block" href="${src(i.menuImg)}" target="_blank" rel="noopener">${t('view_pkg')}</a>`:''}
   ${i.catalogs?`<button class="btn o block" type="button" onclick="openCatalog(${i.id})">${t('cat_btn')}</button>`:''}
+  ${i.id===7?`<a class="btn o block" ${ext(ATMOS_MAP)}>${t('view_loc')}</a>`:''}
   ${i.id===3?`<a class="btn o block" ${ext(i.url)}>${t('view_price')}</a>`:''}
   ${i.id===5?`<a class="btn o block" ${ext(i.url)}>${t('view_catalog')}</a>`:''}
   ${i.id===6?`<a class="btn o block" ${ext(i.url)}>${t('view_catprice')}</a><a class="btn o block" ${ext('https://www.google.com/maps/search/?api=1&query=Jl.+Uray+Bawadi+No.82a%2C+Sungai+Bangkong%2C+Pontianak+Kota%2C+Kalimantan+Barat+78113')}>${t('view_loc')}</a>`:''}

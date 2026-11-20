@@ -494,7 +494,7 @@ function waPlanMsg(f,pkg){
  try{
   const I=T.id;
   const pk=pkg&&PKG[pkg]?`${I[pkg]} (${PKG[pkg].price})`:'Belum memilih paket (ingin konsultasi dulu)';
-  const bye='Mohon bantuannya untuk rekomendasi dan perencanaan kencannya ya! Terima kasih ✨';
+  const bye='Mohon bantuannya untuk rekomendasi dan perencanaan kencannya ya! Terima kasih';
   if(!f.name)return ['Hi MinDate, aku belum mengisi form rencana kencan di website.',`Paket Plan My Date : ${pk}`,'',bye].join('\n');
   const plan=buildPlan(f);
   const items=plan.list.map(x=>`* ${x.title}: ${x.sub} (${rng(x.r[0],x.r[1])})`);

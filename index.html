@@ -26,6 +26,7 @@ h1,h2,h3,.logo{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;li
 a{color:inherit;text-decoration:none}
 button{font:inherit;cursor:pointer}
 button:focus-visible,a:focus-visible,select:focus-visible,input:focus-visible,textarea:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--pink);outline-offset:2px}
+#paket{scroll-margin-top:90px}
 header{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
 .bar{max-width:1080px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 20px}
 .logo{font-size:26px;cursor:pointer;background:none;border:0;color:var(--ink);padding:0}
@@ -238,7 +239,7 @@ t_dining:'Makan',t_activity:'Aktivitas',t_gift:'Hadiah',t_combo:'Kombinasi',
 r_h:'Rencana Kencan Khusus untuk',r_people:'orang',
 r_dinner:'Dinner Date',r_gift:'Hadiah Custom',r_game:'Main Game',
 r_pkg:'Paket Romantic Dinner untuk',r_pkg2:'pasangan',r_ala:'À la carte untuk',r_ala2:'orang',
-r_total:'Perkiraan total',r_paid:'Dibayar langsung ke mitra. Biaya perencanaan Plan My Date terpisah dan ada di bawah.',
+r_total:'Perkiraan total',r_paid:'Konsultasi dulu, bayar nanti. Harga di atas dibayar langsung ke mitra. Biaya jasa Plan My Date terpisah, pilih paketnya di bawah.',
 r_over:'Perkiraan biaya minimal melebihi budget yang kamu pilih. Coba naikkan budget atau pilih jenis kencan lain.',
 r_wa:'Halo Plan My Date, saya {n}. Tolong bantu rencanaku, perkiraan total {t}.',
 pr_h:'Rencanakan bersama kami',pr_p:'Biaya perencanaan kami terpisah dari harga kafe, aktivitas, atau hadiah.',
@@ -293,7 +294,7 @@ t_dining:'Dining',t_activity:'Activity',t_gift:'Gift',t_combo:'Combination',
 r_h:"Here's a Date Plan Just for",r_people:'people',
 r_dinner:'Dinner Date',r_gift:'Custom Gift',r_game:'Gaming Time',
 r_pkg:'Romantic Dinner package for',r_pkg2:'couple(s)',r_ala:'À la carte for',r_ala2:'people',
-r_total:'Estimated total',r_paid:"Paid directly to partners. Plan My Date's planning fee is separate and shown below.",
+r_total:'Estimated total',r_paid:"Consult first, pay later. Prices above are paid directly to the partner. The Plan My Date service fee is separate, choose a plan below.",
 r_over:'The minimum estimated cost is above your selected budget. Try a higher budget or choose another date type.',
 r_wa:'Hi Plan My Date, I am {n}. Please help with my plan, est. total {t}.',
 pr_h:'Plan it with us',pr_p:'Our planning fee is separate from café, activity, or gift prices.',
@@ -463,7 +464,7 @@ function romanticDinnerCard(){
 const PKG={pr2:{price:'Rp29.999'},pr3:{price:'Rp69.999'}};
 function premium(){
  const li=a=>a.map(x=>`<li>${t(x)}</li>`).join('');
- return `<h2>${t('pr_h')}</h2><p style="color:var(--mut);margin-top:-8px">${t('pr_p')}</p><div class="grid g3 tiers">
+ return `<h2 id="paket">${t('pr_h')}</h2><p style="color:var(--mut);margin-top:-8px">${t('pr_p')}</p><div class="grid g3 tiers">
  <div class="card tier"><h3>${t('pr1')}</h3><span class="pill p-fee" style="align-self:flex-start">${t('pr_free')}</span><div class="price">Rp0</div><ul>${li(['pr1a','pr1b','pr1c','pr1d'])}</ul><button class="btn o block" onclick="go('explore')">${t('pr1cta')}</button></div>
  <div class="card tier hot"><h3>${t('pr2')}</h3><span class="pill p-fee" style="align-self:flex-start">${t('pr_fee')}</span><div class="price" style="display:flex;align-items:center;gap:10px;flex-wrap:wrap"><span style="font-size:18px;color:var(--mut);text-decoration:line-through">Rp49.999</span><span style="color:var(--pink)">${PKG.pr2.price}</span></div><ul>${li(['pr2a','pr2b','pr2c','pr2d'])}</ul><a class="btn block" href="${wa(waPlanMsg(S.form,'pr2'))}" target="_blank" rel="noopener">${t('pr2cta')}</a></div>
  <div class="card tier"><h3>${t('pr3')}</h3><span class="pill p-fee" style="align-self:flex-start">${t('pr_fee')}</span><div class="price" style="display:flex;align-items:center;gap:10px;flex-wrap:wrap"><span style="font-size:18px;color:var(--mut);text-decoration:line-through">Rp99.999</span><span style="color:var(--pink)">${PKG.pr3.price}</span></div><ul>${li(['pr3a','pr3b','pr3c','pr3d','pr3e'])}</ul><a class="btn o block" href="${wa(waPlanMsg(S.form,'pr3'))}" target="_blank" rel="noopener">${t('pr3cta')}</a></div></div>
@@ -627,7 +628,6 @@ rec(){
  const f=S.form||{},n=esc(f.name||'You'),plan=buildPlan(f);
  const total=rng(plan.a,plan.b);
  const when=[f.date?fmtDate(f.date):'',f.time||''].filter(Boolean).join(' ');
- const msg=waPlanMsg(f);
  return `<h1 style="font-size:46px;text-align:center">${t('r_h')} ${n}!</h1>
  <p style="text-align:center;color:var(--mut)">${t('o_'+(f.occ||'casual'))} · ${plan.ppl} ${t('r_people')} · ${esc(f.loc||'Pontianak')} · ${t('b'+(f.bud||2))}${when?' · '+esc(when):''}</p>
  <div class="card plan" style="max-width:720px;margin:20px auto">
@@ -635,7 +635,7 @@ rec(){
  ${plan.list.map((x,k)=>`<div class="row ${plan.list.length===1&&k===0?'last':''}"><div class="l"><div class="em">${x.em}</div><div><b>${x.title}</b><br><small>${x.sub}</small></div></div><div style="text-align:right"><span class="pill ${x.g?'p-prod':'p-est'}">${x.g?t('est_price'):t('est_budget')}</span><br><b>${rng(x.r[0],x.r[1])}</b></div></div>`).join('')}
  ${plan.list.length>1?`<div class="total"><span>${t('r_total')}</span><span>${total}</span></div>`:''}
  <p class="note" style="margin:0 0 14px">${t('r_paid')}</p>
- <div class="stack" style="margin-bottom:20px"><a class="btn block" target="_blank" rel="noopener" href="${wa(msg)}">${t('consult_wa')}</a></div></div>`+premium()},
+ <div class="stack" style="margin-bottom:20px"><button class="btn block" type="button" onclick="document.getElementById('paket').scrollIntoView({behavior:'smooth',block:'start'})">${t('consult_wa')}</button></div></div>`+premium()},
 
 favs(){
  const l=D.filter(i=>S.fav[i.id]);

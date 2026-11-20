@@ -12,7 +12,7 @@
 <!-- PENTING: og:image harus URL lengkap (https://...) agar muncul di preview WhatsApp/Instagram. Ganti setelah web di-hosting. -->
 <meta property="og:image" content="foto-senja.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%92%97%3C/text%3E%3C/svg%3E">
+<link rel="icon" type="image/png" href="logo%20PlanMyDate.png">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Pinyon+Script&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#fffafa;--card:#fff;--soft:#ffeaf1;--pink:#e5628a;--pink2:#ffc4d6;--ink:#6a2440;--mut:#94687a;--line:#fbe0e8;--cream:#fff7ee;--gold:#b27d33;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
@@ -29,6 +29,7 @@ button:focus-visible,a:focus-visible,select:focus-visible,input:focus-visible,te
 header{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
 .bar{max-width:1080px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 20px}
 .logo{font-size:26px;cursor:pointer;background:none;border:0;color:var(--ink);padding:0}
+.logo-mark{height:34px;width:34px;vertical-align:-9px;margin-left:2px}
 nav{display:flex;gap:24px}
 nav button{cursor:pointer;padding:4px 0;color:var(--mut);font-size:14px;background:none;border:0;border-bottom:2px solid transparent}
 nav button.on{color:var(--ink);border-bottom-color:var(--pink)}
@@ -161,9 +162,23 @@ form{grid-template-columns:1fr}
 }
 @media(max-width:420px){.g3{grid-template-columns:1fr}}
 </style>
+<script>
+/* ====== GOOGLE ANALYTICS 4 (statistik pengunjung) ======
+   Isi GA_ID dengan ID pengukuran dari GA4 (bentuknya G-XXXXXXXXXX).
+   Selama masih 'G-XXXXXXXXXX', tidak ada data yang dikirim dan tidak ada skrip Google yang dimuat. */
+const GA_ID='G-Y0QJFE7NMK';
+const GA_ON=GA_ID!=='G-XXXXXXXXXX'&&/^G-[A-Z0-9]{6,}$/.test(GA_ID);
+window.dataLayer=window.dataLayer||[];
+function gtag(){dataLayer.push(arguments)}
+function track(name,params){try{if(GA_ON)gtag('event',name,params||{})}catch(e){}}
+if(GA_ON){
+ const s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id='+GA_ID;document.head.appendChild(s);
+ gtag('js',new Date());gtag('config',GA_ID,{send_page_view:false});
+}
+</script>
 </head>
 <body>
-<header><div class="bar"><button class="logo" onclick="go('home')">Plan My Date <span class="script" style="font-size:20px">♡</span></button>
+<header><div class="bar"><button class="logo" onclick="go('home')">Plan My Date <img class="logo-mark" src="logo%20PlanMyDate.png" alt="" onerror="this.outerHTML='<span class=&quot;script&quot; style=&quot;font-size:20px&quot;>♡</span>'"></button>
 <nav id="nav"></nav>
 <div class="right"><button class="lang" id="langbtn" onclick="toggleLang()" aria-label="Language / Bahasa"></button><button class="burger" aria-label="Menu" onclick="document.getElementById('nav').classList.toggle('open')">☰</button></div></div></header>
 <main id="app"></main>
@@ -374,7 +389,20 @@ function toggleFav(id){if(S.fav[id])delete S.fav[id];else S.fav[id]=true;try{loc
 const today=()=>{const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')};
 const fmtDate=d=>{try{return new Date(d+'T00:00:00').toLocaleDateString(S.lang==='id'?'id-ID':'en-GB',{day:'numeric',month:'long',year:'numeric'})}catch(e){return d}};
 function toggleLang(){S.lang=S.lang==='id'?'en':'id';try{localStorage.setItem('pmd_lang',S.lang)}catch(e){}render()}
-function go(v,x){S.view=v;S.sel=x==null?null:x;document.getElementById('nav').classList.remove('open');render();scrollTo(0,0)}
+function go(v,x){S.view=v;S.sel=x==null?null:x;document.getElementById('nav').classList.remove('open');render();scrollTo(0,0);trackView(v,x)}
+/* Statistik: situs ini satu halaman, jadi tiap pindah tampilan dicatat sebagai halaman sendiri (mis. /explore, /detail/atmos-brew-by-borneo-sky). */
+function trackView(v,x){
+ let p='/'+v,ttl=v;
+ if(v==='detail'){const i=D.find(d=>d.id==x);if(i){p+='/'+i.n.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');ttl=i.n}}
+ track('page_view',{page_path:p,page_title:ttl,page_location:location.origin+location.pathname+'#'+p});
+}
+document.addEventListener('click',e=>{
+ const a=e.target.closest&&e.target.closest('a[href]');if(!a)return;
+ const h=a.getAttribute('href')||'';
+ if(h.includes('instagram.com'))track('click_instagram',{link_url:h});
+ else if(h.includes('google.com/maps')||h.includes('maps.app.goo.gl'))track('click_location',{link_url:h});
+ else if(h.includes('wa.me'))track('click_whatsapp',{link_url:h});
+},true);
 const key=(e,fn)=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();fn()}};
 const avatar=p=>p.logo?`<img src="${src(p.logo)}" alt="" onerror="this.parentNode.textContent='${p.e}'">`:p.e;
 
@@ -394,6 +422,7 @@ function catView(){
  <div class="cat-body">${body}</div></div>`}
 function openCatalog(id,idx){
  CATSEL={id,idx:idx||0};
+ {const i=D.find(x=>x.id==id),c=i&&i.catalogs&&i.catalogs[idx||0];track('view_catalog',{partner:i?i.n:String(id),catalog:c?L(c.label):''})}
  let o=document.getElementById('catov'),fresh=!o;
  if(fresh){o=document.createElement('div');o.id='catov';o.className='cat-ov';o.onclick=e=>{if(e.target===o)closeCatalog()};document.body.appendChild(o);document.body.style.overflow='hidden'}
  o.innerHTML=catView();
@@ -631,6 +660,7 @@ function render(){
  document.getElementById('app').innerHTML=V[k]();
 }
 render();
+trackView(S.view);
 </script>
 </body>
 </html>
